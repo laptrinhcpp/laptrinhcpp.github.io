@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>1.1 Câu lệnh và cấu trúc của một chương trình</title>
+	<link rel="stylesheet" href="../../css/substyle.css">
+</head>
+
+<body>
+	<div class="title">
+		<h1>1.1 Câu lệnh và cấu trúc của một chương trình</h1>
+	</div>
+	
+	<div class="content">
+		
+		<h3 class="muc">Câu lệnh</h3>
+		<p>
+			Chương trình máy tính là một chuỗi các chỉ dẫn, chỉ cho máy tính biết phải làm gì. Câu lệnh là chỉ dẫn phổ biến nhất trong số đó, có chức năng buộc máy tính làm một số hành động.
+		</p>
+		<p>
+			Hầu hết (không phải tất cả) các câu lệnh trong C++ đều kết thúc bằng dấu chấm phẩy ';'. Nếu bạn thấy một câu kết thúc bằng dấu chấm phẩy, đó chắc chắn là một câu lệnh.
+		</p>
+		<h3 class="muc">Hàm và hàm main</h3>
+		<p>
+			Trong C++, các câu lệnh được gộp lại thành một cụm được gọi là hàm. Về cơ bản, khi bạn viết một chương trình tức là bạn tạo ra các hàm với chức năng riêng rồi phối hợp với nhau để tạo thành chương trình hoàn chỉnh.
+		</p>
+		<p>
+			<span class="luu-y">
+				Lưu ý: Mọi chương trình C++ đều bắt buộc phải có một và chỉ một hàm đặc biệt được gọi là hàm main. Khi chương trình chạy, nó sẽ bắt đầu từ câu lệnh đầu tiên của hàm main rồi chạy tiếp các câu lệnh tiếp theo. Chương trình sẽ được xem là chạy xong khi câu lệnh cuối cùng của hàm main được thực thi.
+			</span>
+		</p>
+		<p>
+			Mỗi hàm trong chương trình đều có một mục đích sử dụng khác nhau. Ví dụ hàm timMax() tìm giá trị lớn nhất, hàm timSoNguyenTo() tìm ra số nguyên tố, … Đi sau tên hàm phải luôn có hai dấu '( )'. Bên trong '( )' có thể chứa nhiều thứ khác(sẽ nói ở các bài sau). Dấu '( )' là cách để phân biệt hàm và các đối tượng khác trong C++.
+		</p>
+		<h3 class="muc">Chương trình đầu tiên - Hello World</h3>
+		<p>
+			Các bạn đã biết sơ qua câu lệnh và hàm là gì rồi. Bây giờ chúng ta bắt đầu với chương trình cơ bản nhất của mọi ngôn ngữ lập trình – Hello World. 
+		</p>
+		<!-- HTML generated using hilite.me --><div style="background-color: white; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em; border-radius: 10px;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3
+4
+5
+6
+7</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+  
+<span style="color: #2b91af">int</span> main()
+{
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;Hello world!&quot;</span>;
+    <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+		<p>
+			Dòng thứ nhất được gọi là chỉ thị tiền xử lý (preprocessor directives). Chỉ thị tiền xử lý này báo trình biên dịch biết rằng ta muốn sử dụng nội dung trong thư viện iostream. Đây là một trong các thư viện chuẩn của C++, cho phép chúng ta nhập/xuất văn bản vào/ra màn hình console. Ta cần thư viện iostream cho std::cout ở câu lệnh dòng thứ 5, nếu không có dòng 1, máy sẽ báo lỗi biên dịch, trình biên dịch sẽ không biết std::cout là gì.
+		</p>
+		<p>
+			Dòng thứ hai là khoảng trống, và sẽ được trình biên dịch bỏ qua. Dòng này mục đích chủ yếu để cho dễ đọc code hơn so với code mà các dòng liền với nhau.
+		</p>
+		<p>
+			Dòng thứ ba báo cho trình biên dịch biết ta đang tạo hàm main – hàm đặc biệt bắt buộc phải có trong chương trình C++ như đã nêu ở trên.
+		</p>
+		<p>
+			Dòng thứ tư và thứ bảy giúp trình biên dịch biết giới hạn của hàm main. Tất cả các câu lệnh nằm trong dấu ngoặc nhọn { } đều thuộc về hàm main. Đây được gọi là phần thân của hàm.
+		</p>
+		<p>
+			Dòng thứ năm là câu lệnh đầu tiên của hàm main, là câu lệnh sẽ được thực thi đầu tiên khi chương trình chạy. std::cout (viết tắt character output) và dấu toán tử << cho phép chúng ta xuất chữ và số ra màn hình console. Trong trường hợp này, ta sẽ xuất dòng chữ Hello World ra màn hình.
+		</p>
+		<p>
+			Dòng thứ sáu là câu lệnh trả về. Khi một chương trình chạy xong, nó sẽ trả về hệ thống một giá trị để cho biết chương trình có chạy thành công hay không. Thông thường giá trị đó 0, mang ý nghĩa “tất cả đều chạy ổn”. Đây là câu lệnh cuối cùng trong chương trình.
+		</p>
+		<p>
+			Bạn hãy thử chạy chương trình trên và sẽ thấy trên màn hình xuất hiện:
+		</p>
+		<div class="codeblock">
+			<code>Hello World!</code>
+		</div>
+		<h3 class="muc">Cú pháp và lỗi cú pháp</h3>
+		<p>
+			Trong Tiếng Việt, các câu được cấu trúc theo các phép đặt câu nhất định mà chắc hẳn bạn đã học ở tiểu học, nếu không thì chắc bạn đã không ở đây 😀 Các phép đặt câu đó được gọi là cú pháp. Nếu bạn vi phạm các quy tắc đó bạn sẽ bị sai cú pháp.
+		</p>
+		<p>
+			C++ cũng có cú pháp (syntax). Bạn bắt buộc phải tuân theo các cú pháp đó. Khi bạn biên dịch một chương trình, nhiệm vụ đầu tiên của trình biên dịch là kiểm tra cú pháp của các câu lệnh xem đã đúng với cú pháp tiêu chuẩn C++ chưa. Nếu bạn vi phạm, nó sẽ “vả” vào mặt bạn lỗi cú pháp (syntax error).
+		</p>
+		<div>
+			<img src="../../img/batman.jpg" class="center">
+		</div>
+		<p>
+			Để xem chuyện gì sẽ xảy ra nếu ta bỏ đi dấu chầm phẩy ở dòng 5 trong chương trình Hello World ở trên:
+		</p>
+		<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3
+4
+5
+6
+7</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+  
+<span style="color: #2b91af">int</span> main()
+{
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;Hello world!&quot;</span>
+    <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+		<p>
+			Đối với Visual Studio Code, máy xuất ra lỗi này (tùy vào phần mềm bạn sử dụng có thể sẽ khác nhau):
+		</p>
+		<div class="codeblock">
+			<code>main.cpp:6:2: error: expected ';' before 'return'</code>
+		</div>
+		<p>
+			Nó báo cho bạn biết có lỗi cú pháp ở dòng thứ 6, thiếu dấu ‘;’ ở trước return. Có lẽ bạn sẽ tự hỏi vì sao thiếu dấu ‘;’ ở dòng 5 nhưng nó lại báo lỗi ở dòng 6. Đó là vì trình biên dịch kiểm tra theo từng kí tự chứ không phải theo từng dòng. Khi nó kiểm tra hết dòng 5 (xong kí tự “), trình biên dịch vẫn chưa biết bạn đã kết thúc một câu lệnh nên nó chưa báo lỗi. Khi xuống dòng kiểm tra tiếp, nó đến chữ return thì mới biết bạn đã kết thúc câu lệnh ở dòng 5. Lúc này, trình biên dịch phát hiện bạn đã kết thúc câu lệnh ở dòng 5 mà không có dấu ‘;’. Do đó, mặc dù lỗi ở dòng 5, nhưng nó đang kiểm tra ở dòng 6 nên nó báo lỗi ở dòng 6. Đó là một mẹo khi kiểm tra lỗi cú pháp. Đôi khi bạn sẽ thấy dòng mà máy báo lỗi không có lỗi gì nhưng nó vẫn báo, lúc này bạn hãy kiểm tra dòng trước nó nhé!
+		</p>
+		<div>
+			<a href="../1-2-comments/index.html"><button class="btn">Bài tiếp theo</button></a>
+		</div>
+		
+	</div>
+</body>
+
+</html>

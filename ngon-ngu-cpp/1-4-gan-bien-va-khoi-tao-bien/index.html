@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>1.4 Gán biến và khởi tạo biến</title>
+	<link rel="stylesheet" href="../../css/substyle.css">
+</head>
+
+<body>
+	<div class="title">
+		<h1>1.4 Gán biến và khởi tạo biến</h1>
+	</div>
+	
+	<div class="content">
+        
+        <p>
+            Ở bài trước <a href="../1-3-bien/index.html">1.3 Biến</a>, chúng ta đã tìm hiểu qua cách định nghĩa một biến để lưu trữ giá trị. Trong bài này, ta sẽ tìm hiểu cách gán giá trị cho biến và sử dụng chúng. Mình xin nhắc lại cách định nghĩa biến:
+        </p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #008000">// Định nghĩa một lúc nhiều biến</span>
+<span style="color: #2b91af">int</span> a;     <span style="color: #008000">// định nghĩa biến x có kiểu dữ liệu int</span>
+<span style="color: #2b91af">int</span> x, y;  <span style="color: #008000">// định nghĩa hai biến x, y có kiểu dữ liệu int</span>
+</pre></td></tr></table></div>
+
+        <h3 class="muc">Gán giá trị cho biến</h3>
+        <p>
+            Sau khi định nghĩa biến, bạn có thể gán giá trị cho nó thông qua toán tử ‘=’:
+        </p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #2b91af">int</span> score;   <span style="color: #008000">// định nghĩa biến score có kiểu dữ liệu int</span>
+score = 10;  <span style="color: #008000">// gán giá trị 10 vào biến score</span>
+<span style="color: #008000">// biến score bây giờ mang giá trị 10</span>
+</pre></td></tr></table></div>
+
+        <p>
+            Toán tử ‘=’ có chức năng copy giá trị ở bên vế phải và gán giá trị đó cho biến ở vế trái nên được gọi là toán tử gán (assignment operator).
+        </p>
+        <p>
+            Đây là cách gán giá trị cho một biến hai lần:
+        </p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+ 
+<span style="color: #2b91af">int</span> main()
+{
+  <span style="color: #2b91af">int</span> score;  <span style="color: #008000">// định nghĩa biến score</span>
+  score = 10; <span style="color: #008000">// gán giá trị 10 vào biến score</span>
+ 
+  <span style="color: #008000">// biến score hiện có giá trị 5</span>
+ 
+  score = 20; <span style="color: #008000">// gán giá trị 20 vào biến score</span>
+ 
+  <span style="color: #008000">// biến score hiện có giá trị 7</span>
+ 
+  <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+        <p>
+            Khi bạn gán 20 vào biến score, giá trị 10 sẽ bị ghi đè và mất đi. Mỗi biến chỉ có thể lưu trữ một giá trị.
+        </p>
+        <p class="luu-y">
+            Lưu ý: sau này có thể bạn sẽ gặp thêm một loại toán tử là ‘==’. Đây là toán tử so sánh và nó không có chức năng gán giá trị như toán tử ‘=’, bạn nên tránh nhầm lẫn.
+        </p>
+        <h3 class="muc">Khởi tạo gán và khởi tạo trực tiếp</h3>
+        <p>
+            Gán giá trị như các ví dụ trên có mặt không tốt. Đó là cần ít nhất hai câu lệnh: định nghĩa biến và gán giá trị cho biến. Rất may, C++ cho phép bạn làm hai điều đó cùng một lúc, được gọi là khởi tạo biến (initialization).
+        </p>
+        <p>
+            C++ cung cấp cho bạn ba loại khởi tạo. Đầu tiên là khởi tạo gán (copy initialization) bằng toán tử ‘=’:
+        </p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #2b91af">int</span> score = 10; <span style="color: #008000">// khởi tạo biến score có giá trị 10</span>
+</pre></td></tr></table></div>
+
+        <p>
+            Cách hai là khởi tạo trực tiếp (direct initialization) bằng dấu ‘()’:
+        </p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #2b91af">int</span> score(10);  <span style="color: #008000">// khởi tạo biến score có giá trị 10</span>
+</pre></td></tr></table></div>
+
+        <p>
+            Đối với các kiểu dữ liệu đơn giản như int, hai cách trên là như nhau. Tuy nhiên, đối với kiểu dữ liệu phức tạp như struct, class thì khởi tạo trực tiếp sẽ cho hiệu suất tốt hơn.
+        </p>
+        <h3 class="muc">Khởi tạo đồng nhất</h3>
+        <p>
+            Rất tiếc, khởi tạo trực tiếp không phải lúc nào cũng có thể dùng được. Do đó, C++ (từ 11 trở lên, các phiên bản thấp hơn không hỗ trợ) cung cấp thêm một loại khởi tạo nữa gọi là khởi tạo đồng nhất (uniform initialization). Loại khởi tạo này dùng dấu ‘{}’ thay vì ‘()’ như khởi tạo trực tiếp:
+        </p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #2b91af">int</span> score{10};  <span style="color: #008000">// khởi tạo biến score có giá trị 10</span>
+</pre></td></tr></table></div>
+
+        <p>
+            Khởi tạo đồng nhất mà bỏ trống ‘{}’ thì được gọi là zero initialization. Biến đó sẽ mang giá trị 0:
+        </p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #2b91af">int</span> score{};  <span style="color: #008000">// khởi tạo biến score có giá trị 0</span>
+</pre></td></tr></table></div>
+
+        <p>
+            Khởi tạo đồng nhất có một ưu điểm. Đó là nó không cho phép bạn đưa giá trị có kiểu dữ liệu khác với kiểu dữ liệu của biến vào biến khi khởi tạo. Do đó, nó sẽ báo lỗi khi bạn khởi tạo biến với giá trị không hợp lệ.
+        </p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3
+4
+5
+6</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #2b91af">int</span> a = 6.9;
+<span style="color: #2b91af">int</span> b(6.9);
+<span style="color: #008000">/* 6.9 là số thập phân, khác số nguyên</span>
+<span style="color: #008000"> * nhưng máy sẽ không báo lỗi</span>
+<span style="color: #008000"> * biến a và b sẽ đều mang giá trị 6, nguyên nhân vì sao như vậy sẽ đề cập ở các bài sau */</span>
+<span style="color: #2b91af">int</span> c{6.9};  <span style="color: #008000">// trường hợp này máy sẽ báo lỗi</span>
+</pre></td></tr></table></div>
+
+        <p>
+            Đó là một điều tốt vì nếu bạn không cẩn thận, bạn có thể gán nhầm giá trị, dẫn tới sai sót số liệu. Lấy ví dụ trường hợp trên 6.9 chỉ còn 6.
+        </p>
+        <p>
+            Nếu bạn dùng phiên bản C++ 11 trở lên. Bạn nên dùng khởi tạo đồng nhất để khởi tạo biến.
+        </p>
+        <h3 class="muc">Khởi tạo đa biến</h3>
+        <p>
+            Ở bài trước, ta biết có thể định nghĩa nhiều biến cùng lúc với điều kiện cùng kiểu dữ liệu. Và khởi tạo biến cũng vậy, bạn có thể khởi tạo nhiều biến cùng lúc:
+        </p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #2b91af">int</span> a = 5, b = 6;    <span style="color: #008000">// khởi tạo gán</span>
+<span style="color: #2b91af">int</span> c( 7 ), d( 8 );  <span style="color: #008000">// khởi tạo trực tiếp</span>
+<span style="color: #2b91af">int</span> e{ 9 }, f{ 10 }; <span style="color: #008000">// khởi tạo đồng nhất (nên dùng)</span>
+</pre></td></tr></table></div>
+
+        <p>
+            Lưu ý cách viết sau:
+        </p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #2b91af">int</span> a, b = 5;      <span style="color: #008000">// sai (a không được khởi tạo)</span>
+ 
+<span style="color: #2b91af">int</span> a = 5, b = 5;  <span style="color: #008000">// đúng</span>
+</pre></td></tr></table></div>
+
+        <p>
+            Ở cách viết thứ nhất trong ví dụ trên, có thể trình biên dịch sẽ báo lỗi hoặc không. Nhưng chương trình có thể bị crash bất cứ lúc nào nếu làm vậy. Mình sẽ nói về vấn đề sử dụng biến không khởi tạo như thế sẽ có ảnh hưởng như thế nào ở các bài sau.
+        </p>
+		
+		<div>
+            <a href="#"><button class="btn">Bài tiếp theo</button></a>
+        </div>
+        <div>
+            <a href="../1-3-bien/index.html"><button class="btn">Bài trước</button></a>
+        </div>
+		
+	</div>
+</body>
+
+</html>
