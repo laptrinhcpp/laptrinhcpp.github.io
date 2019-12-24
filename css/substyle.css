@@ -87,3 +87,7 @@ a:hover {
 .btn:hover::after{
    right: 80%;
 }
+
+div table {
+    font-size: 13px;
+}
