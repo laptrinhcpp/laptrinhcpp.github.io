@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../../../css/reset.css">
+    <title>1.5 Giới thiệu về iostream: cout, cin và endl</title>
+    <link rel="stylesheet" href="../../../css/substyle.css">
+    <link rel="shortcut icon" href="../../../img/circle-logo.ico">
+</head>
+
+<body>
+	<div class="title">
+		<h1>1.5 Giới thiệu về iostream: cout, cin và endl</h1>
+	</div>
+	
+	<div class="content">
+        
+        <p>
+            Trong bài học này, ta sẽ tìm hiểu kỹ hơn về std::cout trong chương trình “Hello World” lần trước, và cách nhận input của người dùng qua bàn phím.
+        </p>
+        <h3 class="muc">Thư viện iostream</h3>
+        <p>
+            Thư viện iostream thuộc thư viện chuẩn của C++, đảm nhận công việc xuất/nhập dữ liệu cơ bản. io ở đây là viết tắt từ input và output.
+        </p>
+        <p>
+            Trước khi sử dụng các chức năng trong thư viện iostream, bạn phải “include” nó ở đầu chương trình, được gọi là chỉ thị tiền xử lý đã được đề cập ở bài <a href="../1-1-cau-lenh-va-cau-truc-cua-mot-chuong-trinh/index.html">1.1 Câu lệnh và cấu trúc của một chương trình</a>, khái niệm này sẽ được nói rõ ở bài <a href="../../chuong-2/2-8-gioi-thieu-ve-tien-xu-ly/index.html">2.8 Giới thiệu về tiền xử lý</a>.
+        </p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+</pre></td></tr></table></div>
+
+        <h3 class="muc">std::cout</h3>
+        <p>
+            std::cout có lẽ là chức năng được dùng nhiều nhất trong iostream. Nó cho phép ta xuất dữ liệu ra màn hình dưới dạng text. cout là viết tắt của “character output”. Dưới đây là chương trình Hello World của chúng ta:
+        </p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+ 
+<span style="color: #2b91af">int</span> main()
+{
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;Hello world!&quot;</span>;
+ 
+    <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+        <p>
+            Ở dòng 5, ta dùng std::cout cùng với toán tử chèn << (insertion operator) để đưa dòng chữ “Hello World” ra màn hình.
+        </p>
+        <p>
+            std::cout không chỉ in text, mà còn có thể in số ra màn hình:
+        </p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt; </span>
+ 
+<span style="color: #2b91af">int</span> main()
+{
+    std::cout &lt;&lt; 4; <span style="color: #008000">// in 4 ra màn hình</span>
+ 
+    <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+        <p>
+            Nó còn có thể in giá trị của biến:
+        </p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt; </span>
+ 
+<span style="color: #2b91af">int</span> main()
+{
+    <span style="color: #2b91af">int</span> x{5}; 
+    std::cout &lt;&lt; x; <span style="color: #008000">// in 5 ra màn hình</span>
+    <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+        <p>
+            Kết quả thu được:
+        </p>
+        <div class="codeblock">
+            <code>5</code>
+        </div>
+        <p>
+            Bạn cũng có thể in nhiều thứ ra màn hình trên cùng một dòng bằng toán tử chèn << như sau:
+        </p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3
+4
+5
+6
+7</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+ 
+<span style="color: #2b91af">int</span> main()
+{
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;Hello&quot;</span> &lt;&lt; <span style="color: #a31515">&quot; world!&quot;</span>;
+    <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+        <p>
+            Kết quả thu được:
+        </p>
+        <div class="codeblock">
+            <code>Hello world!</code>
+        </div>
+        <p>
+            Một ví dụ khác:
+        </p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+ 
+<span style="color: #2b91af">int</span> main()
+{
+    <span style="color: #2b91af">int</span> x{ 5 };
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;x is equal to: &quot;</span> &lt;&lt; x;
+    <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+
+        <p>
+            Kết quả thu được:
+        </p>
+        <div class="codeblock">
+            <code>x is equal to: 5</code>
+        </div>
+        <h3 class="muc">std::endl</h3>
+        <p>
+            Theo bạn chương trình dưới đây sẽ in ra màn hình như thế nào?
+        </p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+ 
+<span style="color: #2b91af">int</span> main()
+{
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;Hi!&quot;</span>;
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;This is Syaoran.&quot;</span>;
+    <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+        <p>
+            Có thể bạn sẽ nghĩ như sau:
+        </p>
+        <div class="codeblock">
+            <pre><code>Hi!
+This is Syaoran.</code></pre>
+        </div>
+        <p>
+            Nhưng thực tế nó như này:
+        </p>
+        <div class="codeblock">
+            <code>Hi!This is Syaoran.</code>
+        </div>
+        <p>
+            Bạn không thể sắp xếp code theo vị trí mà bạn muốn output ra được. Cho dù bạn có sắp xếp thế nào đi nữa, các dòng output vẫn sẽ nằm trên một dòng. Nếu muốn xuống dòng, bạn phải cho trình biên dịch biến khi nào cần xuống dòng. Một trong các cách là dùng std::endl (viết tắt của end line) được định nghĩa trong thư viện iostream. Khi trình biên dịch gặp std::endl, nó sẽ đưa con trỏ xuống dòng trên màn hình hiển thị.
+        </p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3
+4
+5
+6
+7
+8
+9</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+ 
+<span style="color: #2b91af">int</span> main()
+{
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;Hi!&quot;</span> &lt;&lt; std::endl; <span style="color: #008000">// đưa con trỏ trên màn hình xuống dòng</span>
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;This is Syaoran.&quot;</span>;
+ 
+    <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+        <p>
+            Kết quả thu được:
+        </p>
+        <div class="codeblock">
+            <pre><code>Hi!
+This is Syaoran.</code></pre>
+        </div>
+        <h3 class="muc">std::endl và \n</h3>
+        <p>
+            std::endl không chỉ làm mỗi việc đưa con trỏ xuống dòng, thực chất nó làm hai việc: đầu tiên nó đưa con trỏ xuống dòng, tiếp theo nó “flush” buffer mục đích để in dữ liệu ra màn hình ngay lập tức. Khi bạn in text ra màn hình bằng std::cout, thông thường std::cout sẽ flush buffer sau khi in, còn nếu không thì cũng không ảnh hưởng gì đến chương trình. Do đó, việc flush buffer của std::endl là vô nghĩa, không quan trọng, tuy nhiên, nó vẫn flush và điều đó làm giảm hiệu suất chương trình.
+        </p>
+        <p>
+            Bởi vì lý do này, ‘\n’ được sinh ra. ‘\n’ cũng có chức năng xuống dòng giống std::endl, nhưng nó không flush buffer nên hiệu suất chương trình  tốt hơn std::endl. Dưới đây là cách dùng ‘\n’:
+        </p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3
+4
+5
+6
+7
+8
+9</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+ 
+<span style="color: #2b91af">int</span> main()
+{
+    <span style="color: #2b91af">int</span> x{5};
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;x is equal to: &quot;</span> &lt;&lt; x &lt;&lt; <span style="color: #a31515">&#39;\n&#39;</span>;
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;This is Syaoran!\n&quot;</span>;      <span style="color: #008000">// bạn cũng có thể đưa \n vào trong chuỗi output</span>
+    <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+        <p>
+            Kết quả thu được:
+        </p>
+        <div class="codeblock">
+            <pre><code>x is equal to: 5
+This is Syaoran!</code></pre>
+        </div>
+        <p class="loi-khuyen">
+            Lời khuyên: Nên dùng ‘\n’ thay vì std::endl để đạt hiệu quả tốt nhất, và bạn cũng có thể thấy cú pháp ‘\n’ ngắn hơn std::endl nữa.
+        </p>
+        <p>
+            Đến đây chắc hẳn các bạn sẽ thắc mắc: Thế thì tạo ra std::endl làm gì? Câu trả lời là nó rất có lợi khi debug chương trình. Giả sử chương trình của bạn bị crash và bạn muốn lấy một giá trị nào đó in ra màn hình hoặc in ra một file log trước khi nó crash để kiểm tra. Lúc này, bạn sẽ dùng std::endl thay vì ‘\n’. Lý do là vì std::endl flush buffer, khiến dữ liệu được in ra gần như ngay lập tức, điều này sẽ giúp việc in giá trị được chính xác, đầy đủ. Nếu bạn dùng ‘\n’, giá trị sẽ không chính xác hoặc thậm chí không in được giá trị nào.
+        </p>
+        <p class="luu-y">
+            Lưu ý: ‘\n’ mới đúng cú pháp, các bạn tránh nhầm lẫn với ‘/n’.
+        </p>
+        <h3 class="muc">std::cin</h3>
+        <p>
+            Ngược lại với std::cout, std::cin có chức năng nhận dữ liệu từ người dùng nhập vào thông qua bàn phím. std::cin là viết tắt của character input. std::cin dùng toán tử trích >> (extraction operator) để đưa giá trị vào biến.
+        </p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt; </span>
+ 
+<span style="color: #2b91af">int</span> main()
+{
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;Enter a number: &quot;</span>;
+    <span style="color: #2b91af">int</span> x{};
+    std::cin &gt;&gt; x;
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;You entered &quot;</span> &lt;&lt; x;
+    <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+        <p>
+            Khi chạy chương trình trên, bạn sẽ thấy màn hình xuất hiện “Enter a number: “. Nếu bạn nhấn 5, sau đó nhấn nút Enter, chương trình sẽ in “You entered 5”. Và biến x sẽ có giá trị 5.
+        </p>
+        <p>
+            Kết quả thu được:
+        </p>
+        <div class="codeblock">
+            <pre><code>Enter a number: 5
+You entered 5</code></pre>
+        </div>
+        <p>
+            Sẽ có bạn thắc mắc: Ủa, đâu có ‘\n’ hay std::endl đâu mà sao nó xuống dòng vậy? Bạn không cần thêm ‘\n’ hay std::endl vào sau “Enter a number: “. Lý do là vì khi bạn nhập giá trị và nhấn Enter thì bạn đã đưa con trỏ xuống dòng rồi.
+        </p>
+        <p>
+            Đôi khi người dùng sẽ nhập “tầm bậy” vào input, những thứ mà chúng ta không mong muốn hay nói cách khác là không hợp lệ. Lúc đó máy sẽ báo lỗi hoặc chương trình sẽ bị crash. Ta sẽ đi sâu và cách xử lý những trường hợp đó trong các bài sau.
+        </p>
+        <p>
+            Nhiều bạn sẽ bối rối, nhầm lẫn giữa std::cout << và std::cin >>. Đây là cách nhớ chúng: Khi bạn muốn đưa dữ liệu ra màn hình, ra tức là out và bạn sẽ dùng std::cout. Toán tử theo sau là chiều di chuyển của dữ liệu, bạn muốn đưa dữ liệu ra thì dùng << vì nó chỉ về phía std::cout. Chẳng hạn std::cout << 1 có nghĩa là đưa 1 ra màn hình. Ngược lại, khi bạn muốn nhập dữ liệu vào, vào tức là in, bạn sẽ dùng std::cin và dùng toán tử >>. Ví dụ std::cin >> x có nghĩa là đưa dữ liệu vào biến x.
+        </p>
+        <p>
+            À, bạn hãy thử chạy chương trình ở mục std::cin ở trên và nhập nhiều kiểu dữ liệu xem nó sẽ như thế nào nhé. Ví dụ nhập một số nguyên dương, một số nguyên âm, một số thập phân, một chữ cái, một từ nào đó hoặc một số cực lớn (10 tỷ chẳng hạn). Bạn hãy dự đoán kết quả rồi chạy chương trình xem có gì đặc biệt. Nếu nó khác dự đoán của bạn, đừng lo. Mình sẽ giải thích dần ở các bài sau.
+        </p>
+        
+		<div>
+            <a href="#"><button class="btn">Bài tiếp theo</button></a>
+        </div>
+        <div>
+            <a href="../1-4-gan-bien-va-khoi-tao-bien/index.html"><button class="btn">Bài trước</button></a>
+        </div>
+		
+	</div>
+</body>
+
+</html>
