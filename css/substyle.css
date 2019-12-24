@@ -11,8 +11,7 @@ body, html{
 
 h1 {
     font-size: 40px;
-    line-height: 20px;
-    
+    line-height: 1.1;
 }
 
 h3 {
@@ -93,4 +92,5 @@ a:hover {
 div table {
     font-size: 13px;
 }
+
 
