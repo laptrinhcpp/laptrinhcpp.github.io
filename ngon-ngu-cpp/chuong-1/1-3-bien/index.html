@@ -20,13 +20,13 @@
         
         <h3 class="muc">Data</h3>
         <p>
-            Ở bài <a href="../1-1-cau-lenh-va-cau-truc-cua-mot-chuong-trinh/index.html">1.1 Câu lệnh và cấu trúc của một chương trình</a>, bạn đã biết phần lớn thứ tạo nên chương trình là câu lệnh. Các câu lệnh này được gộp thành cụm được gọi là hàm và khiến máy tình làm những gì đã được code sẵn trong chương trình.
+            Ở bài <a href="../1-1-cau-lenh-va-cau-truc-cua-mot-chuong-trinh/index.html">1.1 Câu lệnh và cấu trúc của một chương trình</a>, bạn đã biết phần lớn thứ tạo nên chương trình là câu lệnh. Các câu lệnh này được gộp thành cụm được gọi là hàm và khiến máy tính làm những gì đã được code sẵn trong chương trình.
         </p>
         <p>
-            Vậy làm sao các câu lệnh có thể làm được điều đó? Chúng có thể làm vậy bằng cách đọc, tạo và thay đổi dữ liệu (data). Trong điện toán, data là bất kỳ thông tin nào mà có thể di chuyển, biến đổi, lưu trữ trong một chiếc máy tính.
+            Vậy chúng làm điều đó như thế nào? Chúng có thể làm vậy bằng cách tạo, đọc và thay đổi dữ liệu (data) trong máy tính. Trong điện toán, data là bất kỳ thông tin nào mà có thể di chuyển, biến đổi, lưu trữ trong một chiếc máy tính.
         </p>
         <p>
-            Một chương trình có thể thu thập dữ liệu để theo nhiều cách: từ tệp hoặc cơ sở dữ liệu (database), qua mạng, từ người dùng cung cấp đầu vào qua bàn phím hoặc được lập trình viên đưa thẳng vào source code. Ở chương trình Hello World, chuỗi kí tự “Hello World” chính là data được ta đưa thẳng vào code để chương trình xuất nó ra màn hình.
+            Một chương trình có thể thu thập data theo nhiều cách: từ tệp hoặc cơ sở dữ liệu (database), qua mạng, từ người dùng cung cấp đầu vào qua bàn phím hoặc được lập trình viên đưa thẳng vào source code. Ở chương trình Hello World, chuỗi kí tự “Hello World” chính là data được ta đưa thẳng vào code để chương trình xuất nó ra màn hình.
         </p>
         <p>
             Data trên máy tính được lưu trữ dưới dạng đặc biệt nhằm tối ưu hiệu quả lưu trữ và xử lý. Dạng này được gọi là nhị phân (ta sẽ nói về nó sau).
@@ -36,20 +36,20 @@
             Tất cả máy tính đều có bộ nhớ tạm thời, được gọi là RAM (random access memory), bộ nhớ này luôn có sẵn cho chương trình sử dụng. Bạn có thể tưởng tượng nó giống như một cái tủ có nhiều ngăn kéo, chứa data khi chương trình chạy. Mỗi một “mẩu” nhỏ data được chứa ở đâu đó trong bộ nhớ được gọi là giá trị.
         </p>
         <p>
-            Trong C++, bạn không được phép truy cập thẳng vào bộ nhớ lấy giá trị ra. Thay vào đó, C++ cho bạn truy cập nó thông qua một đối tượng. Một đối tượng là một vùng bộ nhớ có giới hạn chứa giá trị cần truy cập. Khi bạn khởi tạo một đối tượng, trình biên dịch sẽ tự động xác định vị trí vùng bộ nhớ đối với đối tượng đó. Khi bạn gán một giá trị nào đó cho đối tượng, trình biên dịch sẽ chứa giá trị vào vùng bộ nhớ đối tượng. Vậy nên sau này bạn muốn lấy giá trị đó ra, bạn chỉ cần gọi đối tượng, nó sẽ trả về giá trị.
+            Trong C++, bạn không được phép truy cập thẳng vào bộ nhớ lấy giá trị ra. Thay vào đó, C++ cho bạn truy cập nó thông qua một đối tượng. Một đối tượng là một vùng bộ nhớ có giới hạn chứa giá trị cần truy cập. Khi bạn khởi tạo một đối tượng, trình biên dịch sẽ tự động xác định vị trí vùng bộ nhớ đối với đối tượng đó. Khi bạn gán một giá trị nào đó cho đối tượng, trình biên dịch sẽ đưa giá trị đó vào vùng bộ nhớ đối tượng. Vậy nên sau này bạn muốn lấy giá trị đó ra, bạn chỉ cần gọi đối tượng, nó sẽ trả về giá trị.
         </p>
         <p>
-            Đối tượng này có thể có tên hoặc không tên, đối tượng có tên thì được gọi là biến.
+            Đối tượng này có thể có tên hoặc không tên, đối với đối tượng có tên thì được gọi là biến.
         </p>
         <h3 class="muc">Tạo biến</h3>
         <p>
-            Để tạo một biến, chúng ta dùng một loại câu lệnh khai báo đặc biệt được gọi là định nghĩa. Cú pháp là kiểu dữ liệu + tên biến. Dưới đây là ví dụ định nghĩa một biến tên x:
+            Để tạo một biến, chúng ta dùng một loại câu lệnh khai báo (declaration statement) đặc biệt được gọi là định nghĩa (definition). Cú pháp tạo biến là "kiểu dữ liệu + tên biến". Dưới đây là ví dụ định nghĩa một biến tên x:
         </p>
         <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #2b91af">int</span> x; <span style="color: #008000">// định nghĩa biến x, có kiểu dữ liệu là int</span>
 </pre></td></tr></table></div>
 
         <p>
-            Khi trình biên dịch gặp dòng code trên, nó sẽ lấy ra một vùng bộ nhớ trong RAM, “ghi chú” biến x là đại diện cho vùng bộ nhớ đó, giả sử vùng bộ nhớ đó có địa chỉ là 69. Sau này, khi trình biên dịch gặp lại biến x, nó sẽ tự động lấy giá trị trong vùng bộ nhớ có địa chỉ là 69 ra.
+            Khi trình biên dịch gặp dòng code trên, nó sẽ lấy ra một vùng bộ nhớ trong RAM, “ghi chú” biến x là đại diện cho vùng bộ nhớ đó, giả sử vùng bộ nhớ đó có địa chỉ là 69. Sau này, khi trình biên dịch gặp lại biến x, nó sẽ tự động đến vùng bộ nhớ có địa chỉ là 69 và lấy giá trị trong đó ra.
         </p>
         <h3 class="muc">Kiểu dữ liệu</h3>
         <p>
@@ -59,7 +59,7 @@
             Trong C++, bạn không thể đổi kiểu dữ liệu khi đang thực thi chương trình. Kiểu int sẽ mãi là kiểu int và sẽ chỉ chứa được số nguyên (trong một giới hạn cho phép) cho đến khi chương trình kết thúc.
         </p>
         <p>    
-            Tạm thời ta sẽ làm việc với biến kiểu int, các kiểu khác sau này sẽ đề cập sau.
+            Tạm thời ta sẽ làm việc với kiểu int là chủ yếu, các kiểu khác sau này sẽ dần đề cập sau.
         </p>
         <h3 class="muc">Định nghĩa đa biến</h3>
         <p>
