@@ -30,6 +30,7 @@ a:hover {
 
 .muc {
     color: darkmagenta;
+    
 }
 
 .luu-y {
@@ -92,6 +93,7 @@ a:hover {
 
 .btn:hover::after{
    right: 80%;
+    
 }
 
 div table {
