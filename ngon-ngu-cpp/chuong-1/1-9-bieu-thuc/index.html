@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../../../css/reset.css">
+    <title>1.7 Từ khóa và cách đặt tên đối tượng</title>
+    <link rel="stylesheet" href="../../../css/substyle.css">
+    <link rel="shortcut icon" href="../../../img/circle-logo.ico">
+</head>
+
+<body>
+	<div class="title">
+		<h1>1.7 Từ khóa và cách đặt tên đối tượng</h1>
+	</div>
+	
+	<div class="content">
+        
+        <h3 class="muc">Biểu thức</h3>
+        <p>
+            Xét các câu lệnh sau:
+        </p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3
+4</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #2b91af">int</span> x{ 2 };             <span style="color: #008000">// khởi tạo biến x với giá trị là 2</span>
+<span style="color: #2b91af">int</span> y{ 2 + 3 };         <span style="color: #008000">// khởi tạo biến y với giá trị là 5</span>
+<span style="color: #2b91af">int</span> z{ (2 * 3) + 4 };   <span style="color: #008000">// khởi tạo biến z với giá trị là 10</span>
+<span style="color: #2b91af">int</span> w{ y };             <span style="color: #008000">// khởi tạo biến w với giá trị là 5 (vì y mang giá trị 5)</span>
+</pre></td></tr></table></div>
+
+        <p>
+            Các câu lệnh trên đều khởi tạo một biến với một giá trị. Nhưng để ý rằng các thứ trong dấu { } rất đa dạng, nó có thể là literal, biến, thậm chí có cả toán tử. Bằng một cách nào đó, C++ có thể chuyển đổi tất cả các thứ trên về một giá trị cụ thể, rồi sao đó mới khởi tạo biến với giá trị đó. Đó chính là tác dụng của biểu thức (expression) trong C++.
+        </p>
+        <p>
+            Biểu thức là sự kết hợp của nhiều literal, biến và toán tử để tạo ra một giá trị đầu ra. Dưới đây là một số ví dụ khác về biểu thức.
+        </p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3
+4
+5
+6</pre></td><td><pre style="margin: 0; line-height: 125%">2               
+<span style="color: #a31515">&quot;Hello world!&quot;</span>  
+x               
+2 + 3           
+x = 2 + 3       
+std::cout &lt;&lt; x
+</pre></td></tr></table></div>
+
+        <p></p>
+        
+		<div>
+            <a href="../1-10-tao-mot-chuong-trinh-don-gian/index.html"><button class="btn">Bài tiếp theo</button></a>
+        </div>
+        <div>
+            <a href="../1-8-gioi-thieu-ve-literals-va-operators/index.html"><button class="btn">Bài trước</button></a>
+        </div>
+		
+	</div>
+</body>
+
+</html>

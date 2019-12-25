@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../../../css/reset.css">
+    <title>1.7 Từ khóa và cách đặt tên đối tượng</title>
+    <link rel="stylesheet" href="../../../css/substyle.css">
+    <link rel="shortcut icon" href="../../../img/circle-logo.ico">
+</head>
+
+<body>
+	<div class="title">
+		<h1>1.7 Từ khóa và cách đặt tên đối tượng</h1>
+	</div>
+	
+	<div class="content">
+        
+        <h3 class="muc">Literals</h3>
+        <p>
+            Bạn hãy xem hai dòng code sau:
+        </p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3</pre></td><td><pre style="margin: 0; line-height: 125%">std::cout &lt;&lt; <span style="color: #a31515">&quot;Hello World&quot;</span>;
+std::cout &lt;&lt; 1;
+<span style="color: #2b91af">int</span> x{1};
+</pre></td></tr></table></div>
+
+        <p>
+            “Hello World” và 1 được gọi là literal. Literal là một giá trị cố định, nó chính là nó và sẽ không thể thay đổi được. Cả literal và biến đều có giá trị và kiểu dữ liệu. Chỉ khác là giá trị của literal không thay đổi được như biến.
+        </p>
+        <h3 class="muc">Operator</h3>
+        <p>
+            
+            Trong toán học, một phép toán là sự tác động qua lại với nhau giữa các giá trị được gọi là toán hạng (operand) để tạo ra giá trị đầu ra (output value). Các toán hạng này tác động với nhau thông qua một thứ gọi là toán tử (operator), mỗi toán tử đều có chức năng riêng. Toán tử thường được kí hiệu bằng một hoặc một cặp kí tự.
+        </p>
+        <p>
+            Ví dụ ta có phép toán 1 + 2 = 3, thì 1 và 2 là toán hạng, 3 là giá trị đầu ra và + là toán tử.
+        </p>
+        <p>
+            Toán tử trong C++ được chia thành 3 loại:
+        </p>
+        <ol>
+            <li><b>Toán tử đơn phân</b>: tức là toán tử chỉ dùng cho một toán hạng. Ví dụ -1, ta thấy dấu ‘-‘ biến đổi 1, tạo ra một giá trị đầu ra mới là -1.</li>
+            <li><b>Toán tử nhị phân</b>: tức là toán tử dùng cho hai toán hạng. Ví dụ 1 + 2, dấu ‘+’ lấy toán hạng bên trái cộng vào toán tử bên phải để cho ra giá trị đầu ra mới là 3. Hoặc << và >> cũng chính là toán tử nhị phân.</li>
+            <li><b>Toán tử tam phân</b>: tức là toán tử dùng cho ba toán hạng. Cái này sẽ đề cập sau.</li>
+        </ol>
+        <p>
+            Lưu ý rằng một toán tử có thể vừa là toán tử dạng này, vừa là toán tử dạng kia. Chẳng hạn như toán tử ‘-‘ vừa là đơn phân, vừa là nhị phân.
+        </p>
+        <h3 class="muc">Nối các toán tử</h3>
+        <p>
+            Giống như các phép toán cơ bản ta đã học, ví dụ 1 + 2 – 3 * 4; trong C++, bạn cũng có thể đưa nhiều toán tử vào gộp chung thành một chuỗi liên tiếp. Chuỗi này được gọi là biểu thức, sẽ được làm rõ ở bài tiếp theo. Và nó cũng có thứ tự thực tiện giống như “nhân chia trước cộng trừ sau”. Ta sẽ đi sâu vào vấn đề này ở các bài học tiếp theo.
+        </p>
+        
+		<div>
+            <a href="../1-9-bieu-thuc/index.html"><button class="btn">Bài tiếp theo</button></a>
+        </div>
+        <div>
+            <a href="../1-7-tu-khoa-va-cach-dat-ten-doi-tuong/index.html"><button class="btn">Bài trước</button></a>
+        </div>
+		
+	</div>
+</body>
+
+</html>

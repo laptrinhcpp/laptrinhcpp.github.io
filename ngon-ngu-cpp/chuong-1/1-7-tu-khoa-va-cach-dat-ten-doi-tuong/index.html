@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../../../css/reset.css">
+    <title>1.7 Từ khóa và cách đặt tên đối tượng</title>
+    <link rel="stylesheet" href="../../../css/substyle.css">
+    <link rel="shortcut icon" href="../../../img/circle-logo.ico">
+</head>
+
+<body>
+	<div class="title">
+		<h1>1.7 Từ khóa và cách đặt tên đối tượng</h1>
+	</div>
+	
+	<div class="content">
+        
+        <h3 class="muc">Từ khóa</h3>
+        <p>
+            C++ cung cấp cho người dùng rất nhiều từ khóa – keyword (hiện nay có gần 100 từ khóa). Các keyword này đều được định nghĩa sẵn và mang chức năng khác nhau.
+        </p>
+        <p><a href="https://en.cppreference.com/w/cpp/keyword">Bảng keyword trong C++</a></p>
+        <p>
+            Bạn đã gặp hai keyword là int và return ở các bài trước. Các từ còn lại sẽ dần xuất hiện ở các bài sau. Thông thường, các IDE sẽ giúp bạn dễ phân biệt được các từ khóa này bằng cách đổi màu từ khóa (thường là màu xanh dương).
+        </p>
+        <h3 class="muc">Cách đặt tên đối tượng</h3>
+        <p>
+            Khi đặt tên cho một đối tượng (biến, hàm, struct, class,…), bạn cần chú ý đến các quy tắc sau:
+        </p>
+        <ul>
+            <li>Tên đối tượng không được giống keyword.</li>
+            <li>Tên có thể bao gồm chữ cái (thường hoặc in hoa), số, và dấu gạch dưới. Hay nói cách khác, tên không được phép có kí tự đặc biệt (trừ dấu gạch dưới) và khoảng trắng.</li>
+            <li>Tên phải bắt đầu bằng chữ cái (thường hoặc in hoa) hoặc dấu gạch dưới, không được bắt đầu bằng số.</li>
+            <li>C++ có thể phân biệt chữ thường và in hoa nên biến có tên ví dụ var và Var là hoàn toàn khác nhau.</li>
+        </ul>
+        <p>
+            Ở trên là quy tắc đặt tên chung cho một đối tượng, bây giờ chúng ta sẽ tìm hiểu nên đặt tên biến và hàm như thế nào.
+        </p>
+        <p>
+            Đầu tiên, tên biến và hàm nên bắt đầu bằng chữ thường. Nếu chỉ có một từ thì nên để tất cả là chữ thường.
+        </p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3
+4</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #2b91af">int</span> value;   <span style="color: #008000">// nên</span>
+<span style="color: #2b91af">int</span> Value;   <span style="color: #008000">// không nên</span>
+<span style="color: #2b91af">int</span> vaLue;   <span style="color: #008000">// không nên</span>
+<span style="color: #2b91af">int</span> VALUE;   <span style="color: #008000">// không nên</span>
+</pre></td></tr></table></div>
+
+        <p>
+            Riêng đối với tên struct, class, enum thì bắt đầu bằng chữ in hoa. Chúng ta sẽ học về chúng ở các bài sau.
+        </p>
+        <p>
+            Nếu tên biến hoặc hàm có nhiều từ thì cách mỗi từ nên có dấu gạch dưới hoặc viết hoa chữ đầu của từ tiếp theo.
+        </p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #2b91af">int</span> my_variable_name;    <span style="color: #008000">// nên</span>
+<span style="color: #2b91af">int</span> my_function_name();  <span style="color: #008000">// nên</span>
+ 
+<span style="color: #2b91af">int</span> myVariableName;      <span style="color: #008000">// nên</span>
+<span style="color: #2b91af">int</span> myFunctionName();    <span style="color: #008000">// nên</span>
+ 
+<span style="color: #2b91af">int</span> my variable name;    <span style="color: #008000">// sai vì có khoảng trắng</span>
+<span style="color: #2b91af">int</span> my function name();  <span style="color: #008000">// sai vì có khoảng trắng</span>
+ 
+<span style="color: #2b91af">int</span> MyVariableName;      <span style="color: #008000">// đúng nhưng không nên vì bắt đầu chữ in hoa</span>
+<span style="color: #2b91af">int</span> MyFunctionName();    <span style="color: #008000">// đúng nhưng không nên vì bắt đầu chữ in hoa</span>
+</pre></td></tr></table></div>
+
+        <p>
+            Có thể sẽ có bạn tự hỏi đặt tên miễn sao đúng quy tắc và chạy là được rồi, sao phải nên hay không nên. Thì mình xin trả lời rằng những thứ mình nêu trên đều giúp người đọc code dễ đọc và phân biệt các loại đối tượng với nhau, việc đặt tên vô tội vạ sẽ khiến code khó đọc. Hơn nữa hầu hết các lập trình viên đều tuân theo “luật bất thành văn” đó nên nó sẽ giúp bạn và các lập trình viên khác dễ hiểu nhau hơn khi làm việc nhóm.
+        </p>
+        <p>
+            Điều thứ hai là bạn nên tránh đặt tên bắt đầu bằng dấu gạch dưới. Cách đặt tên này chỉ nên dùng khi làm việc trong môi trường hệ thống hoặc thư viện.
+        </p>
+        <p>
+            Điều thứ ba, bạn nên đặt tên sao cho nó thể hiện rõ chức năng của nó. Việc đặt tên một cách vô nghĩa sẽ khiến bạn gặp khó khăn trong việc đọc code và hiểu rõ vai trò của biến, đặc biệt là đối với những chương trình phức tạp.
+        </p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3
+4
+5
+6</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #2b91af">int</span> m;               <span style="color: #008000">// clgt? </span>
+<span style="color: #2b91af">int</span> playerScore;     <span style="color: #008000">// cái tên nói lên tất cả </span>
+<span style="color: #2b91af">int</span> data;            <span style="color: #008000">// data gì cơ? </span>
+<span style="color: #2b91af">int</span> userData;        <span style="color: #008000">// chuẩn </span>
+<span style="color: #2b91af">int</span> time;            <span style="color: #008000">// time gì? giờ, phút hay giây? </span>
+<span style="color: #2b91af">int</span> elapsedTimeSec;  <span style="color: #008000">// chuẩn</span>
+</pre></td></tr></table></div>
+
+        <p></p>
+        
+		<div>
+            <a href="../1-8-gioi-thieu-ve-literals-va-operators/index.html"><button class="btn">Bài tiếp theo</button></a>
+        </div>
+        <div>
+            <a href="../1-6-bien-chua-duoc-khoi-tao-va-undefined-behavior/index.html"><button class="btn">Bài trước</button></a>
+        </div>
+		
+	</div>
+</body>
+
+</html>

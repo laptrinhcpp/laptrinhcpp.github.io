@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../../../css/reset.css">
+    <title>1.10 Tạo một chương trình đơn giản</title>
+    <link rel="stylesheet" href="../../../css/substyle.css">
+    <link rel="shortcut icon" href="../../../img/circle-logo.ico">
+</head>
+
+<body>
+	<div class="title">
+		<h1>1.10 Tạo một chương trình đơn giản</h1>
+	</div>
+	
+	<div class="content">
+        
+        <h3 class="muc">Chương trình nhân đôi</h3>
+        <p>
+            Ở bài này, chúng ta sẽ tạo một chương trình đơn giản, yêu cầu người dùng nhập một số nguyên, sau đó in ra màn hình giá trị nhân đôi của số đó. Trên màn hình sẽ hiện như mẫu sau:
+        </p>
+        <div class="codeblock">
+            <pre><code>Enter a number: 2
+Double that number is: 4</code></pre>
+        </div>
+        <p>
+            Đầu tiên, vì ta cần nhập và xuất dữ liệu nên ta cần thêm thư viện iostream vào chương trình, cú pháp như sau:
+        </p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+</pre></td></tr></table></div>
+
+        <p>
+            Tiếp theo, ta tạo hàm main, mình xin nhắc lại, đây là hàm bắt buộc phải có ở mọi chương trình C++.
+        </p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3
+4
+5
+6</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+
+<span style="color: #2b91af">int</span> main()
+{
+    <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+        <p>
+            Bây giờ, ta dùng std::cout để in dòng chữ yêu cầu nhập một số.
+        </p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3
+4
+5
+6
+7</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+
+<span style="color: #2b91af">int</span> main()
+{
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;Enter a number: &quot;</span>;
+    <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+        <p>
+            Tiếp theo, ta tạo một biến để lưu giá trị input. Dùng std::cin để nhận giá trị input và đưa vào biến.
+        </p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3
+4
+5
+6
+7
+8
+9</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+
+<span style="color: #2b91af">int</span> main()
+{
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;Enter a number: &quot;</span>;
+    <span style="color: #2b91af">int</span> num{};
+    std::cin &gt;&gt; num;
+    <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+        <p>
+            Ở bước cuối cùng, chúng ta có 2 cách sau.
+        </p>
+        <p>
+            Cách 1:
+        </p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+
+<span style="color: #2b91af">int</span> main() 
+{ 
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;Enter a number: &quot;</span>; 
+    <span style="color: #2b91af">int</span> num{}; 
+    <span style="color: #2b91af">int</span> doubleNum{};
+    std::cin &gt;&gt; num;
+    doubleNum = num * 2;
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;Double that number is: &quot;</span> &lt;&lt; doubleNum; 
+    <span style="color: #0000ff">return</span> 0; 
+}
+</pre></td></tr></table></div>
+
+        <p>
+            Cách 2:
+        </p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt; </span>
+
+<span style="color: #2b91af">int</span> main() 
+{ 
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;Enter a number: &quot;</span>; 
+    <span style="color: #2b91af">int</span> num{};
+    std::cin &gt;&gt; num;
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;Double that number is: &quot;</span> &lt;&lt; num * 2; 
+    <span style="color: #0000ff">return</span> 0; 
+}
+</pre></td></tr></table></div>
+
+        <p>
+            Về kết quả, hai cách trên đều cho kết quả như nhau. Tuy nhiên, cách 2 tốt hơn cách 1 và sau này bạn nên làm như cách 2 nếu có thể. Lý do là vì ở cách 1, bạn phải tạo tên một biến khác là doubleNum. Mặc dù đối với các chương trình đơn giản như trên thì không ảnh hưởng mấy. Nhưng nếu đối với chương trình lớn, việc này sẽ gây tiêu tốn tài nguyên. Hơn nữa cách 2 cũng ngắn hơn cách 1. Cách 2 chính là sử dụng biểu thức (expression) đã đề cập ở bài trước.
+        </p>
+        <p>
+            Góc tâm sự: Nếu bạn là người mới học lập trình và bắt đầu với nó bằng C++ (một trong những ngôn ngữ khó khi mới học lập trình) thì có thể bạn sẽ tự hỏi “Sao C++ có nhiều quy tắc thế, làm sao nhớ cho hết?” Câu trả lời ngắn gọn là: Bạn không học C++ nói riêng và lập trình nói chung theo cách nhớ hết mọi thứ về nó. Thực chất lập trình chỉ có khoảng 30% là dùng những gì bạn biết, 60% còn lại là hiểu vấn đề và nghĩ thuật toán để giải quyết vấn đề. Chỉ cần bạn hiểu và biết cách giải quyết vấn đề thì mọi chuyện còn lại rất đơn giản. Nếu như bạn không nhớ hoặc không biết cú pháp code để chạy thuật toán thì bạn có thể search google mà. Có thể bạn đã nghe nhiều người đùa là làm lập trình viên toàn copy paste trên mạng (đặc biệt là stackoverflow). Thật vậy, đó là điều không tránh khỏi. Tuy nhiên, copy cũng có copy this, copy that. Copy nhưng bạn hiểu được ý tưởng của các dòng code trong đó thì không sao cả, nhưng nếu không hiểu thì không nên copy nhé, nó sẽ làm giảm tư duy lập trình. Sau đây là cách search google và sử dụng code trên mạng: Về từ khóa search thì bạn nên chọn những từ quan trọng, vào thẳng vấn đề cần tìm hiều. Nên search từ khóa bằng Tiếng Anh vì nó sẽ có nhiều nguồn hơn Tiếng Việt (bắt buộc bạn phải biết một ít Tiếng Anh). Nếu bạn không nhớ hay không biết từ khóa đó Tiếng Anh là gì thì bạn search “từ khóa cần tìm bằng Tiếng Việt” + “c++”, sau đó bạn tìm trong các trang web, khả năng cao họ sẽ điền tên Tiếng Anh chung với Tiếng Việt. Ví dụ: search “toán tử c++”, chắc chắn sẽ có trang web ghi operator ngay cạnh toán tử. Sau khi search, bạn vào các trang web để tìm code, ưu tiên vào mấy trang lớn như stackoverflow, cplusplus hoặc geeksforgeeks,… Bạn đọc hết các code họ đăng, chọn cái nào ngắn, dễ hiểu nhất “ném” vào source code của mình chạy thử. Nếu lỗi hay có kết quả không mong muốn thì tìm code khác. Còn nếu chạy thành công thì bạn sẽ xem kỹ code đó và so sánh với code của mình, xem nó khác nhau chỗ nào, vì sao code đó chạy được và của mình lại không. Khi chắc chắn hiểu vì sao như vậy thì hẳn sử dụng nó. Đó là cách mình “copy” code người khác 😀
+        </p>
+
+		<div>
+            <a href="../1-x-tong-ket-chuong-1/index.html"><button class="btn">Bài tiếp theo</button></a>
+        </div>
+        <div>
+            <a href="../1-8-gioi-thieu-ve-literals-va-operators/index.html"><button class="btn">Bài trước</button></a>
+        </div>
+		
+	</div>
+</body>
+
+</html>

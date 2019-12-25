@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../../../css/reset.css">
+    <title>1.6 Biến chưa được khởi tạo và undefined behavior</title>
+    <link rel="stylesheet" href="../../../css/substyle.css">
+    <link rel="shortcut icon" href="../../../img/circle-logo.ico">
+</head>
+
+<body>
+	<div class="title">
+		<h1>1.6 Biến chưa được khởi tạo và undefined behavior</h1>
+	</div>
+	
+	<div class="content">
+        
+        <h3 class="muc">Biến chưa được khởi tạo</h3>
+        <p>
+            Không giống như một số ngôn ngữ lập trình khác, C++ không tự động gán giá trị 0 cho biến sau khi được định nghĩa. Thay vào đó, biến sau khi được định nghĩa sẽ mang giá trị có sẵn tại vùng bộ nhớ trong RAM, nó được gọi là giá trị “rác” (garbage value). Nó giống như khi bạn mua một miếng đất để xây nhà, thì miếng đất đó sẽ có cỏ cây, sỏi đá,… trước khi xây. Đó chính là giá trị “rác”.Giá trị đó có thể là bất cứ thứ gì, và nó sẽ ảnh hưởng đến chương trình nếu như bạn dùng biến đó khi chưa được gán một giá trị cụ thể. Trước khi đi tiếp, mình sẽ làm rõ một số định nghĩa sau:
+        </p>
+        <ul>
+            <li>Khởi tạo (initialization): biến được gán giá trị ngay tại thời điểm định nghĩa.</li>
+            <li>Gán (assignment): biến được giá trị sau khi được định nghĩa.</li>
+            <li>Chưa được khởi tạo (uninitialized): biến đã được định nghĩa nhưng chưa được gán giá trị.</li>
+        </ul>
+        <p>
+            Sử dụng giá trị của biến chưa được khởi tạo sẽ gây ra kết quả không thể dự đoán được. Ví dụ:
+        </p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3
+4
+5
+6
+7</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+<span style="color: #2b91af">int</span> main()
+{
+    <span style="color: #2b91af">int</span> x;
+    std::cout &lt;&lt; x;  <span style="color: #008000">// biến x chưa có giá trị cụ thể</span>
+    <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+        <p>
+            Khi chạy chương trình trên, máy của mình in 120 ở lần đầu, lần sau là 114, lần sau nữa là 118 (tùy vào máy mỗi người mà số này sẽ khác). Đồng thời máy hiện cảnh báo.
+        </p>
+        <div class="codeblock">
+            <code>main.cpp:6:12: warning: 'x' is used uninitialized in this function</code>
+        </div>
+        <p>
+            Một số máy thậm chí báo lỗi và không cho thực thi. Nếu máy của bạn không cho phép bạn chạy chương trình trên thì bạn hãy chạy chương trình dưới đây:
+        </p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+ 
+<span style="color: #2b91af">void</span> doNothing(<span style="color: #0000ff">const</span> <span style="color: #2b91af">int</span> &amp;x) {}  <span style="color: #008000">// đây chính là hàm và sẽ được đi sâu hơn ở các bài sau</span>
+ 
+<span style="color: #2b91af">int</span> main()
+{
+    <span style="color: #2b91af">int</span> x;
+ 
+    doNothing(x);
+ 
+    std::cout &lt;&lt; x;
+ 
+    <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+        <p class="luu-y">
+            Lưu ý: Hãy luôn chắc chắn rằng biến được gán một giá trị cụ thể trước khi sử dụng. Mình khuyên bạn nên dùng zero initialization để khởi tạo biến, lúc đó biến sẽ mặc định mang giá trị 0.
+        </p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+<span style="color: #2b91af">int</span> main()
+{
+    <span style="color: #2b91af">int</span> x{};
+    std::cout &lt;&lt; x;  <span style="color: #008000">// x mặc định mang giá trị 0</span>
+
+    <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+        <h3 class="muc">Undefined behavior</h3>
+        <p>
+            Sử dụng biến chưa được khởi tạo là một ví dụ cho undefined behavior. Undefined behavior là những trường hợp mà không được quy định sẵn, ngoài tầm kiểm soát của C++. Một số trường hợp khác của undefined behavior có thể gặp là:
+        </p>
+        <ul>
+            <li>Chương trình cho ra các kết quả khác nhau mỗi lần chạy.</li>
+            <li>Chương trình cho kết quả đôi khi đúng, đôi khi sai.</li>
+            <li>Chương trình bị crash.</li>
+            <li>Chương trình chạy được trên IDE hoặc máy này nhưng lại không chạy được trên IDE hoặc máy khác.</li>
+            <li>Đối với giá trị này thì chạy đúng, đối với giá trị khác thì chạy sai.</li>
+            <li>...</li>
+        </ul>
+        
+		<div>
+            <a href="../1-7-tu-khoa-va-cach-dat-ten-doi-tuong/index.html"><button class="btn">Bài tiếp theo</button></a>
+        </div>
+        <div>
+            <a href="../1-5-gioi-thieu-ve-iostream-cout-cin-va-endl/index.html"><button class="btn">Bài trước</button></a>
+        </div>
+		
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../../../css/reset.css">
+    <title>1.x Tổng kết chương 1</title>
+    <link rel="stylesheet" href="../../../css/substyle.css">
+    <link rel="shortcut icon" href="../../../img/circle-logo.ico">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="../../../js/showhide.js"></script>
+</head>
+
+<body>
+    <div class="title">
+        <h1>1.x Tổng kết chương 1</h1>
+    </div>
+
+    <div class="content">
+
+        <p>Câu lệnh (statement) là một loại chỉ dẫn khiến chương trình làm một số hành động. Câu lệnh thường kết thúc
+            bằng dấu chấm phẩy.</p>
+
+        <p>Hàm (function) là một tập hợp gồm các câu lệnh. Mỗi chương trình đều bắt buộc phải có hàm main. Khi chương
+            trình được thực thi, dòng đầu tiên của hàm main sẽ được thực thi đầu tiên, và sẽ sẽ kết thúc khi dòng cuối
+            cùng của hàm main được thực thi.</p>
+
+        <p>Chỉ thị tiền xử lý (preprocessor directive) cho trình biên dịch biết ta muốn sử dụng các chức năng có trong
+            thư viện nào. Trong chương này, ta đã tìm hiểu qua thư viện iostream, cho phép chương trình nhận/xuất dữ
+            liệu người dùng.</p>
+
+        <p>Mọi thứ trong C++ đều được tạo nên dựa trên một quy tắc gọi là cú pháp (syntax). Bạn sẽ bị mắc lỗi cú pháp
+            (syntax error) nếu như bạn vi phạm quy tắc đó.</p>
+
+        <p>Comment là các ghi chú của lập trình viên được viết trong source code. Trình biên dịch sẽ không biên dịch
+            những dòng này. Có 2 loại comment. Comment đơn dòng bắt đầu bằng // đến hết dòng. Comment đa dòng bắt đầu
+            bằng /* và kết thúc bằng */. Không được phép lồng comment đa dòng vào nhau.</p>
+
+        <p>Dữ liệu (data) là tập hợp những thông tin, giá trị được lưu trữ trong máy tính. Mỗi một mẩu nhỏ của dữ liệu,
+            lưu trữ đâu đó trong bộ nhớ được gọi là giá trị (value).</p>
+
+        <p>Biến (variable) là một vùng nhỏ của bộ nhớ dùng để lưu trữ giá trị. Để tạo biến, ta dùng câu lệnh định nghĩa.
+        </p>
+
+        <p>Kiểu dữ liệu (data type) báo cho trình biên dịch biết giá trị chứa trong biến thuộc loại nào. Trong chương
+            này, ta đã học qua kiểu int – là kiểu số nguyên.</p>
+
+        <p>Khởi tạo (initialization) là hành động đưa giá trị vào biến ngay khi nó được tạo ra. Có 3 loại khởi tạo: khởi
+            tạo gán (copy initialization), khởi tạo trực tiếp (direct initialization), khởi tạo đồng nhất (uniform
+            initialization). Hãy ưu tiên dùng khởi tạo đồng nhất nếu bạn dùng C++ 11 trở lên.</p>
+
+        <p>std::cout cùng với toán tử &lt;&lt; in dữ liệu ra màn hình, std::cin cùng toán tử &gt;&gt; nhận giá trị nhập
+            từ bàn phím, std::endl giúp đưa con trỏ trên màn hình xuống dòng.</p>
+
+        <p>C++ có rất nhiều từ được định nghĩa sẵn, được gọi là từ khóa (keyword), có chức năng riêng. Không được phép
+            đặt tên biến trùng với tên từ khóa.</p>
+
+        <p>Toán tử thường là những kí tự hoặc cặp kí tự, có chức năng giúp các giá trị, tương tác với nhau.</p>
+
+        <p>Biểu thức là tập hợp các literal, biến, toán tử tác động với nhau nhằm tạo ra một giá trị đầu ra mới.</p>
+        <h3 class="muc">Bài tập</h3>
+        <p>
+            Viết một chương trình yêu cầu người dùng nhập hai số nguyên, sau đó in ra kết quả sau khi cộng và trừ hai số đó. Mẫu output như sau:
+        </p>
+        <div class="codeblock">
+            <pre><code>Enter an integer: 6
+Enter another integer: 4
+6 + 4 is 10.
+6 - 4 is 2.</code></pre>
+        </div>
+        <div>
+        <div id="answer1" style="display: none;">
+            <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+ 
+<span style="color: #2b91af">int</span> main()
+{
+  <span style="color: #2b91af">int</span> x{};
+  std::cout &lt;&lt; <span style="color: #a31515">&quot;Enter an integer: &quot;</span>;
+  std::cin &gt;&gt; x;
+ 
+  <span style="color: #2b91af">int</span> y{};
+  std::cout &lt;&lt; <span style="color: #a31515">&quot;Enter another integer: &quot;</span>;
+  std::cin &gt;&gt; y;
+ 
+  std::cout &lt;&lt; x &lt;&lt; <span style="color: #a31515">&quot; + &quot;</span> &lt;&lt; y &lt;&lt; <span style="color: #a31515">&quot; is &quot;</span> &lt;&lt; x + y &lt;&lt; <span style="color: #a31515">&quot;.\n&quot;</span>;
+  std::cout &lt;&lt; x &lt;&lt; <span style="color: #a31515">&quot; - &quot;</span> &lt;&lt; y &lt;&lt; <span style="color: #a31515">&quot; is &quot;</span> &lt;&lt; x - y &lt;&lt; <span style="color: #a31515">&quot;.\n&quot;</span>;
+ 
+  <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+        </div>
+        <button class="showhidebtn" onclick="showHide('#answer1')">Show/Hide</button> 
+        </div>
+
+        <div>
+            <a href="#"><button class="btn">Bài tiếp theo</button></a>
+        </div>
+        <div>
+            <a href="../1-10-tao-mot-chuong-trinh-don-gian/index.html"><button class="btn">Bài trước</button></a>
+        </div>
+
+    </div>
+</body>
+
+</html>
