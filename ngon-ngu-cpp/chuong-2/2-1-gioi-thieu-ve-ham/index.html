@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../../../css/reset.css">
+    <title>2.1 Giới thiệu về hàm</title>
+    <link rel="stylesheet" href="../../../css/substyle.css">
+    <link rel="shortcut icon" href="../../../img/circle-logo.ico">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="../../../js/showhide.js"></script>
+</head>
+
+<body>
+    <div class="title">
+        <h1>2.1 Giới thiệu về hàm</h1>
+    </div>
+
+    <div class="content">
+
+        <p>
+            Ở chương trước, ta chỉ biết qua hàm (function) là một tập hợp các câu lệnh. Ở chương này, ta sẽ “nâng cấp” định nghĩa đó lên một chút. Hàm là tập hợp các câu lệnh, để làm một công việc cụ thể nào đó và nó có thể tái sử dụng nhiều lần.
+        </p>
+        <h3 class="muc">Vì sao ta cần đến hàm?</h3>
+        <p>
+            Như bạn đã biết, tất cả chương trình C++ đều cần một hàm đặc biệt là hàm main. Trình biên dịch sẽ biên dịch dòng đầu tiên của hàm main trước và đến dòng cuối thì chương trình dừng lại. Do đó, bạn hoàn toàn có thể đặt tất cả code bên trong hàm main và chương trình vẫn chạy tốt. Tuy nhiên, khi chương trình của bạn bắt đầu dài ra thì việc làm trên sẽ làm cho việc quản lý code trở nên khó khăn, mọi thứ trở nên rối rắm. Lúc này, chúng ta cần đến hàm. Hàm cho chúng ta khả năng tách code thành những phần nhỏ, khiến code dễ đọc hơn, bạn có thể dùng nó lại nhiều lần, bạn cũng có thể tách nó riêng ra để test rồi mới đưa vào chương trình.
+        </p>
+        <h3 class="muc">Cách thức hoạt động của hàm</h3>
+        <p>
+            Hàm được tạo ở ngoài hàm main, nhưng ở trên mình đã nói là trình biên dịch biên dịch từ dòng đầu tiên của hàm main đến dòng cuối cùng hàm main. Vậy làm sao trình biên dịch có thể biên dịch các hàm ngoài hàm main? Giả sử bạn đang đọc một cuốn sách, bạn đọc đến trang nào đó, ví dụ trang 27. Đột nhiên bạn nhớ mình phải đi phơi đồ, trước khi đi phơi đồ bạn sẽ đánh dấu trang đang đọc. Khi phơi đồ xong, bạn lật lại trang đã đánh dấu và tiếp tục đọc tiếp. Trình biên dịch cũng hoạt động như vậy; trong hàm main, nó sẽ “đánh dấu” vị trí mà hàm được gọi tại đó. Khi trình biên dịch đến vị trí gọi hàm, nó sẽ “đánh dấu” vị trí đó lại rồi tìm đến nơi hàm đó được định nghĩa để biên dịch. Sau khi biên dịch hàm đó xong nó sẽ quay lại vị trí đã “đánh dấu” trong hàm main và tiếp tục biên dịch tiếp.
+        </p>
+        <h3 class="muc">Ví dụ về hàm</h3>
+        <p>Một hàm cơ bản sẽ có cấu trúc như sau:</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3
+4</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #2b91af">void</span> tenHam()
+{
+    <span style="color: #008000">// viết code ở đây</span>
+}
+</pre></td></tr></table></div>
+
+        <p>Dưới đây là ví dụ cụ thể về cách tạo hàm và gọi hàm.</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+
+<span style="color: #2b91af">void</span> print()
+{
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;This is function.\n&quot;</span>;
+}
+
+<span style="color: #2b91af">int</span> main()
+{
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;This is the first statement of main function.\n&quot;</span>;
+    
+    print();     <span style="color: #008000">// Gọi hàm. Trình biên dịch tìm đến hàm print() và biên dịch code trong đó</span>
+    <span style="color: #008000">// Trình biên dịch quay trở lại hàm main</span>
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;This is the last statement of main function.\n&quot;</span>;
+}
+</pre></td></tr></table></div>
+
+        <p>Chương trình trên cho ra output:</p>
+        <div class="codeblock">
+            <pre><code>This is the first statement of main function.
+This is function.
+This is the last statement of main function.</code></pre>
+        </div>
+        <p class="luu-y">Lưu ý: Sau tên hàm luôn phải có ().</p>
+        <p>Khi biên dịch chương trình trên, trình biên dịch bắt đầu từ dòng 10 nên in “This is the first statement of main function.”. Sau đó, nó gặp câu lệnh gọi hàm print() nên nó tìm đến nơi hàm print() được tạo ra, tức dòng 3 và chạy tất cả những gì được viết trong hàm. Do đó, nó in ra “This is function.”. Sau khi chạy xong code trong hàm print(), nó quay lại hàm main ngay sau vị trí gọi hàm print() và tiếp tục đến hết hàm main, in ra “This is the last statement of main function.”. Chương trình kết thúc.</p>
+        <h3 class="muc">Gọi hàm nhiều lần</h3>
+        <p>Lợi ích lớn nhất của hàm chính là có thể tái sử dụng nhiều lần. Ví dụ:</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt; </span>
+
+<span style="color: #2b91af">void</span> print() 
+{ 
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;This is function.\n&quot;</span>; 
+} 
+
+<span style="color: #2b91af">int</span> main() 
+{ 
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;This is the first statement of main function.\n&quot;</span>; 
+    
+    print();    <span style="color: #008000">// gọi lần 1</span>
+    print();    <span style="color: #008000">// gọi lần 2</span>
+
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;This is the last statement of main function.\n&quot;</span>; 
+}
+</pre></td></tr></table></div>
+
+        <p>Chương trình trên cho ra output như sau:</p>
+        <div class="codeblock">
+            <pre><code>This is the first statement of main function. 
+This is function. 
+This is function. 
+This is the last statement of main function.</code></pre>
+        </div>
+        <p>Ở chương trình trên thì ta ít thấy lợi ích này. Tuy nhiên, nếu hàm đó gồm vài chục câu lệnh thì bạn đã tiết kiệm rất nhiều thời gian và dòng code rồi đấy.</p>
+        <h3 class="muc">Gọi hàm trong hàm</h3>
+        <p>Ở trên bạn đã thấy cách gọi hàm trong hàm main. Tuy nhiên bạn cũng có thể gọi hàm ở trong hàm khác hàm main. Ví dụ:</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+ 
+<span style="color: #2b91af">void</span> doB()
+{
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;In doB()\n&quot;</span>;
+}
+ 
+ 
+<span style="color: #2b91af">void</span> doA()
+{
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;Starting doA()\n&quot;</span>;
+ 
+    doB();
+ 
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;Ending doA()\n&quot;</span>;
+}
+ 
+<span style="color: #2b91af">int</span> main()
+{
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;Starting main()\n&quot;</span>;
+ 
+    doA();
+ 
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;Ending main()\n&quot;</span>;
+ 
+    <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+        <p>Chương trình trên cho output như sau:</p>
+        <div>
+            <pre><code>Starting main()
+Starting doA()
+In doB()
+Ending doA()
+Ending main()</code></pre>
+        </div>
+        <p class="luu-y">Lưu ý: Bạn không được tạo hàm trong hàm main hay bất kỳ hàm nào khác. Tất cả đều phải tạo riêng.</p>
+        <h3 class="muc">Bài tập</h3>
+        
+        <div>
+            <p>Bạn hãy đoán chương trình dưới đây in ra gì mà không chạy chương trình.</p>
+            <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+ 
+<span style="color: #2b91af">void</span> doB()
+{
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;In doB()\n&quot;</span>;
+}
+ 
+<span style="color: #2b91af">void</span> doA()
+{
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;In doA()\n&quot;</span>;
+ 
+    doB();
+}
+ 
+<span style="color: #2b91af">int</span> main()
+{
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;Starting main()\n&quot;</span>;
+ 
+    doA();
+    doB();
+ 
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;Ending main()\n&quot;</span>;
+ 
+    <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+            <div id="answer1" style="display: none;" class="codeblock">
+                <pre><code>Starting main()
+In doA()
+In doB()
+In doB()
+Ending main()</code></pre>
+            </div>
+            <button class="showhidebtn" onclick="showHide('#answer1')">Show/Hide</button>
+            
+        </div>
+
+        <div>
+            <a href="#"><button class="btn">Bài tiếp theo</button></a>
+        </div>
+        <div>
+            <a href="../../chuong-1/1-x-tong-ket-chuong-1/index.html"><button class="btn">Bài trước</button></a>
+        </div>
+
+    </div>
+</body>
+
+</html>
