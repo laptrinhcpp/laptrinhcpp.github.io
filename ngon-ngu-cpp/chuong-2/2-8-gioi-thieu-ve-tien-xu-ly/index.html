@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../../../css/reset.css">
+    <title>2.8 Giới thiệu về tiền xử lý</title>
+    <link rel="stylesheet" href="../../../css/substyle.css">
+    <link rel="shortcut icon" href="../../../img/circle-logo.ico">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="../../../js/showhide.js"></script>
+</head>
+
+<body>
+    <div class="title">
+        <h1>2.8 Giới thiệu về tiền xử lý</h1>
+    </div>
+
+    <div class="content">
+
+        <p>Khi chương trình chạy, nó sẽ quét toàn bộ file để tìm chỉ thị tiền xử lý (preprocessor directives). Chỉ thị tiền xử lý (hay gọi tắt chỉ thị) là những cấu trúc bắt đầu bằng dấu #, không có kí hiệu kết thúc (không có dấu chấm phẩy). Trong bài học này, ta sẽ học các chỉ thị tiền xử lý thông dụng.</p>
+        <h3 class="muc">Includes</h3>
+        <p>Bạn đã gặp chỉ thị #include này ở các ví dụ trước đây. Khi bạn #include một file nào đó, tiền xử lý sẽ thay chỉ thị #include bằng nội dung file được #include, rồi sau đó mới biên dịch.</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3
+4
+5
+6
+7</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+ 
+<span style="color: #2b91af">int</span> main()
+{
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;Hello, world!&quot;</span>;
+    <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+        <p>Khi chương trình trên chạy, tiền xử lý sẽ thay thế chỉ thị #include &lt;iostream&gt; bằng nội dung của một file tên iostream.</p>
+        <p>Bạn có thể hiểu như thế này. Khi bạn cài đặt C++ trên máy thì nó sẽ tải về rất nhiều file thư viện của C++, các file này còn được gọi là header file, bao gồm các đối tượng, hàm để C++ hoạt động. Ví dụ file iostream sẽ bao gồm std::cout, std::cin, std::endl,… Và khi bạn #include &lt;iostream&gt;, tiền xử lý sẽ “kết nối” file iostream và file chương trình của bạn thành một chương trình khác bao gồm các đối tượng trong iostream và đối tượng do bạn tạo ra. Nhờ vậy, bạn có thể dùng bất kì đối tượng, hàm nào trong file iostream.</p>
+
+        <p>Ta sẽ nói rõ hơn về header file ở bài học tiếp theo.</p>
+        <h3 class="muc">Macro define</h3>
+        <p>Chỉ thị #define có thể dùng để tạo một macro. Trong C++, macro là một quy tắc xác định cách chuyển đổi văn bản đầu vào thành văn bản đầu ra thay thế.</p>
+
+        <p>Có hai loại macro cơ bản là: <em>object-like macro</em> và <em>function-like macro.</em></p>
+
+        <p>Function-like macro hoạt động như hàm. Mình sẽ không nói rõ về nó ở đây vì sử dụng nó khá “nguy hiểm” và bạn hoàn toàn dùng hàm để thay thế nó.</p>
+        
+        <p>Object-like macro có hai cách định nghĩa:</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #008000">//</span>
+<span style="color: #0000ff">#define ten_doi_tuong                         </span><span style="color: #008000">// macro không có thay thế</span>
+<span style="color: #0000ff">#define ten_doi_tuong van_ban_can_thay_the    </span><span style="color: #008000">// macro có thay thế</span>
+</pre></td></tr></table></div>
+        
+        <h3 class="muc">Object-like macro có thay thế</h3>
+        <p>Ta có thể dùng macro này để định nghĩa một đối tượng bằng một văn bản thay thế nào đó. Ví dụ:</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+ 
+<span style="color: #0000ff">#define MY_NAME &quot;Syaoran&quot;</span>
+ 
+<span style="color: #2b91af">int</span> main()
+{
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;My name is: &quot;</span> &lt;&lt; MY_NAME;
+ 
+    <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+        <p>Lúc này, MY_NAME sẽ mang giá trị “Syaoran” và bạn có thể dùng đó để in ra màn hình. Khi chạy chương trình trên, ta được kết quả:</p>
+        <div class="codeblock"><pre><code>My name is: Syaoran</code></pre></div>
+        <h3 class="muc">Object-like macro không có thay thế</h3>
+        <p>Object-like macro có thể định nghĩa mà không có thay thế. Ví dụ:</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#define USE_YEN</span>
+</pre></td></tr></table></div>
+
+        <p>Nhìn thì có vẻ nó vô dụng. Nhưng nó sẽ có ích trong một số trường hợp mà mình sẽ nói dưới đây và ở các bài tiếp theo.</p>
+        <h3 class="muc">Chỉ thị tiền xử lý điều kiện</h3>
+        <p>Chỉ thị tiền xử lý điều kiện (conditional compilation preprocessor directives) cho phép bạn đặt điều kiện để câu lệnh được thực thi. Trong số đó, có ba loại được sử dụng nhiều nhất: #ifdef, #ifndef và #endif.</p>
+
+        <p>Chỉ thị tiền xử lý #ifdef (if define) sẽ kiểm tra xem một đối tượng nào đó đã được #define chưa, nếu rồi thì câu lệnh nằm giữa #ifdef và #endif sẽ được thực thi, còn chưa thì bỏ qua.</p>
+        <p>Lấy ví dụ:</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+ 
+<span style="color: #0000ff">#define PRINT_JOE</span>
+ 
+<span style="color: #2b91af">int</span> main()
+{
+<span style="color: #0000ff">#ifdef PRINT_JOE</span>
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;Joe\n&quot;</span>; <span style="color: #008000">// nếu PRINT_JOE được define thì thực thi câu lệnh này, không thì bỏ qua</span>
+<span style="color: #0000ff">#endif</span>
+ 
+<span style="color: #0000ff">#ifdef PRINT_BOB</span>
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;Bob\n&quot;</span>; <span style="color: #008000">// nếu PRINT_BOB được define thì thực thi câu lệnh này, không thì bỏ qua</span>
+<span style="color: #0000ff">#endif</span>
+ 
+    <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+        <p>Vì PRINT_JOE đã được #define nên câu lệnh <em>std::cout &lt;&lt; “Joe\n”;</em> được thực thi. Còn PRINT_BOB chưa được #define nên câu lệnh <em>std::cout &lt;&lt; “Bob\n”;</em> được bỏ qua. Kết quả chương trình trên in ra:</p>
+        <div class="codeblock"><pre><code>Joe</code></pre></div>
+        <p>Chỉ thị tiền xử lý #ifndef (if not define) thì ngược lại với #ifdef. Nếu đối tượng ở sau chỉ thị này chưa được #define thì sẽ được thực thi.</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+ 
+<span style="color: #0000ff">#define PRINT_JOE</span>
+ 
+<span style="color: #2b91af">int</span> main()
+{
+<span style="color: #0000ff">#ifndef PRINT_JOE</span>
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;Joe\n&quot;</span>;
+<span style="color: #0000ff">#endif</span>
+ 
+<span style="color: #0000ff">#ifndef PRINT_BOB</span>
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;Bob\n&quot;</span>;
+<span style="color: #0000ff">#endif</span>
+ 
+    <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+        <p>Chương trình trên sẽ in ra Bob mà không in Joe vì PRINT_BOB chưa được #define, PRINT_JOE thì được #define rồi.</p>
+        <h3 class="muc">#if 0</h3>
+        <p>Một chỉ thị tiền xử lý điều kiện nữa là #if 0. Chỉ thị này có tác dụng giống như comment, tất cả các câu lệnh nằm giữa #if 0 và #endif sẽ được trình biên dịch bỏ qua.</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+ 
+<span style="color: #2b91af">int</span> main()
+{
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;Joe\n&quot;</span>;
+ 
+<span style="color: #0000ff">#if 0</span><span style="color: #008000">        // không thực thi các câu lệnh bắt đầu từ đây</span>
+<span style="color: #0000ff">    std::cout &lt;&lt; &quot;Bob\n&quot;;</span>
+<span style="color: #0000ff">    std::cout &lt;&lt; &quot;Steve\n&quot;;</span>
+<span style="color: #0000ff">#endif </span>    <span style="color: #008000">  // đến vị trí này</span>
+ 
+    <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+        <p>Chương trình trên sẽ in ra Joe và bỏ ra các câu lệnh bên dưới.</p>
+        <h3 class="muc">Scope của #define</h3>
+        <p>Scope của một chỉ thị tiền xử lý #define bắt đầu từ lúc define đến hết file. Lưu ý #define ở file này không ảnh hưởng đến file kia trong một project.</p>
+
+        <p>function.cpp:</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+ 
+<span style="color: #2b91af">void</span> doSomething()
+{
+<span style="color: #0000ff">#ifdef PRINT</span>
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;Printing!&quot;</span>;
+<span style="color: #0000ff">#endif</span>
+<span style="color: #0000ff">#ifndef PRINT</span>
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;Not printing!&quot;</span>;
+<span style="color: #0000ff">#endif</span>
+}
+</pre></td></tr></table></div>
+
+        <p>main.cpp:</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #2b91af">void</span> doSomething(); <span style="color: #008000">// khai báo hàm doSomething</span>
+ 
+<span style="color: #0000ff">#define PRINT    </span>
+ 
+<span style="color: #2b91af">int</span> main()
+{
+    doSomething();
+ 
+    <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+        <p>Chương trình tên in ra <em>Not printing!.</em> Mặc dù PRINT đã được #define trong file main.cpp, nhưng trong file function.cpp thì nó xem như chưa được #define. Trong file main.cpp có thể bạn thấy lạ vì không có #include &lt;iostream&gt; nhưng nó vẫn in ra được. Đó là vì thực chất trong file main.cpp không hề có câu lệnh nào dùng std::cout, mà nó được dùng trong file function.cpp. Do đó bạn chỉ cần #include &lt;iostream&gt; trong file function.cpp là đủ.</p>
+
+        <div>
+            <a href="#"><button class="btn">Bài tiếp theo</button></a>
+        </div>
+        <div>
+            <a href="../../index.html"><button class="btn">C++ Index</button></a>
+        </div>
+        <div>
+            <a href="../2-7-naming-collision-gioi-thieu-ve-namespace/index.html"><button class="btn">Bài trước</button></a>
+        </div>
+
+    </div>
+</body>
+
+</html>
