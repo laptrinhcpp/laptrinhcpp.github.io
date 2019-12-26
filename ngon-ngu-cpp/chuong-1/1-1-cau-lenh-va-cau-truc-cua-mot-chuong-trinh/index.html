@@ -68,7 +68,7 @@
 			Dòng thứ tư và thứ bảy giúp trình biên dịch biết giới hạn của hàm main. Tất cả các câu lệnh nằm trong dấu ngoặc nhọn { } đều thuộc về hàm main. Đây được gọi là phần thân của hàm (function body).
 		</p>
 		<p>
-			Dòng thứ năm là câu lệnh đầu tiên của hàm main, là câu lệnh sẽ được thực thi đầu tiên khi chương trình chạy. std::cout (viết tắt character output) và dấu toán tử << cho phép chúng ta xuất chữ và số ra màn hình console. Trong trường hợp này, ta sẽ xuất dòng chữ Hello World ra màn hình.
+			Dòng thứ năm là câu lệnh đầu tiên của hàm main, là câu lệnh sẽ được thực thi đầu tiên khi chương trình chạy. std::cout (viết tắt character output) và dấu toán tử << cho phép chúng ta xuất chữ và số ra màn hình console. Trong trường hợp này, ta sẽ xuất dòng chữ <i>Hello world!</i> ra màn hình.
 		</p>
 		<p>
 			Dòng thứ sáu là câu lệnh trả về (return statement). Khi một chương trình chạy xong, nó sẽ trả về hệ thống một giá trị để cho biết chương trình có chạy thành công hay không. Thông thường giá trị đó 0, mang ý nghĩa “tất cả đều chạy ổn”. Đây là câu lệnh cuối cùng trong chương trình.
@@ -77,7 +77,7 @@
 			Bạn hãy thử chạy chương trình trên và sẽ thấy trên màn hình xuất hiện:
 		</p>
 		<div class="codeblock">
-			<code>Hello World!</code>
+			<code>Hello world!</code>
 		</div>
 		<h3 class="muc">Cú pháp và lỗi cú pháp</h3>
 		<p>
@@ -113,7 +113,7 @@
 			<code>main.cpp:6:2: error: expected ';' before 'return'</code>
 		</div>
 		<p>
-			Nó báo cho bạn biết có lỗi cú pháp ở dòng thứ 6, thiếu dấu ‘;’ ở trước return. Có lẽ bạn sẽ tự hỏi vì sao thiếu dấu ‘;’ ở dòng 5 nhưng nó lại báo lỗi ở dòng 6. Đó là vì trình biên dịch kiểm tra theo từng kí tự chứ không phải theo từng dòng. Khi nó kiểm tra hết dòng 5 (xong kí tự “), trình biên dịch vẫn chưa biết bạn đã kết thúc một câu lệnh nên nó chưa báo lỗi. Khi xuống dòng kiểm tra tiếp, nó đến chữ return thì mới biết bạn đã kết thúc câu lệnh ở dòng 5. Lúc này, trình biên dịch phát hiện bạn đã kết thúc câu lệnh ở dòng 5 mà không có dấu ‘;’. Do đó, mặc dù lỗi ở dòng 5, nhưng nó đang kiểm tra ở dòng 6 nên nó báo lỗi ở dòng 6. Đó là một mẹo khi kiểm tra lỗi cú pháp. Đôi khi bạn sẽ thấy dòng mà máy báo lỗi không có lỗi gì nhưng nó vẫn báo, lúc này bạn hãy kiểm tra dòng trước nó nhé!
+			Nó báo cho bạn biết có lỗi cú pháp ở dòng thứ 6, thiếu dấu ‘;’ ở trước return. Có lẽ bạn sẽ tự hỏi vì sao thiếu dấu ‘;’ ở dòng 5 nhưng nó lại báo lỗi ở dòng 6. Đó là vì trình biên dịch kiểm tra theo từng kí tự chứ không phải theo từng dòng. Khi nó kiểm tra hết dòng 5 (xong kí tự “), trình biên dịch vẫn chưa biết bạn đã kết thúc một câu lệnh nên nó chưa báo lỗi. Khi xuống dòng kiểm tra tiếp, nó đến chữ return thì mới biết bạn đã kết thúc câu lệnh ở dòng 5. Lúc này, trình biên dịch phát hiện bạn đã kết thúc câu lệnh ở dòng 5 mà không có ‘;’. Do đó, mặc dù lỗi ở dòng 5, nhưng nó đang kiểm tra ở dòng 6 nên nó báo lỗi ở dòng 6. Đó là một mẹo khi kiểm tra lỗi cú pháp. Đôi khi bạn sẽ thấy dòng mà máy báo lỗi không có lỗi gì nhưng nó vẫn báo, lúc này bạn hãy kiểm tra dòng trên nó nhé!
 		</p>
 		<div>
 			<a href="../1-2-comments/index.html"><button class="btn">Bài tiếp theo</button></a>

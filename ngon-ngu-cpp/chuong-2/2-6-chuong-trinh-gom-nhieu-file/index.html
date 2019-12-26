@@ -50,7 +50,7 @@
         <p>Chạy chương trình trên sẽ xuất hiện lỗi.</p>
         <div class="codeblock"><pre><code>main.cpp(5) : error C3861: 'add': identifier not found</code></pre></div>
         <p>Lưu ý rằng trình biên dịch biên dịch các file riêng rẻ với nhau và không theo thứ tự. Nó không biết và không nhớ những nội dung ở các file khác khi đang biên dịch một file. Do đó, cho dù trình biên dịch biên dịch file add.cpp trước thì nó cũng không nhớ hàm add là gì.</p>
-        <p>Để giải quyết vấn đề trên, ta dùng cách 2 ở bài học , đó là dùng khai báo trước.</p>
+        <p>Để giải quyết vấn đề trên, ta dùng cách 2 ở bài học trước, đó là dùng forward declaration.</p>
         <p>main.cpp</p>
         <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
 2
@@ -83,7 +83,7 @@
 
         <p>Bây giờ, khi trình biên dịch biên dịch hàm main thì nó sẽ biết hàm add là gì. Linker sẽ kết nối phần gọi hàm add ở file main.cpp với phần định nghĩa hàm add trong add.cpp.</p>
         <p>Bằng cách này, ta có thể cho phép các file dùng các hàm ở nhiều file khác nhau.</p>
-        <p>Hãy thử chạy chương trình trên xem có ra kết quả như dự đoán không nhé. Nếu có lỗi, bạn có thể bình luận ở dưới bài này.</p>
+        <p>Hãy thử chạy chương trình trên xem có ra kết quả như dự đoán không nhé.</p>
         <p>Hiện tại, bạn chỉ cần biết sơ qua cách thức hoạt động của chương trình có nhiều file. Sau này, chúng ta sẽ áp dụng nhiều vào lập trình hướng đối tượng.</p>
         <h3 class="muc">Bài tập</h3>
         <p>Chia chương trình dưới đây thành hai file (main.cpp và input.cpp). Trong đó, main.cpp chứa hàm main và input.cpp chứa hàm getInteger.</p>

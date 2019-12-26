@@ -198,7 +198,7 @@
 }   <span style="color: #008000">// biến x và y của hàm main bị hủy</span>
 </pre></td></tr></table></div>
 
-        <p>Chương trình trên chạy bình thường như dự đoán mặc dù cả hàm main và hàm add cùng có hai biến tên x và y. Tại sao vậy?</p>
+        <p>Chương trình trên chạy bình thường mặc dù cả hàm main và hàm add cùng có hai biến tên x và y. Tại sao vậy?</p>
         <p>Đầu tiên, ta cần biết rằng mặc dù hàm main và add đều có biến tên x, y, nhưng chúng được tách riêng và không liên quan gì với nhau.</p>
         <p>Thứ hai, biến sẽ được ưu tiên đối với local scope của nó. Do đó, trong hàm main sẽ ưu tiên dùng biến x, y của hàm main và trong hàm add sẽ ưu tiên dùng biến x, y của hàm add.</p>
         <p>Điều này rất có lợi cho việc đặt tên vì sẽ không phải mất thời gian nghĩ ra tên để không bị trùng.</p>

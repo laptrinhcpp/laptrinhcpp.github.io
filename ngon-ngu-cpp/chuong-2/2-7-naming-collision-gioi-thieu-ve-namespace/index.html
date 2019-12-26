@@ -21,7 +21,7 @@
     <div class="content">
 
         <p>
-            Tưởng tượng bạn đang lái xe đến nhà một người bạn lần đầu để nhậu vài con gà, địa chỉ nhà là số 69 đường Trần Duy Hưng. Khi bạn đến thành phố Hà Nội, trời đã tối và bạn không biết đường. Bạn lấy điện thoại ra xem bản đồ để tìm đường Trần Duy Hưng. Thế nhưng trên bản đồ lại hiện đến hai đường Trần Duy Hưng và bạn không biết nên đi đường nào. Để tránh trường hợp bối rối như trên, thông thường người ta sẽ đặt tên đường trong một thành phố riêng biệt với nhau để dễ phân biệt.
+            Tưởng tượng bạn đang lái xe đến nhà một người bạn lần đầu để nhậu vài con gà, địa chỉ nhà là số 69 đường Trần Duy Hưng. Khi bạn đến thành phố Hà Nội, trời đã tối và bạn không biết đường. Bạn lấy điện thoại ra xem bản đồ để tìm đường Trần Duy Hưng. Thế nhưng trên bản đồ lại hiện đến hai đường Trần Duy Hưng và bạn không biết nên đi đường nào.
         </p>
         <p>Trong C++ cũng vậy, nếu tồn tại nhiều đối tượng có cùng tên thì trình biên dịch hoặc linker sẽ không phân biệt được và sẽ báo lỗi – được gọi là naming conllision (hoặc naming conflict).</p>
         <h3 class="muc">Ví dụ về naming conllision</h3>
@@ -71,10 +71,10 @@
         <p>Ta thường gộp các tên có thuộc tính liên quan với nhau vào cùng một namespace. Ví dụ: namespace có tên là <i>toán</i> sẽ có các tên như là <i>công thức, kí hiệu, đơn vị,…</i> namespace có tên là <i>ngữ văn</i> thì có các tên <i>ngữ pháp, biểu cảm, tu từ,…</i></p>
         <p>Ta sẽ học cách tạo namespace riêng ở bài học sau này.</p>
         <h3 class="muc">Global namespace</h3>
-        <p>Trong C++, các namespace không được định nghĩa trong class, hàm hoặc trong namespace khác được gọi là global namespace. Trong ví dụ về naming conllision ở trên, hàm main và cả hai hàm myFcn đều được đặt trong global namespace. Đó là lý do xảy ra lỗi naming conllision.</p>
+        <p>Trong C++, các namespace không được định nghĩa trong class, hàm hoặc trong namespace khác thì được gọi là global namespace. Trong ví dụ về naming conllision ở trên, hàm main và cả hai hàm myFcn đều được đặt trong global namespace. Đó là lý do xảy ra lỗi naming conllision.</p>
         <h3 class="muc">Namespace std</h3>
         <p>Khi C++ mới được tạo ra, tất cả các chức năng trong thư viện tiêu chuẩn của C++ (bao gồm std::cout và std::cin) được sử dụng mà không cần std:: ở trước. Tuy nhiên, họ nhận thấy rằng rất có thể người dùng sẽ vô tình đặt tên đối tượng trùng với tên trong thư viện tiêu chuẩn của họ. Vì vậy họ chuyển tất cả các tên trong thư viện tiêu chuẩn của họ vào một namespace gọi là std namespace (viết tắt của standard).</p>
-        <p>Vậy nên std::cout thực chất chỉ là cout, std chính là tên của namespace chứa cout. Chính vì cout nằm trong namespace std nên bạn có thể đặt tên đối tượng nào đó là cout mà không sợ bị lỗi conflict. Tuy nhiên, bạn cũng cần báo cho trình biên dịch biết bạn đang sử dụng tên đó trong namespace nào. Có vài cách để làm điều đó.</p>
+        <p>Vậy nên std::cout thực chất chỉ là cout, std chính là tên của namespace chứa cout. Trước khi dùng đối tượng nào đó trong một namespace, bạn cần báo cho trình biên dịch biết bạn đang sử dụng tên đó trong namespace nào. Có vài cách để làm điều đó.</p>
         <h3 class="muc">Gắn std:: vào tên</h3>
         <p>Đây là cách gắn trực tiếp tên namespace vào tên đối tượng muốn sử dụng trong namespace đó.</p>
         <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1

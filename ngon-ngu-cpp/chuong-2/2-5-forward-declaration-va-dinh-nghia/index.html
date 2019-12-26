@@ -124,8 +124,8 @@
         <h3 class="muc">Khai báo và định nghĩa</h3>
         <p>Khi đọc các phần ở trên, bạn sẽ gặp các từ khai báo và định nghĩa. Vậy rốt cuộc chúng là gì và khác nhau như nào?</p>
         <p>Khai báo (declaration) là báo cho trình biên dịch biết có tồn tại một đối tượng nào đó, có cái tên đó, có kiểu dữ liệu đó. Ngoài ra, không cung cấp gì thêm. Trình biên dịch có thể tạm dùng cái tên đó để thực thi mặc dù chưa biết nó có chức năng, chi tiết ra sao. Nó giống như gia đình bạn bắt bạn đi xem mắt nhưng bạn chỉ biết được vài thông tin như giới tính, tên tuổi mà vẫn chưa biết mặt mũi ra sao, tính cách thế nào.</p>
-        <p>Ví dụ:</p>
-        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #2b91af">int</span> add(<span style="color: #2b91af">int</span> x, <span style="color: #2b91af">int</span> y);   <span style="color: #008000">// chỉ biết hàm tên add, trả về giá trị int, gồm hai tham số&lt;br&gt;&lt;br&gt;int x;</span>
+        <p>Ví dụ về khai báo:</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #2b91af">int</span> add(<span style="color: #2b91af">int</span> x, <span style="color: #2b91af">int</span> y);   <span style="color: #008000">// chỉ biết hàm tên add, trả về giá trị int, gồm hai tham số kiểu int là x và y;</span>
 </pre></td></tr></table></div>
 
         <p>Định nghĩa (definition) thì bao quát và chi tiết hơn khai báo, hay có thể nói định nghĩa bao gồm cả khai báo. Định nghĩa cung cấp cho trình biên dịch biết chi tiết hơn về đối tượng, ví dụ đối với hàm thì cho biết phần thân hàm, biến thì cho biết giá trị,… Quay lại ví dụ ra mắt trên kia. Khi bạn chỉ biết có tồn tại một người có giới tính, tên tuổi như vậy thì đó là khai báo. Khi bạn gặp người đó rồi, bạn sẽ biết thêm mặt mũi, tính cách, sở thích,… thì đó chính là định nghĩa.</p>
@@ -143,9 +143,9 @@
 <span style="color: #2b91af">int</span> x;
 </pre></td></tr></table></div>
 
-        <p>Như mình đã nói, khai báo cũng là định nghĩa, nhưng khai báo chưa chắc là định nghĩa nhé. Do đó, int x; cũng được xem là định nghĩa. Đó là lý do nó ở cả hai ví dụ.</p>
+        <p>Như mình đã nói, định nghĩa bao gồm cả khai báo (nhưng khai báo chưa chắc là định nghĩa nhé).
         <p>Một khai báo chưa chắc là định nghĩa, lấy ví dụ tiêu biểu là hàm prototype. Hàm prototype được xếp vào loại khai báo thuần (pure declaration). Các loại khai báo thuần khác sẽ được đề cập ở những bài trong tương lai.</p>
-        <p>Định nghĩa một quy tắc là không được định nghĩa một đối tượng nhiều lần. Ví dụ:</p>
+        <p>Một quy tắc trong việc định nghĩa là không được định nghĩa một đối tượng nhiều lần. Ví dụ:</p>
         <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
  2
  3
