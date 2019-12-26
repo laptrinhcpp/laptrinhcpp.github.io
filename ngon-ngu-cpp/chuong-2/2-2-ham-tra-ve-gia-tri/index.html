@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../../../css/reset.css">
+    <title>2.2 Hàm trả về giá trị</title>
+    <link rel="stylesheet" href="../../../css/substyle.css">
+    <link rel="shortcut icon" href="../../../img/circle-logo.ico">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="../../../js/showhide.js"></script>
+</head>
+
+<body>
+    <div class="title">
+        <h1>2.2 Hàm trả về giá trị</h1>
+    </div>
+
+    <div class="content">
+
+        <p>
+            Xét chương trình dưới đây:
+        </p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+ 
+<span style="color: #2b91af">int</span> main()
+{
+  std::cout &lt;&lt; <span style="color: #a31515">&quot;Enter an integer: &quot;</span>;
+  <span style="color: #2b91af">int</span> num{};
+  std::cin &gt;&gt; num;
+ 
+  std::cout &lt;&lt; num &lt;&lt; <span style="color: #a31515">&quot; doubled is: &quot;</span> &lt;&lt; num * 2 &lt;&lt; <span style="color: #a31515">&#39;\n&#39;</span>;
+ 
+  <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+        <p>Chương trình trên làm hai công việc. Thứ nhất là nhận input từ người dùng. Thứ hai là in ra số gấp đôi số đã nhập.</p>
+
+        <p>Ta thử viết lại chương trình trên nhưng sử dụng hàm nhé. Ta sẽ tách phần nhận input từ người dùng ra để viết hàm.</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+ 
+<span style="color: #2b91af">void</span> getValueFromUser()
+{
+  std::cout &lt;&lt; <span style="color: #a31515">&quot;Enter an integer: &quot;</span>;
+  <span style="color: #2b91af">int</span> input{};
+  std::cin &gt;&gt; input;  
+}
+ 
+<span style="color: #2b91af">int</span> main()
+{
+  getValueFromUser(); <span style="color: #008000">// nhận input từ người dùng</span>
+ 
+  <span style="color: #2b91af">int</span> num{};
+ 
+  std::cout &lt;&lt; num &lt;&lt; <span style="color: #a31515">&quot; doubled is: &quot;</span> &lt;&lt; num * 2 &lt;&lt; <span style="color: #a31515">&#39;\n&#39;</span>;
+ 
+  <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+        <p>Chạy chương trình trên thì máy báo lỗi, không chạy được. Vì sao nhỉ? Nhìn lại chương trình, ta thấy biến num chưa được gán giá trị input, nó mang giá trị 0. Biến mà được gán giá trị người dùng nhập vào là biến input trong hàm getValueFromUser(). Vậy muốn sử dụng được giá trị input, ta phải trả nó về hàm main, để rồi gán nó cho biến trong hàm main và có thể sử dụng được.</p>
+        <h3 class="muc">Trả về giá trị</h3>
+        <p>Khi bạn tạo một hàm, điều đầu tiên cần làm là xác định xem hàm đó có cần trả về một giá trị nào đó hay không. Để tạo hàm có trả về giá trị, ta cần làm hai việc.</p>
+
+        <p>Đầu tiên, xác định giá trị trả về đó có kiểu dữ liệu gì. Điều này sẽ quyết định phần trước tên hàm là gì. Lấy ví dụ là hàm main. Có thể bạn thắc mắc tại sao có chữ int trước tên hàm main. Đó chính là kiểu dữ liệu của giá trị trả về mà cụ thể chính là 0.</p>
+        
+        <p>Thứ hai, trong hàm phải có câu lệnh trả về. Trong hàm main chính là câu lệnh “return 0;”. Sau khi trình biên dịch gặp câu lệnh này. Nó sẽ trả giá trị ra ngoài hàm và kết thúc hàm, cho dù sau return có bao nhiêu câu lệnh đi nữa cũng sẽ bị bỏ qua.</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+ 
+<span style="color: #2b91af">int</span> returnFive()   <span style="color: #008000">// hàm trả về giá trị kiểu int nên có int trước trên hàm</span>
+{
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;Before return statement.\n&quot;</span>;
+    <span style="color: #0000ff">return</span> 5;        <span style="color: #008000">// câu lệnh trả về giá trị 5</span>
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;After return statement.\n&quot;</span>;
+}
+ 
+<span style="color: #2b91af">int</span> main()
+{
+    std::cout &lt;&lt; returnFive() &lt;&lt; <span style="color: #a31515">&#39;\n&#39;</span>;       <span style="color: #008000">// int 5 ra màn hình</span>
+    std::cout &lt;&lt; returnFive() + 2 &lt;&lt; <span style="color: #a31515">&#39;\n&#39;</span>;   <span style="color: #008000">// in 7 ra màn hình</span>
+  
+    <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+        <p>Chương trình trên cho ra output:</p>
+        <div class="codeblock">
+            <pre><code>Before return statement.
+5
+Before return statement.
+7</code></pre>
+        </div>
+        <p>Các bạn có thể thấy nó chỉ in dòng “Before return statement.” chứ không in “After return statement.” vì khi gặp câu lệnh return thì trình biên dịch thoát khỏi hàm, trả giá trị về hàm main.</p>
+        <p>Khi chương trình chạy, câu lệnh dòng 12 sẽ thực thi đầu tiên. Gặp câu lệnh gọi hàm returnFive(), trình biên dịch tìm đến hàm returnFive(). Chương trình in dòng “Before return statement.”, sau đó trả giá trị 5 về hàm main (bỏ qua câu lệnh còn lại) và in ra màn hình nhờ std::cout. Trình biên dịch tiếp tục gặp câu lệnh gọi hàm returnFive(). Lúc này “returnFive() + 2” chính là một biểu thức, và giá trị đầu ra của biểu thức này là 7 (5 + 2), do đó 7 được in ra màn hình.</p>
+        <p class="luu-y">Lưu ý: Khi bạn đã dùng hàm trả về thì bạn phải làm gì đó với giá trị trả về, nếu không thì giá trị đó coi như vô nghĩa. Và lúc đó bạn nên dùng hàm không trả về giá trị (void) mà mình sẽ nói ở dưới.</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+ 
+<span style="color: #2b91af">int</span> returnFive()
+{
+    <span style="color: #0000ff">return</span> 5;
+}
+ 
+<span style="color: #2b91af">int</span> main()
+{
+    returnFive();
+ 
+    <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+        <p>Ở ví dụ trên, giá trị 5 được trả về, nhưng lại không được dùng cho mục đích nào chẳng hạn như in ra màn hình hoặc gán cho biến khác, giá trị 5 sẽ vô nghĩa và sẽ bị mất đi.</p>
+        <p>Ô kê, chúng ta sẽ sửa lại chương trình ở đầu bài học.</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+ 
+<span style="color: #2b91af">int</span> getValueFromUser()
+{
+  std::cout &lt;&lt; <span style="color: #a31515">&quot;Enter an integer: &quot;</span>;
+  <span style="color: #2b91af">int</span> input{};
+  std::cin &gt;&gt; input;  
+ 
+  <span style="color: #0000ff">return</span> input; <span style="color: #008000">// trả về giá trị biến input</span>
+}
+ 
+<span style="color: #2b91af">int</span> main()
+{
+  <span style="color: #2b91af">int</span> num { getValueFromUser() }; <span style="color: #008000">// khởi tạo đồng nhất biến num với giá trị là giá trị trả về của hàm getValueFromUser()</span>
+ 
+  std::cout &lt;&lt; num &lt;&lt; <span style="color: #a31515">&quot; doubled is: &quot;</span> &lt;&lt; num * 2 &lt;&lt; <span style="color: #a31515">&#39;\n&#39;</span>;
+ 
+  <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+        <p>Bạn hãy chạy chương trình trên và nhập vài số nguyên xem có hoạt động tốt không nhé.</p>
+        <h3 class="muc">Hàm void</h3>
+        <p>Ở trên mình đã nói về hàm có trả về giá trị. Còn nếu bạn không muốn trả về giá trị, hãy dùng hàm void. Thay vì để kiểu dữ liệu trước tên hàm như trên, ta thay nó bằng void. Bạn đã gặp loại hàm này ở bài trước. Bởi vì nó không trả về giá trị nên không cần câu lệnh return. Nếu bạn thêm cho nó câu lệnh return về một giá tri, trình biên dịch sẽ báo lỗi.</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+
+<span style="color: #2b91af">void</span> print()
+{
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;Hello &quot;</span>;
+}
+
+<span style="color: #2b91af">int</span> main()
+{
+    print();
+
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;world.&quot;</span>;
+
+    <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+        <p>Chương trình trên cho output:</p>
+        <div class="codeblock">
+            <code>Hello world.</code>
+        </div>
+        <p>Khác với hàm có trả về, hàm void không được gán cho biến hoặc đưa nó vào std::cout, máy sẽ báo lỗi vì hàm void không trả về giá trị. Phần lớn, bạn sẽ dùng hàm void để in cái gì đó ra màn hình.</p>
+        <p>Giả sử, vì một lý do nào đó, bạn chỉ muốn trình biên dịch biên dịch một phần của hàm void và bỏ qua phần còn lại. Lúc này, bạn có thể dùng câu lệnh return. Ủa, khoan. Chẳng phải mình đã nói không dùng câu lệnh return trong hàm void sao? Đúng vậy, bạn không thể return một giá trị nhưng bạn có thể return một thứ không giá trị. Nghe có vẻ vô lý đúng không. Xét ví dụ sau bạn sẽ hiểu.</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+
+<span style="color: #2b91af">void</span> print()
+{
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;Line 1.\n&quot;</span>;
+    
+    <span style="color: #0000ff">return</span>;   <span style="color: #008000">// câu lệnh return nhưng không có giá trị trả về</span>
+    
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;Line 2.\n&quot;</span>;
+}
+
+<span style="color: #2b91af">int</span> main() 
+{
+    print();   <span style="color: #008000">// gọi hàm print()</span>
+    
+    <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+        <p>Chương trình trên cho output:</p>
+        <div class="codeblock">
+            <code>Line 1.</code>
+        </div>
+        <p>Câu lệnh return ở ví dụ trên không trả về giá trị nào cả, và nó có chức năng kết thúc hàm. Do đó, chương trình chỉ in dòng “Line 1.” và bỏ qua dòng “Line 2.”</p>
+        <p>Bây giờ chúng ta nói về hàm main nhé. Như bạn có thể thấy, hàm main bản chất là một hàm có trả về. Nhưng giá trị trả về đó – được gọi là status code (thường là 0) được gửi đi đâu, được xử dụng vào mục đích gì? Câu trả lời là giá trị đó được gửi về hệ điều hành (operating system). Mục đích để thông báo cho hệ điều hành biết chương trình có chạy thành công hay không. Việc chương trình trả về giá trị 0 có nghĩa là tất cả code đều chạy thành công đến dòng cuối cùng của hàm main. Còn nếu chương trình bị crash giữa chừng thì nó sẽ trả về giá trị khác 0.</p>
+        <p>Ở phần lớn các IDE, nó sẽ báo cho bạn biết status code sau khi kết thúc chương trình là bao nhiêu. Ví dụ dưới đây là thông báo chương trình chạy thành công.</p>
+        <div class="codeblock">
+            <code>Program finished with exit code 0</code>
+        </div>
+        <p>Còn đây là thông báo chương trình bị crash.</p>
+        <div class="codeblock">
+            <code>Program finished with exit code 1</code>
+        </div>
+        <p>Exit code kia có thể là bất cứ số nào khác 0.</p>
+        <h3 class="muc">Lưu ý về hàm trả về</h3>
+        <p>Đối với một hàm có trả về bình thường, bắt buộc phải có giá trị trả về, tức câu lệnh return. Nếu không sẽ gây ra undefined behavior. Chỉ riêng hàm main, mặc dù là hàm có trả về nhưng bạn có thể bỏ qua câu lệnh return mà chương trình vẫn chạy bình thường. Lúc đó, chương trình sẽ mặc định hàm main có giá trị trả về là 0. Tuy nhiên, bạn không nên bỏ câu lệnh return trong hàm main, đó là thói quen không tốt.</p>
+        <p>Một hàm trả về chỉ có thể trả về một giá trị. Giá trị đó có thể là literal, giá trị của biến, giá trị của một biểu thức hoặc giá trị trả về của một hàm khác. Ví dụ:</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3
+4
+5</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">return</span> 2;
+<span style="color: #0000ff">return</span> x;
+<span style="color: #0000ff">return</span> x + 2;
+<span style="color: #0000ff">return</span> x + y;
+<span style="color: #0000ff">return</span> returnFive();
+</pre></td></tr></table></div>
+
+        <h3 class="muc">Tái sử dụng hàm</h3>
+        <p>Xét chương trình sau:</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+ 
+<span style="color: #2b91af">int</span> main()
+{
+  <span style="color: #2b91af">int</span> x{};
+  std::cout &lt;&lt; <span style="color: #a31515">&quot;Enter an integer: &quot;</span>;
+  std::cin &gt;&gt; x; 
+ 
+  <span style="color: #2b91af">int</span> y{};
+  std::cout &lt;&lt; <span style="color: #a31515">&quot;Enter an integer: &quot;</span>;
+  std::cin &gt;&gt; y; 
+ 
+  std::cout &lt;&lt; x &lt;&lt; <span style="color: #a31515">&quot; + &quot;</span> &lt;&lt; y &lt;&lt; <span style="color: #a31515">&quot; = &quot;</span> &lt;&lt; x + y &lt;&lt; <span style="color: #a31515">&#39;\n&#39;</span>;
+ 
+  <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+        <p>Ở chương trình trên, mọi thứ đều ổn. Chỉ duy nhất một khuyết điểm là lặp lại code (một trong những điều nên tránh trong lập trình). Bạn hãy nhớ phương châm tiêu biểu của lập trình đó là Don’t Repeat Yourself (DRY). Vì sao vậy? Đó là vì giả sử bạn cần sửa “Enter an integer: ” thành “Enter a number: “, bạn phải sửa hai chỗ. Đây mới là chương trình cơ bản. Bạn thử tưởng tượng chương trình có trên 1000 dòng code với 200 dòng code cần sửa được đặt ngẫu nhiên trong 1000 dòng đó. Và bạn phải tìm trong đống đó những dòng code cần sửa xem. Còn một lý do nữa là lặp lại code sẽ làm code dài ra.</p>
+        <p>Bây giờ ta sửa lại chương trình trên như sau:</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+ 
+<span style="color: #2b91af">int</span> getValueFromUser()
+{
+  std::cout &lt;&lt; <span style="color: #a31515">&quot;Enter an integer: &quot;</span>;
+  <span style="color: #2b91af">int</span> input{};
+  std::cin &gt;&gt; input;  
+ 
+  <span style="color: #0000ff">return</span> input;
+}
+ 
+<span style="color: #2b91af">int</span> main()
+{
+    <span style="color: #2b91af">int</span> x{ getValueFromUser() }; <span style="color: #008000">// giá trị input sẽ được đưa vào biến x</span>
+    <span style="color: #2b91af">int</span> y{ getValueFromUser() }; <span style="color: #008000">// giá trị input sẽ được đưa vào biến y</span>
+ 
+    std::cout &lt;&lt; x &lt;&lt; <span style="color: #a31515">&quot; + &quot;</span> &lt;&lt; y &lt;&lt; <span style="color: #a31515">&quot; = &quot;</span> &lt;&lt; x + y &lt;&lt; <span style="color: #a31515">&#39;\n&#39;</span>;
+ 
+    <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+        <p>Chạy thử chương trình trên:</p>
+        <div class="codeblock">
+            <pre><code>Enter an integer: 5
+Enter an integer: 7
+5 + 7 = 12</code></pre>
+        </div>
+        <p>Bây giờ nếu bạn muốn sửa gì đó thì chỉ cần chỉnh code trong hàm thôi là được.</p>
+        <h3 class="muc">Bài tập</h3>
+        <p>Dự đoán output của các chương trình sau:</p>
+        <p>a)</p>
+        
+        <div>
+            <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+ 
+<span style="color: #2b91af">int</span> return7()
+{
+    <span style="color: #0000ff">return</span> 7;
+}
+ 
+<span style="color: #2b91af">int</span> return9()
+{
+    <span style="color: #0000ff">return</span> 9;
+}
+ 
+<span style="color: #2b91af">int</span> main()
+{
+    std::cout &lt;&lt; return7() + return9() &lt;&lt; <span style="color: #a31515">&#39;\n&#39;</span>;
+ 
+    <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+        <div class="codeblock" id="answer1" style="display: none;">
+            <pre><code>16</code></pre>
+        </div>
+        <button class="showhidebtn" onclick="showHide('#answer1')">Show/Hide</button>
+        </div>
+        <p>b)</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+ 
+<span style="color: #2b91af">int</span> return7()
+{
+    <span style="color: #0000ff">return</span> 7;
+}
+ 
+<span style="color: #2b91af">int</span> return9()
+{
+    <span style="color: #0000ff">return</span> 9;
+}
+ 
+<span style="color: #2b91af">int</span> main()
+{
+    return7();
+    return9();
+ 
+    <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+        <div id="answer2" style="display: none;">
+            <p>Chương trình trên không có output.</p>
+        </div>
+        <button class="showhidebtn" onclick="showHide('#answer2')">Show/Hide</button>
+        <p>c)</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+ 
+<span style="color: #2b91af">void</span> printA()
+{
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;A\n&quot;</span>;
+}
+ 
+<span style="color: #2b91af">int</span> main()
+{
+    std::cout &lt;&lt; printA() &lt;&lt; <span style="color: #a31515">&#39;\n&#39;</span>;
+ 
+    <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+        <div id="answer3" style="display: none;">
+            <p>Chương trình trên không chạy được. Không thể đưa hàm void vào std::cout.</p>
+        </div>
+        <button class="showhidebtn" onclick="showHide('#answer3')">Show/Hide</button>
+        <p>d)</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+ 
+<span style="color: #2b91af">int</span> getNumbers()
+{
+    <span style="color: #0000ff">return</span> 5;
+    <span style="color: #0000ff">return</span> 7;
+}
+ 
+<span style="color: #2b91af">int</span> main()
+{
+    std::cout &lt;&lt; getNumbers() &lt;&lt; <span style="color: #a31515">&#39;\n&#39;</span>;
+    std::cout &lt;&lt; getNumbers() &lt;&lt; <span style="color: #a31515">&#39;\n&#39;</span>;
+ 
+    <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+        <div class="codeblock" id="answer4" style="display: none;">
+            <pre><code>5
+5</code></pre>
+        </div>
+        <button class="showhidebtn" onclick="showHide('#answer4')">Show/Hide</button>
+        <p>e)</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+ 
+<span style="color: #2b91af">int</span> <span style="color: #0000ff">return</span> 5()
+{
+    <span style="color: #0000ff">return</span> 5;
+}
+ 
+<span style="color: #2b91af">int</span> main()
+{
+    std::cout &lt;&lt; <span style="color: #0000ff">return</span> 5() &lt;&lt; <span style="color: #a31515">&#39;\n&#39;</span>;
+ 
+    <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+        <div id="answer5" style="display: none;">
+            <p>Chương trình trên không chạy được vì đặt tên hàm sai.</p>
+        </div>
+        <button class="showhidebtn" onclick="showHide('#answer5')">Show/Hide</button>
+        <p>f)</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+ 
+<span style="color: #2b91af">int</span> returnFive()
+{
+    <span style="color: #0000ff">return</span> 5;
+}
+ 
+<span style="color: #2b91af">int</span> main()
+{
+    std::cout &lt;&lt; returnFive &lt;&lt; <span style="color: #a31515">&#39;\n&#39;</span>;
+ 
+    <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+        <div style="display: none;" id="answer6">
+            <p>Chương trình trên chạy được, tuy nhiên hàm returnFive() sẽ không gọi được vì thiếu ‘()’. Kết quả in ra màn hình tùy vào mỗi máy.</p>
+        </div>
+        <button onclick="showHide('#answer6')" class="showhidebtn">Show/Hide</button>
+
+        <div>
+            <a href="../2-3-gioi-thieu-ve-tham-so-va-doi-so-cua-ham/index.html"><button class="btn">Bài tiếp theo</button></a>
+        </div>
+        <div>
+            <a href="../../index.html"><button class="btn">C++ Index</button></a>
+        </div>
+        <div>
+            <a href="../2-1-gioi-thieu-ve-ham/index.html"><button class="btn">Bài trước</button></a>
+        </div>
+
+    </div>
+</body>
+
+</html>

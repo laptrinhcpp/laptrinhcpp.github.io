@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../../../css/reset.css">
+    <title>2.3 Giới thiệu về tham số và đối số của hàm</title>
+    <link rel="stylesheet" href="../../../css/substyle.css">
+    <link rel="shortcut icon" href="../../../img/circle-logo.ico">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="../../../js/showhide.js"></script>
+</head>
+
+<body>
+    <div class="title">
+        <h1>2.3 Giới thiệu về tham số và đối số của hàm</h1>
+    </div>
+
+    <div class="content">
+
+        <p>Xét chương trình sau ở bài học trước:</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+ 
+<span style="color: #2b91af">int</span> getValueFromUser()
+{
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;Enter an integer: &quot;</span>;
+    <span style="color: #2b91af">int</span> input{};
+    std::cin &gt;&gt; input;  
+ 
+    <span style="color: #0000ff">return</span> input;
+}
+ 
+<span style="color: #2b91af">int</span> main()
+{
+    <span style="color: #2b91af">int</span> num { getValueFromUser() };
+ 
+    std::cout &lt;&lt; num &lt;&lt; <span style="color: #a31515">&quot; doubled is: &quot;</span> &lt;&lt; num * 2 &lt;&lt; <span style="color: #a31515">&#39;\n&#39;</span>;
+ 
+    <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+        <p>Giả sử chúng ta tách dòng 16 ra để viết thành một hàm riêng. Ta có chương trình sau:</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+ 
+<span style="color: #2b91af">int</span> getValueFromUser()
+{
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;Enter an integer: &quot;</span>;
+    <span style="color: #2b91af">int</span> input{};
+    std::cin &gt;&gt; input;  
+ 
+    <span style="color: #0000ff">return</span> input;
+}
+ 
+<span style="color: #2b91af">void</span> printDouble()
+{
+    std::cout &lt;&lt; num &lt;&lt; <span style="color: #a31515">&quot; doubled is: &quot;</span> &lt;&lt; num * 2 &lt;&lt; <span style="color: #a31515">&#39;\n&#39;</span>;
+}
+ 
+<span style="color: #2b91af">int</span> main()
+{
+    <span style="color: #2b91af">int</span> num { getValueFromUser() };
+ 
+    printDouble();
+ 
+    <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+        <p>Chương trình ở trên sẽ không chạy vì biến num chưa được định nghĩa trong hàm printDouble(). Ta sửa lại hàm printDouble() như sau:</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3
+4
+5</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #2b91af">void</span> printDouble()
+{
+    <span style="color: #2b91af">int</span> num{};
+    std::cout &lt;&lt; num &lt;&lt; <span style="color: #a31515">&quot; doubled is: &quot;</span> &lt;&lt; num * 2 &lt;&lt; <span style="color: #a31515">&#39;\n&#39;</span>;
+}
+</pre></td></tr></table></div>
+
+        <p>Lần này chương trình chạy được. Tuy nhiên, nó không chạy như ta muốn mà cứ in “0 doubled is: 0”. Nguyên nhân chính là vì biến num trong hàm printDouble() không nhận được giá trị input. Chúng ta phải đưa giá trị đó vào trong hàm printDouble(). Bạn có thể làm như sau:</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+ 
+<span style="color: #2b91af">int</span> getValueFromUser() 
+{
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;Enter an integer: &quot;</span>;
+    <span style="color: #2b91af">int</span> input{};
+    std::cin &gt;&gt; input;  
+ 
+    <span style="color: #0000ff">return</span> input;
+}
+ 
+<span style="color: #2b91af">void</span> printDouble()
+{
+    <span style="color: #2b91af">int</span> num{ getValueFromUser() };
+    std::cout &lt;&lt; num &lt;&lt; <span style="color: #a31515">&quot; doubled is: &quot;</span> &lt;&lt; num * 2 &lt;&lt; <span style="color: #a31515">&#39;\n&#39;</span>;
+}
+ 
+<span style="color: #2b91af">int</span> main()
+{
+    printDouble();
+ 
+    <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+        <p>Ta còn có thêm một cách nữa là dùng tham số, đối số của hàm.</p>
+        <h3 class="muc">Tham số và đối số của hàm</h3>
+        <p>Trong nhiều trường hợp, bạn cần đưa giá trị vào hàm để có thể làm việc với giá trị đó. Ví dụ bạn viết hàm cộng giá trị của hai số thì bạn phải đưa hai số đó vào hàm, nếu không thì sao nó biết cộng hai số nào? Bạn có thể làm điều đó thông qua tham số và đối số.</p>
+        <p>Tham số hàm là một biến được sử dụng trong hàm. Chúng được định nghĩa ngay trong dấu ngoặc đơn ‘()’ sau tên hàm. Nếu có nhiều tham số thì chúng cách nhau bởi dấu phẩy.</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #2b91af">void</span> doPrint()             <span style="color: #008000">// hàm không có tham số</span>
+{
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;In doPrint()&quot;</span> &lt;&lt; <span style="color: #a31515">&#39;\n&#39;</span>;
+}
+ 
+<span style="color: #2b91af">void</span> printValue(<span style="color: #2b91af">int</span> x)     <span style="color: #008000">// hàm có một tham số là biến x</span>
+{
+    std::cout &lt;&lt; x  &lt;&lt; <span style="color: #a31515">&#39;\n&#39;</span>;
+}
+ 
+<span style="color: #2b91af">int</span> add(<span style="color: #2b91af">int</span> x, <span style="color: #2b91af">int</span> y)       <span style="color: #008000">// hàm có hai tham số là biến x và y</span>
+{
+    <span style="color: #0000ff">return</span> x + y;
+}
+</pre></td></tr></table></div>
+
+        <p>Đối số chính là giá trị được đưa vào hàm khi gọi hàm. Ví dụ:</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3</pre></td><td><pre style="margin: 0; line-height: 125%">doPrint();         <span style="color: #008000">// không có đối số</span>
+printValue(6);     <span style="color: #008000">// 6 là đối số được đưa vào hàm</span>
+add(2, 3);         <span style="color: #008000">// 2 và 3 là các đối số được đưa vào hàm</span>
+</pre></td></tr></table></div>
+
+        <p class="luu-y">Lưu ý: Các tham số và đối số cách nhau bởi dấu phẩy.</p>
+        <h3 class="muc">Cách hoạt động của tham số và đối số</h3>
+        <p>Khi hàm được gọi, tất cả các tham số trong hàm được tạo ra. Sau đó các tham số copy giá trị của đối số tương ứng. Quá trình này được gọi là truyền giá trị (pass by value).</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+ 
+<span style="color: #2b91af">void</span> printValues(<span style="color: #2b91af">int</span> x, <span style="color: #2b91af">int</span> y)   <span style="color: #008000">// hàm này có hai tham số là x và y</span>
+{
+    std::cout &lt;&lt; x &lt;&lt; <span style="color: #a31515">&#39;\n&#39;</span>;
+    std::cout &lt;&lt; y &lt;&lt; <span style="color: #a31515">&#39;\n&#39;</span>;
+}
+ 
+<span style="color: #2b91af">int</span> main()
+{
+    printValues(6, 7);           <span style="color: #008000">// hàm được gọi và truyền đối số 6 và 7 vào hàm </span>
+ 
+    <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+        <p>Khi hàm printValue được gọi, biến x được tạo ra và gán giá trị 6, biến y được tạo ra và gán giá trị 7.</p>
+        <p>Kết quả:</p>
+        <div class="codeblock">
+            <pre><code>6
+7</code></pre>
+        </div>
+        <p class="luu-y">Lưu ý: Không được phép nhận tham số và đối số với số lượng khác nhau, chẳng hạn như hàm có 2 tham số, nhưng lại nhập 3 đối số vào. Đối số không nhất thiết là literal, nó có thể là một biểu thức bất kì miễn sao giá trị biểu thức đó có kiểu dữ liệu giống tham số tương ứng.</p>
+        <p>Ta sửa lại chương trình ban đầu sử dụng truyền giá trị như sau.</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+ 
+<span style="color: #2b91af">int</span> getValueFromUser()
+{
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;Enter an integer: &quot;</span>;
+    <span style="color: #2b91af">int</span> input{};
+    std::cin &gt;&gt; input;  
+ 
+    <span style="color: #0000ff">return</span> input;
+}
+ 
+<span style="color: #2b91af">void</span> printDouble(<span style="color: #2b91af">int</span> value)
+{
+    std::cout &lt;&lt; value &lt;&lt; <span style="color: #a31515">&quot; doubled is: &quot;</span> &lt;&lt; value * 2 &lt;&lt; <span style="color: #a31515">&#39;\n&#39;</span>;
+}
+ 
+<span style="color: #2b91af">int</span> main()
+{
+    <span style="color: #2b91af">int</span> num { getValueFromUser() };
+ 
+    printDouble(num);
+ 
+    <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+        <p>Đầu tiên, biến num sẽ được khởi tạo với giá trị người dùng nhập vào. Tiếp theo, hàm printDouble được gọi. Ta truyền giá trị của num vào hàm printDouble và giá trị đó được gán cho biến value. Cuối cùng, chương trình in giá trị gấp đôi value ra màn hình.</p>
+        <p>Nâng cấp hơn nữa, như mình đã nói ở trên. Đối số có thể là bất kì biểu thức nào, miễn sao hợp lệ. Do đó, ta có thể viết cách khác như sau:</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+ 
+<span style="color: #2b91af">int</span> getValueFromUser()
+{
+ 	std::cout &lt;&lt; <span style="color: #a31515">&quot;Enter an integer: &quot;</span>;
+  <span style="color: #2b91af">int</span> input{};
+  std::cin &gt;&gt; input;  
+ 
+  <span style="color: #0000ff">return</span> input;
+}
+ 
+<span style="color: #2b91af">void</span> printDouble(<span style="color: #2b91af">int</span> value)
+{
+  std::cout &lt;&lt; value &lt;&lt; <span style="color: #a31515">&quot; doubled is: &quot;</span> &lt;&lt; value * 2 &lt;&lt; <span style="color: #a31515">&#39;\n&#39;</span>;
+}
+ 
+<span style="color: #2b91af">int</span> main()
+{
+  printDouble(getValueFromUser());
+ 
+  <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+        <p>Ta có thể dùng giá trị trả về của hàm getValueFromUser hàm đối số cho hàm printDouble luôn.</p>
+        <h3 class="muc">Một số ví dụ khác</h3>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+ 
+<span style="color: #2b91af">int</span> add(<span style="color: #2b91af">int</span> x, <span style="color: #2b91af">int</span> y)
+{
+    <span style="color: #0000ff">return</span> x + y;
+}
+ 
+<span style="color: #2b91af">int</span> main()
+{
+    std::cout &lt;&lt; add(4, 5) &lt;&lt; <span style="color: #a31515">&#39;\n&#39;</span>;
+    <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+        <p>Output:</p>
+        <div class="codeblock">
+            <pre><code>9</code></pre>
+        </div>
+        <img src="../../../img/ParametersReturn.png" class="center">
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+ 
+<span style="color: #2b91af">int</span> add(<span style="color: #2b91af">int</span> x, <span style="color: #2b91af">int</span> y)
+{
+    <span style="color: #0000ff">return</span> x + y;
+}
+ 
+<span style="color: #2b91af">int</span> multiply(<span style="color: #2b91af">int</span> z, <span style="color: #2b91af">int</span> w)
+{
+    <span style="color: #0000ff">return</span> z * w;
+}
+ 
+<span style="color: #2b91af">int</span> main()
+{
+    std::cout &lt;&lt; add(4, 5) &lt;&lt; <span style="color: #a31515">&#39;\n&#39;</span>;               <span style="color: #008000">// x = 4, y = 5, x + y = 9</span>
+    std::cout &lt;&lt; add(1 + 2, 3 * 4) &lt;&lt; <span style="color: #a31515">&#39;\n&#39;</span>;       <span style="color: #008000">// x = 3, y = 12, x + y = 15</span>
+ 
+    <span style="color: #2b91af">int</span> a{ 5 };
+    std::cout &lt;&lt; add(a, a) &lt;&lt; <span style="color: #a31515">&#39;\n&#39;</span>;               <span style="color: #008000">// a + a = 5 + 5 =  10</span>
+ 
+    std::cout &lt;&lt; add(1, multiply(2, 3)) &lt;&lt; <span style="color: #a31515">&#39;\n&#39;</span>;  <span style="color: #008000">// 1 + (2 * 3) = 7</span>
+    std::cout &lt;&lt; add(1, add(2, 3)) &lt;&lt; <span style="color: #a31515">&#39;\n&#39;</span>;       <span style="color: #008000">// 1 + (2 + 3) = 6</span>
+ 
+    <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+        <p>Output:</p>
+        <div class="codeblock">
+            <pre><code>9
+15
+10
+7
+6</code></pre>
+        </div>
+        <h3 class="muc">Bài tập</h3>
+        <p>Bài 1: Chương trình dưới đây sai chỗ nào?</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+
+<span style="color: #2b91af">void</span> multiply(<span style="color: #2b91af">int</span> x, <span style="color: #2b91af">int</span> y)
+{
+    <span style="color: #0000ff">return</span> x * y;
+}
+ 
+<span style="color: #2b91af">int</span> main()
+{
+    std::cout &lt;&lt; multiply(4, 5) &lt;&lt; <span style="color: #a31515">&#39;\n&#39;</span>;
+    <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+        <div id="answer1" style="display: none;">
+            <p>Ở chương trình trên, multiply là hàm void, không trả về giá trị mà lại có return giá trị về nên máy sẽ báo lỗi. Ta sửa void thành int.</p>
+        </div>
+        <button class="showhidebtn" onclick="showHide('#answer1')">Show/Hide</button>
+        <p>Bài 2: Chương trình dưới đây sai hai chỗ nào?</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+
+<span style="color: #2b91af">int</span> multiply(<span style="color: #2b91af">int</span> x, <span style="color: #2b91af">int</span> y)
+{
+    <span style="color: #2b91af">int</span> product{ x * y };
+}
+ 
+<span style="color: #2b91af">int</span> main()
+{
+    std::cout &lt;&lt; multiply(4) &lt;&lt; <span style="color: #a31515">&#39;\n&#39;</span>;
+    <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+        <div id="answer2" style="display: none;">
+            <p>Điều thứ nhất: hàm multiply không có câu lệnh trả về. Điều thứ hai: hàm multiply có hai tham số nhưng lại chỉ truyền vào một đối số.</p>
+        </div>
+        <button class="showhidebtn" onclick="showHide('#answer2')">Show/Hide</button>
+        <p>Bài 3: Chương trình dưới đây in ra gì?</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+ 
+<span style="color: #2b91af">int</span> add(<span style="color: #2b91af">int</span> x, <span style="color: #2b91af">int</span> y, <span style="color: #2b91af">int</span> z)
+{
+    <span style="color: #0000ff">return</span> x + y + z;
+}
+ 
+<span style="color: #2b91af">int</span> multiply(<span style="color: #2b91af">int</span> x, <span style="color: #2b91af">int</span> y)
+{
+    <span style="color: #0000ff">return</span> x * y;
+}
+ 
+<span style="color: #2b91af">int</span> main()
+{
+    std::cout &lt;&lt; multiply(add(1, 2, 3), 4) &lt;&lt; <span style="color: #a31515">&#39;\n&#39;</span>;
+    <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+        <div class="codeblock" id="answer3" style="display: none;">
+            <pre><code>24</code></pre>
+        </div>
+        <button class="showhidebtn" onclick="showHide('#answer3')">Show/Hide</button>
+        <p>Bài 4: Viết một hàm (không cần viết cả chương trình), có một tham số kiểu int và trả về giá trị gấp đôi đối số được truyền vào.</p>
+        <div id="answer4" style="display: none;">
+            <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3
+4</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #2b91af">int</span> doubleNumber(<span style="color: #2b91af">int</span> x)
+{
+    <span style="color: #0000ff">return</span> 2 * x;
+}
+</pre></td></tr></table></div>
+
+        </div>
+        <button class="showhidebtn" onclick="showHide('#answer4')">Show/Hide</button>
+        <p>Bài 5: Viết một chương trình yêu cầu người dùng nhập một số nguyên, sau đó in ra kết quả nhân đôi của số đó. Sử dụng hàm bạn đã viết ở bài 4.</p>
+        <div id="answer5" style="display: none;">
+            <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+ 
+<span style="color: #2b91af">int</span> doubleNumber(<span style="color: #2b91af">int</span> x)
+{
+    <span style="color: #0000ff">return</span> 2 * x;
+}
+ 
+<span style="color: #2b91af">int</span> main()
+{
+    <span style="color: #2b91af">int</span> x{};
+    std::cin &gt;&gt; x;
+    std::cout &lt;&lt; doubleNumber(x) &lt;&lt; <span style="color: #a31515">&#39;\n&#39;</span>;
+    <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+        </div>
+        <button class="showhidebtn" onclick="showHide('#answer5')">Show/Hide</button>
+
+        <div>
+            <a href="#"><button class="btn">Bài tiếp theo</button></a>
+        </div>
+        <div>
+            <a href="../../index.html"><button class="btn">C++ Index</button></a>
+        </div>
+        <div>
+            <a href="../2-2-ham-tra-ve-gia-tri/index.html"><button class="btn">Bài trước</button></a>
+        </div>
+
+    </div>
+</body>
+
+</html>
