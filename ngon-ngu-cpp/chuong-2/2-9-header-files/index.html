@@ -21,8 +21,8 @@
     <div class="content">
 
         <h3 class="muc">Header và công dụng</h3>
-        <p>Một khi chương trình càng lớn, các hàm được tạo ra càng nhiều, các file tạo ra cũng nhiều, bạn phải khai báo trước các hàm mà mỗi file sử dụng. Tưởng tượng bạn cần dùng 10 hàm ở 2 file khác nhau, bạn sẽ phải khai báo 10 hàm đó ở mỗi file. Như thế sẽ rất mất thời gian và dài dòng. Vậy sẽ thế nào nếu chúng ta cho 10 hàm đó vào một file và khi muốn dùng thì chỉ cần “kết nối” file đó với file mà bạn đang làm việc?</p>
-        <p>Trong C++, các file có đuôi .cpp không phải là loại file duy nhất. Nó còn có thêm một loại file nữa là header file. Header file thường có đuôi là .h, hoặc .hpp, hoặc đôi khi không có đuôi (ví dụ iostream). Công dụng của loại file này thường là để lưu trữ các khai báo hàm, hoặc class (lập trình hướng đối tượng), hoặc lưu trữ các #define,… Để rồi sau này, nếu muốn dùng thứ gì trong đó thì bạn chỉ cần dùng chỉ thị tiền xử lý #include để “kết nối” header file và file đang làm việc.</p>
+        <p>Một khi chương trình càng lớn, các hàm được tạo ra càng nhiều, các file tạo ra cũng nhiều và bạn phải khai báo tất cả các hàm ở đầu chương trình. Tưởng tượng bạn cần dùng 10 hàm ở 2 file khác nhau, bạn sẽ phải khai báo 10 hàm đó ở mỗi file. Như thế sẽ rất mất thời gian và dài dòng. Vậy sẽ thế nào nếu chúng ta cho 10 hàm đó vào một file và khi muốn dùng thì chỉ cần “kết nối” file đó với file mà bạn đang làm việc?</p>
+        <p>Trong C++, các file có đuôi .cpp không phải là loại file duy nhất. Nó còn có thêm một loại file nữa là header file. Header file thường có đuôi là .h hoặc .hpp hoặc đôi khi không có đuôi (ví dụ iostream). Công dụng của loại file này thường là để lưu trữ các khai báo hàm, hoặc class (lập trình hướng đối tượng), hoặc lưu trữ các #define,… Để rồi sau này, nếu muốn dùng thứ gì trong đó thì bạn chỉ cần dùng chỉ thị tiền xử lý #include để “kết nối” header file và file cần dùng.</p>
         <h3 class="muc">Dùng header file thư viện tiêu chuẩn</h3>
         <p>Xét chương trình sau:</p>
         <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
@@ -93,7 +93,7 @@
 <span style="color: #2b91af">int</span> add(<span style="color: #2b91af">int</span> x, <span style="color: #2b91af">int</span> y); <span style="color: #008000">// khai báo hàm prototype</span>
 </pre></td></tr></table></div>
 
-        <p>Để sử dụng header file trên, ta dùng chỉ thị tiền xử lý #include, nhưng dùng dấu nháy kép (" ") thay vì dùng dấu lớn bé (< >) như iostream.</p>
+        <p>Để sử dụng header file trên, ta dùng chỉ thị tiền xử lý #include, nhưng dùng dấu nháy kép (" ") thay vì dùng dấu ngoặc nhọn (< >) như iostream.</p>
         <p>main.cpp</p>
         <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
  2
@@ -134,12 +134,44 @@
         <p class="luu-y">Lưu ý: Bạn cũng phải <i>#include "add.h"</i> trong file add.cpp mới có thể dùng được header file.</p>
         <h3 class="muc">Dấu ngoặc nhọn và dấu nháy kép</h3>
         <p>Chắc hẳn bạn sẽ tò mò rằng vì sao iostream thì dùng < >, còn add.h thì dùng " ". Câu trả lời là dấu ngoặc nhọn cho trình biên dịch biết ta đang include một header file đã có sẵn trong hệ thống hay nói cách khác là thư viện chuẩn của C++ và nó sẽ tìm header file đó trong hệ thống. Còn đối với dấu nháy kép có nghĩa là ta include một header file tự tạo, trình biên dịch sẽ tìm header file đó trong project hay nói cách khác là source code chương trình. Tuy nhiên, giả sử bạn dùng dấu nháy kép mà trình biên dịch không tìm thấy header file đó trong source code thì nó sẽ tìm trong hệ thống. Điều này có nghĩa là bạn hoàn toàn có thể viết <i>#include "iostream"</i>, chương trình vẫn chạy bình thường. Thế giả sử bạn muốn viết <em>#include &lt;add.h&gt;</em> thì sao? Bạn hoàn toàn có thể dùng dấu ngoặc nhọn để include header file tự tạo, không phải của hệ thống. Tuy nhiên, trước đó bạn phải chỉnh sửa vài thứ trong setting IDE của bạn. Có thể trong tương lai mình sẽ hướng dẫn làm điều đó, nhưng hiện tại mình không khuyến khích bạn làm điều này. Đó là vì hiện tại ta mới làm các chương trình nhỏ, không đáng để làm vậy; thêm một điều nữa là có thể nó chạy tốt trên máy bạn, nhưng khi bạn chia sẻ source code cho người khác thì sẽ có lỗi vì setting IDE khác nhau.</p>
-        <h3 class="muc">Vì sao iostream không có đuôi .h hay .hpp?</h3>
-        <p>Thêm một điều gây tò mò là vì sao iostream (hay thậm chí tất cả header file trong thư viện tiêu chuẩn) không có đuôi .h hoặc .hpp? Câu trả lời là vì iostream.h là header file khác iostream.</p>
-        <p>Khi C++ mới được tạo ra, tất cả header file đều có đuôi .h và mọi thứ dường như đã rất ổn. cout và cin (không có std::) chính là nằm trong iostream.h. Thế nhưng rồi họ nhận thấy rằng rất có thể người dùng sẽ vô tình đặt tên hàm và đối tượng trùng với các tên trong các header file của họ. Thế là họ tạo ra namespace std và họ quyết định chuyển toàn bộ hàm và đối tượng của họ vào namespace đó. Nhưng lại xuất hiện thêm một vấn đề là nếu họ làm như vậy, các chương trình cũ của họ sẽ không thể chạy được nữa vì các chương trình đó không có namespace std. Chính vì vậy, họ vẫn giữ lại các header file có đuôi .h để các chương trình cũ vẫn chạy được. Họ tạo ra một bộ header file mới có tên giống tên header file cũ nhưng bỏ đi .h và những chương trình sau này sẽ dùng chúng thay vì header file có đuôi .h.</p>
+        <h3 class="muc">Vì sao iostream không có đuôi .h?</h3>
+        <p>Thêm một điều gây tò mò là vì sao iostream (hay thậm chí tất cả header file trong thư viện tiêu chuẩn) không có đuôi .h? Câu trả lời là vì iostream.h là một header file khác iostream.</p>
+        <p>Khi C++ mới được tạo ra, tất cả header file đều có đuôi .h và mọi thứ dường như đã rất ổn. cout và cin (không có std::) chính là nằm trong iostream.h. Thế nhưng rồi họ nhận thấy rằng rất có thể người dùng sẽ vô tình đặt tên hàm và đối tượng trùng với các tên trong các header file của họ. Thế là họ tạo ra namespace std và họ quyết định chuyển toàn bộ hàm và đối tượng của họ vào namespace đó. Nhưng lại xuất hiện thêm một vấn đề là nếu họ làm như vậy, các chương trình cũ của họ sẽ không thể chạy được nữa vì các chương trình đó không có namespace std. Chính vì vậy, họ vẫn giữ lại các header file có đuôi .h để các chương trình cũ vẫn chạy được. Họ tạo ra một bộ header file mới có tên giống tên header file cũ nhưng bỏ đi .h và những chương trình sau này sẽ dùng chúng thay vì header file có đuôi .h. Đôi khi bạn tìm kiếm trên mạng sẽ thấy có vài chương trình dùng iostream.h, đó là những chương trình cũ.</p>
+        <h3 class="muc">Header có thể include header khác</h3>
+        Bạn có thể include một hay nhiều header khác nhau trong một header file, và những file .cpp nào include header file đó sẽ được "hưởng ké" các header file kia. Ví dụ:
+        <p>print.h</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+
+<span style="color: #2b91af">void</span> print();
+</pre></td></tr></table></div>
+
+        <p>print.cpp:</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3
+4
+5</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &quot;print.h&quot;</span>
+<span style="color: #2b91af">void</span> print()
+{
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;Hello world!&quot;</span>;
+}
+</pre></td></tr></table></div>
+
+        <p>Ở cặp file trên, ta có thể dùng std::cout trong file print.cpp mặc dù không include iostream trong file print.cpp. Thay vào đó, ta include iostream trong file print.h, và include print.h trong file print.cpp. Như vậy, print.cpp sẽ xem như là đã include iostream rồi và có thể dùng bất kì thứ gì trong iostream. Sau này bạn cũng nên làm như thế này, hãy include các header file mà file .cpp cần vào một header file, sau đó include nó vào file .cpp cần dùng đến.</p>
+        <h3 class="muc">Những điều cần ghi nhớ</h3>
+        <ul>
+            <li>Luôn sử dụng header guard (sẽ được học ở bài tiếp theo).</li>
+            <li>Không được định nghĩa hàm, biến ở trong header file.</li>
+            <li>Đặt tên header file giống tên của file .cpp chứa định nghĩa của các khai báo trong header file (ví dụ add.h và add.cpp, print.h và print.cpp).</li>
+            <li>Nên đặt các hàm, biến có chức năng tương tự nhau vào cùng một header file và không phụ thuộc vào header file khác nếu có thể (ví dụ các hàm có chức năng A thì trong A.h, các hàm có chức năng B thì trong B.h, A có thể chạy mà không cần B và ngược lại).</li>
+            <li>Chỉ include header file cần thiết, đừng có kiểu "thích thì include, không thích thì include".</li>
+            <li>Không được include file .cpp.</li>
+        </ul>
 
         <div>
-            <a href="#"><button class="btn">Bài tiếp theo</button></a>
+            <a href="../2-10-header-guards/index.html"><button class="btn">Bài tiếp theo</button></a>
         </div>
         <div>
             <a href="../../index.html"><button class="btn">C++ Index</button></a>
