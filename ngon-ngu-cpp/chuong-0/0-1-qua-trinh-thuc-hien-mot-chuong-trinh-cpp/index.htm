@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../../../css/reset.css">
+    <title>0.1 Quá trình thực hiện một chương trình C++</title>
+    <link rel="stylesheet" href="../../../css/substyle.css">
+    <link rel="shortcut icon" href="../../../img/circle-logo.ico">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="../../../js/showhide.js"></script>
+</head>
+
+<body>
+    <div class="title">
+        <h1>0.1 Quá trình thực hiện một chương trình C++</h1>
+    </div>
+
+    <div class="content">
+
+        <p>Trước khi đi vào cách viết một chương trình C++, ta hãy tìm hiểu qua trình tự để tạo và chạy một chương trình C++. Dưới đây là sơ đồ các bước:</p>
+        <img src="../../../img/cpp-dev.png" alt="Sơ đồ thực hiện một chương trình C++" class="center">
+        <h3 class="muc">Bước 1: Xác định ý tưởng và vấn đề cần giải quyết</h3>
+        <p>Đây là bước "what", đưa ra ý tưởng ban đầu và tìm ra vấn đề bạn định giải quyết. Đưa ra ý tưởng ban đầu cho những gì bạn muốn lập trình có thể là bước dễ nhất hoặc khó nhất. Nhưng về mặt khái niệm, nó là đơn giản nhất. Tất cả những gì bạn cần là một ý tưởng được xác định rõ và bạn đã sẵn sàng cho bước tiếp theo.</p>
+        <p>Một số ví dụ:</p>
+        <ul>
+            <li>"Tôi muốn viết một chương trình nhận nhiều số và tính giá trị trung bình của các số đó."</li>
+            <li>"Tôi muốn tạo ra game flappy bird."</li>
+            <li>"Tôi muốn viết một chương trình nhận dữ liệu giá cổ phiếu, phân tích nó và dự đoán giá cổ phiếu sẽ tăng hay giảm."</li>
+        </ul>
+        <p>Chúng ta chỉ bị giới hạn bởi ý tưởng mà thôi. Có ý tưởng rồi là bạn đã đi được nửa chặn đường rồi.</p>
+        <h3 class="muc">Bước 2: Xác định giải pháp</h3>
+        <p>Đây là bước "how", bạn sẽ phải tìm ra hướng giải quyết vấn đề đã được xác định ở bước 1. Đây là bước bị bỏ qua nhiều nhất. Các lập trình viên sẽ xác định vấn đề rồi ngồi xuống code luôn, được đến đâu hay đến đó. Cách làm này tuy sẽ đẩy nhanh quá trình hoàn thành chương trình. Tuy nhiên điều này sẽ dẫn đến chương trình bị "tù", khó thay đổi sau này và sẽ có rất nhiều lỗi (bug).</p>
+        <p>Nghiên cứu cho thấy 20% thời gian của một lập trình viên khi làm một chương trình là viết chương trình. 80% còn lại là sửa lỗi (debug) và nâng cấp hiệu suất chương trình.</p>
+        <p>Do đó, rất đáng để bạn bỏ ra chút thời gian trước khi bắt đầu viết code để suy nghĩ cách tốt nhất để giải quyết vấn đề. Nó sẽ giúp bạn tiết kiệm thời gian đáng kể cho việc debug đấy.</p>
+        <h3 class="muc">Bước 3: Viết chương trình</h3>
+        <p>Để viết một chương trình, bạn cần hai thứ: một là kiến thức lập trình - thứ mà bạn sẽ học tại đây, hai là một công cụ editor. Bạn có thể viết một chương trình trên hầu hết các editor, nó có thể là ứng dụng notepad trên máy window, hoặc thậm chí là trên giấy. Tuy nhiên, bạn nên sử dụng một editor được thiết kế chuyên dùng cho viết code. Nếu bạn chưa có editor nào trên máy thì đừng lo, mình sẽ hướng dẫn bạn tải và cài đặt trên máy tính ở bài viết sau này.</p>
+        <p>Một editor chuyên dùng cho viết code sẽ có một số tính năng giúp việc viết code dễ dàng hơn như sau:</p>
+        <p>1) Đánh số thứ tự các dòng code. Tính năng này rất có lợi khi bạn debug code vì máy sẽ báo cho bạn viết bạn bị lỗi ở dòng nào, công việc của bạn chỉ cần tìm đến dòng đó kiểm tra là xong.</p>
+        <p>2) Highlight code. Tính năng thay đổi màu của các từ hoặc kí tự trong code nhằm giúp dễ phân biệt các đối tượng khác nhau.</p>
+        <p>3) Font chữ rõ ràng. Các font không dành cho lập trình sẽ gây khó đọc và phân biệt cho người dùng. Ví dụ: 0 và O hoặc giữa 1, I (i viết in hoa) và l (L viết thường),...</p>
+        <p>Các chương trình C++ thông thường sẽ dùng file có cấu trúc name.cpp. Trong đó, name là tên file, bạn có thể đặt tên bất kì mà bạn muốn (không nên đặt tên có dấu tiếng Việt, dấu cách hoặc kí tự đặc biệt). Phần đuôi .cpp cho biết đó là file source code của C++, một số người có thể sẽ dùng .cc thay vì .cpp, nhưng mình khuyến khích bạn dùng .cpp.</p>
+        <p>Các bạn lưu ý rằng một chương trình C++ có thể chỉ bao gồm một file .cpp nhưng cũng có thể bao gồm rất nhiều, thậm chí hàng trăm file .cpp. Ngoài ra, C++ còn một loại file nữa gọi là header file, ta sẽ nói rõ ở bài <a href="../../chuong-2/2-9-header-files/index.html">2.9 Header files</a>.</p>
+        <p>Khi đã viết xong chương trình, bước tiếp theo là chuyển nó thành một thứ có thể chạy được trên máy tính, rồi sau đó xem nó có chạy thành công hay không. Ta sẽ đi sang các bước đó ở bài tiếp theo.</p>
+
+        <div>
+            <a href="#"><button class="btn">Bài tiếp theo</button></a>
+        </div>
+        <div>
+            <a href="../../index.html"><button class="btn">C++ Index</button></a>
+        </div>
+        <div>
+            <a href="#"><button class="btn">Bài trước</button></a>
+        </div>
+
+    </div>
+</body>
+
+</html>
