@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../../../css/reset.css">
+    <title>0.2 Giới thiệu về compiler, linker và library</title>
+    <link rel="stylesheet" href="../../../css/substyle.css">
+    <link rel="shortcut icon" href="../../../img/circle-logo.ico">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="../../../js/showhide.js"></script>
+</head>
+
+<body>
+    <div class="title">
+        <h1>0.2 Giới thiệu về compiler, linker và library</h1>
+    </div>
+
+    <div class="content">
+
+        <p>Tiếp tục các bước thực hiện một chương trình ở bài trước.</p>
+        <img src="../../../img/cpp-dev.png" alt="Sơ đồ thực hiện một chương trình C++" class="center">
+        <h3 class="muc">Bước 4: Biên dịch source code</h3>
+        <p>Để biên dịch một chương trình C++, ta dùng trình biên dịch (compiler) của C++. Trình biên dịch C++ đi qua lần lượt các file source code (.cpp) và thực hiện hai tác vụ quan trọng:</p>
+        <p>Đầu tiên, nó kiểm tra code của bạn có theo đúng các quy tắc cú pháp của C++ hay không. Quá trình biên dịch sẽ bị hủy bỏ nếu có lỗi và sẽ không tiếp tục nếu lỗi chưa được sửa.</p>
+        <p>Sau đó, compiler dịch source code của bạn thành một file chứa <a href="https://vi.wikipedia.org/wiki/Ngôn_ngữ_máy" target="_blank">ngôn ngữ máy tính</a> gọi là object file. Object file có tên theo cấu trúc name.o hoặc name.obj. Trong đó, name là tên của file .cpp tương ứng được biên dịch. Nếu chương trình của bạn có 3 file .cpp thì trình biên dịch sẽ tạo ra 3 object file tương ứng. Ví dụ: Fraction.cpp-Fraction.o, Calculator.cpp-Calculator.o, Math.cpp-Math.o</p>
+        <h3 class="muc">Bước 5: Liên kết các object file và các library</h3>
+        <p>Sau khi trình biên dịch hoàn thành hai tác vụ kể trên, một công cụ khác có tên là trình liên kết (linker) bắt đầu làm việc. Linker sẽ làm ba công việc:</p>
+        <p>Thứ nhất, nó lấy tất cả các object file được tạo ra từ trình biên dịch kết hợp lại với nhau tạo thành một file thực thi (executable file). Executable file là những file có thể thực thi trên máy tính, có thể làm một số công việc nhất định. Có rất nhiều loại executable file, phổ biến nhất chính là file có đuôi .exe trên máy Window. Các hệ điều hành khác thì mình không rành lắm. Hình như MacOS là .app thì phải.</p>
+        <p>Thứ hai, ngoài khả năng liên kết các object file, linker còn có thể liên kết các file thư viện (library file). Thư viện là một tập hợp các mã được biên dịch sẵn và được "đóng gói" thành một file để sử dụng lại trong các chương trình khác.</p>
+        <p>C++ bao gồm một thư viện rộng lớn được gọi là <i>C++ Standard Library</i>, nó cung cấp một lượng lớn các chức năng mà bạn sẽ dùng trong chương trình của bạn. Ngoài thư viện tiêu chuẩn của C++, ta còn có thể tự tạo ra thư viện cho riêng mình, hoặc tải thư viện của người khác về dùng (3rd party library).</p>
+        <p>Thứ ba, linker kiểm tra lại chương trình để đảm bảo các file phụ thuộc lẫn nhau có thể liên kết với nhau được. File phụ thuộc lẫn nhau có nghĩa là một thứ được tạo ra ở file này và bạn dùng nó ở file khác. Linker sẽ liên kết hai thứ đó với nhau. Nếu liên kết thất bại, bạn sẽ gặp lỗi linker và quá trình liên kết bị hủy bỏ.</p>
+        <img src="../../../img/linker.png" alt="Linker" class="center">
+        <p>Sau khi linker liên kết các object file và library file lại với nhau, ta sẽ có một executable file hoàn toàn có thể chạy được trên máy tính.</p>
+        <h3 class="muc">Bước 6, 7: Test và debug</h3>
+        <p>Đây là phần vui và khó chịu nhất khi tạo một chương trình =)) Bạn sẽ cho executable file của bạn chạy và xem nó có hoạt động như mong đợi không.</p>
+        <p>Nếu nó chạy thành công thì còn gì vui bằng. Còn nếu nó chạy nhưng lại không như mong muốn thì ta phải debug để hiểu vì sao nó chạy như vậy và fix bug. Như mình nói trước đây, debug chiếm phần lớn thời gian khi lập trình một chương trình nên nó là giai đoạn khổ sở nhất :(</p>
+        
+        <div>
+            <a href="../0-3-tai-integrated-development-environment-ide/index.html"><button class="btn">Bài tiếp theo</button></a>
+        </div>
+        <div>
+            <a href="../../index.html"><button class="btn">C++ Index</button></a>
+        </div>
+        <div>
+            <a href="../0-1-qua-trinh-thuc-hien-mot-chuong-trinh-cpp/index.html"><button class="btn">Bài trước</button></a>
+        </div>
+
+    </div>
+</body>
+
+</html>

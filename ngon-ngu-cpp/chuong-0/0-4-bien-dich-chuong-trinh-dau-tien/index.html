@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../../../css/reset.css">
+    <title>0.4 Biên dịch chương trình đầu tiên</title>
+    <link rel="stylesheet" href="../../../css/substyle.css">
+    <link rel="shortcut icon" href="../../../img/circle-logo.ico">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="../../../js/showhide.js"></script>
+</head>
+
+<body>
+    <div class="title">
+        <h1>0.4 Biên dịch chương trình đầu tiên</h1>
+    </div>
+
+    <div class="content">
+
+        <p>Trước khi chúng ta viết chương trình đầu tiên, chúng ta cần biết cách tạo ra chương trình mới bằng IDE. Trong bài học này, chúng ta sẽ học cách làm điều đó cùng với cách biên dịch và thực thi chương trình.</p>
+        <h3 class="muc">Project</h3>
+        <p>Để viết một chương trình trên IDE, việc đầu tiên là tạo một project mới. Project là nơi mà bạn chứa file source code (.cpp), hình ảnh, âm thanh, video, file dữ liệu,... Khi bạn biên dịch một chương trình, tất cả file .cpp trong project sẽ được biên dịch và liên kết với nhau. Project cũng sẽ lưu các setting của IDE, compiler, linker của mỗi chương trình. Do đó, khi bạn mở lại project sẽ không cần phải setting lại. Một project chỉ cho một chương trình, nếu bạn muốn viết một chương trình mới thì bạn phải tạo một project mới.</p>
+        <h3 class="muc">Console project</h3>
+        <p>Trước khi bạn tạo một project, bạn sẽ phải lựa chọn loại project nào. Tất cả các project trong chuỗi hướng dẫn C++ này đều là console project. Console project là loại project mà chúng ta sẽ tương tác với máy tính thông qua màn hình console của hệ thống. Ví dụ trên Window chính là Command Window.</p>
+        <p>Dưới đây là hình ảnh cửa sổ console của Window:</p>
+        <img src="../../../img/cmd.png" alt="Window Console" class="center" style="width: 80%; height: auto;">
+        <p>Mặc định ứng dụng console sẽ không có graphical user interface (GUI), tức là nó chỉ có thể in text ra console, nhận input từ người dùng thông qua bàn phím. Bạn không thể chạy các chương trình về đồ họa trên console. Điều này rất tốt cho việc mới bắt đầu với C++, tất cả đều tối giản, không phức tạp.</p>
+        <h3 class="muc">Workspace/solution</h3>
+        <p>Khi bạn tạo một project, một số IDE sẽ tự động thêm project đó vào workspace hay solution. Workspace hay solution là nơi chứa các project liên quan với nhau. Ví dụ bạn tạo ra một game có hai chế độ là online và offline. Lúc này bạn sẽ tạo ra hai project khác nhau, nhưng suy cho cùng thì chúng cùng là một game nên có thể cho chúng vào một workspace.</p>
+        <p>Tuy rằng một workspace có thể chứa nhiều project nhưng hiện tại vì mới học C++, bạn nên cho mỗi workspace một project thôi.</p>
+        <h3 class="muc">Viết chương trình đầu tiên</h3>
+        <p>Thông thường, chương trình đầu tiên của hầu hết lập trình viên khi học một ngôn ngữ mới là chương trình mang tên Hello World. Đối với C++, nó trông như thế này:</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3
+4
+5
+6
+7</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+ 
+<span style="color: #2b91af">int</span> main()
+{
+	std::cout &lt;&lt; <span style="color: #a31515">&quot;Hello world!&quot;</span>;
+	<span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+        <h3 class="muc">Tạo một project trên Visual Studio 2019</h3>
+        <p>Khi bạn khởi động Visual Studio 2019, nó sẽ trông như sau:</p>
+        <img src="../../../img/vs2019_1.png" class="center" style="width: 80%; height: auto;">
+        <p>Để tạo project mới các bạn chọn <i>Create a new project</i>.</p>
+        <p>Sau đó sẽ xuất hiện bảng sau:</p>
+        <img src="../../../img/vs2019_2.png" class="center" style="width: 80%; height: auto;">
+        <p>Các bạn chọn <i>Empty Project</i> rồi click <i>Next</i>.</p>
+        <p>Tiếp theo, các bạn sẽ thấy như hình dưới đây:</p>
+        <img src="../../../img/vs2019_3.png" class="center" style="width: 80%; height: auto;">
+        <p>Các bạn sửa tên project lại thành HelloWorld. Chọn lại đường dẫn chứa project mà bạn muốn lưu vào. Và mình khuyến khích bạn tích vào ô <i>Place solution and project in the same directory</i>. Sau đó click <i>Create</i> để tiếp tục.</p>
+        <p>Tiếp theo, các bạn làm như video dưới đây để tạo và chạy file .cpp. Phần code các bạn có thể gõ theo như trong video hoặc copy phần code ở trên nhé.</p>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/AinAwvl7jbA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="center"></iframe>
+        <p>Vậy là bạn đã biết cách tạo và chạy một chương trình trên Visual Studio 2019 rồi. Đừng lo nếu bạn không hiểu mấy dòng code đó là gì. Các bạn sẽ được học chi tiết về nó ở chương tiếp theo.</p>
+        
+        <div>
+            <a href="#"><button class="btn">Bài tiếp theo</button></a>
+        </div>
+        <div>
+            <a href="../../index.html"><button class="btn">C++ Index</button></a>
+        </div>
+        <div>
+            <a href="../0-3-tai-integrated-development-environment-ide/index.html"><button class="btn">Bài trước</button></a>
+        </div>
+
+    </div>
+</body>
+
+</html>

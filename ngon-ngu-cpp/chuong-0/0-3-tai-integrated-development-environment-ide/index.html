@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../../../css/reset.css">
+    <title>0.3 Tải Integrated Development Environment (IDE)</title>
+    <link rel="stylesheet" href="../../../css/substyle.css">
+    <link rel="shortcut icon" href="../../../img/circle-logo.ico">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="../../../js/showhide.js"></script>
+</head>
+
+<body>
+    <div class="title">
+        <h1>0.3 Tải Integrated Development Environment (IDE)</h1>
+    </div>
+
+    <div class="content">
+
+        <p>Integrated Development Environment (IDE) là một phần mềm chuyên dụng phục vụ cho công việc viết, chỉnh sửa code, biên dịch, liên kết và debug chương trình.</p>
+        <p>Một IDE đơn giản sẽ có tính năng đánh số dòng và highlight code. Phần lớn (không phải tất cả) IDE đều có một C++ compiler và một linker, tức là bạn có thể biến đổi source code thành một executable file bằng IDE. IDE cũng hỗ trợ các công cụ để debug code. Một IDE còn có các tính năng hỗ trợ viết code khác như auto format, gợi ý từ, tạo form sẵn,...</p>
+        <p>Ô kê, bắt đầu tải nào. Thế nhưng tải cái nào bây giờ? Hiện này có rất nhiều IDE hỗ trợ C++, có phí hoặc không có phí. Tất nhiên ta sẽ tải cái không có phí rồi nhỉ =)) Và tại đây, mình sẽ hướng dẫn các bạn tải và cài đặt Visual Studio 2019 Community cho Window. Các hệ điều hành khác mình không rành nên bạn thông cảm. Đối với MacOS các bạn có thể tải <a href="https://developer.apple.com/xcode/" target="_blank">Xcode</a> hoặc <a href="https://www.eclipse.org" target="_blank">Eclipse</a>. Eclipse thì không mặc định hỗ trợ C++ nên bạn phải tải thêm option dành cho C++. Đối với Linux, các bạn có thể tải <a href="https://wiki.codeblocks.org/downloads/26" target="_blank">Code::Blocks</a>. Có một phần mềm khác có thể chạy trên cả 3 hệ điều hành trên là <a href="https://code.visualstudio.com/download">Visual Studio Code</a>. Tuy nhiên, mình sẽ không khuyến khích các bạn dùng nó nếu các bạn mới học lập trình. Thứ nhất nó không phải IDE đúng nghĩa mà là text editor, do đó nó thiếu vài công cụ cần thiết cho việc phát triển chương trình. Thứ hai, việc cài đặt và sử dụng nó khá rắc rối nếu bạn là newbie. Có thể trong tương lại sẽ có bài viết hướng dẫn cài đặt và dùng nó, nhưng hiện tại mình không khuyến khích.</p>
+        <p>Nói nhiều nãy giờ rồi, ta bắt đầu vào việc chính. Đầu tiên, bạn cần tải Visual Studio <a href="https://visualstudio.microsoft.com/downloads/" target="_blank">tại đây</a>. Các bạn click vào nút Free download ở phần Community, đừng click mấy cái khác nhé, mấy cái đó có phí đấy. Sau khi click bạn đợi vài giây nó sẽ tự động tải về một file đuôi .exe.</p>
+        <p>Sau khi tải xong các bạn click hai lần vào file đó để cài đặt. Nếu nó hiện một cái bảng thì nhấn Continue và đợi nó download các tập tin về. Sau khi nó tải và cài đặt xong thì sẽ xuất hiện bảng sau, các bạn click vào ô <i>Desktop development with C++</i>. Ở bên phải sẽ xuất hiện một danh sách, mặc định nó sẽ tích ô giúp bạn. Tuy nhiên, bạn cần đảm bảo rằng ô <i>Windows 10 SDK</i> phải được chọn nhé. <i>Windows 10 SDK</i> có thể chạy trên các phiên bản Window cũ hơn nên nếu bạn dùng Window 7 hay 8 đều không sao cả.</p>
+        <img src="../../../img/vs2019setup.png" alt="Visual Studio 2019 Setup" class="center" style="width: 80%; height: auto;">
+        <p>Tiếp theo bạn click <i>Install</i> và ngồi uống vài tách cà phê chờ nó tải bộ C++ về, khá nặng đấy.</p>
+        <p>Sau khi xong, nó sẽ hiện bảng cài đặt thành công, bạn nhấn vào nút <i>Launch</i>. Hoặc nếu bạn lỡ tắt cửa sổ thì bạn vào công cụ tìm kiếm của Window gõ visual studio 2019 để chạy ứng dụng.</p>
+        <img src="../../../img/vs2019run.png" alt="Visual Studio 2019 Run" class="center" style="width: 80%; height: auto;">
+        <p>Nếu bạn lần đầu vào Visual Studio thì nó sẽ hiện bảng đăng nhập, bạn thích thì có thể tạo tài khoản rồi đăng nhập vào, còn không thì có thể chọn <i>Not now, maybe later</i>.</p>
+        <img src="../../../img/vs2019signin.png" alt="Visual Studio 2019 Sign in" class="center" style="width: 80%; height: auto;">
+        <p>Tiếp theo nó hiện bảng chọn theme, mình khuyến khích chọn dark theme vì đỡ đau mắt và ... nhìn nó ngầu 😎 </p>
+        <img src="../../../img/vs2019theme.png" alt="Visual Studio 2019 Theme" class="center" style="width: 80%; height: auto;">
+        <p>Nhấn <i>Start Visual Studio</i> và bạn đã có thể viết chương trình C++.</p>
+        
+        <div>
+            <a href="../0-4-bien-dich-chuong-trinh-dau-tien/index.html"><button class="btn">Bài tiếp theo</button></a>
+        </div>
+        <div>
+            <a href="../../index.html"><button class="btn">C++ Index</button></a>
+        </div>
+        <div>
+            <a href="../0-2-gioi-thieu-ve-compiler-linker-va-library/index.html"><button class="btn">Bài trước</button></a>
+        </div>
+
+    </div>
+</body>
+
+</html>
