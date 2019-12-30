@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../../../css/reset.css">
+    <title>0.7 Cấu hình lại compiler: Warning và error</title>
+    <link rel="stylesheet" href="../../../css/substyle.css">
+    <link rel="shortcut icon" href="../../../img/circle-logo.ico">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="../../../js/showhide.js"></script>
+</head>
+
+<body>
+    <div class="title">
+        <h1>0.7 Cấu hình lại compiler: Warning và error</h1>
+    </div>
+
+    <div class="content">
+
+        <p>Khi bạn viết một chương trình, compiler sẽ đảm bảo bạn tuân thủ các quy tắc của C++ tiêu chuẩn (trong trường hợp bạn đã tắt compiler extension). Nếu bạn vi phạm các quy tắc đó, compiler sẽ cho ra error bao gồm các thông tin về error như vị trí bị lỗi và loại lỗi.</p>
+        <p>Trong một số trường hợp khác, compiler phát hiện ra phần code giống như error nhưng lại không chắc. Những trường hợp đó được gọi là warning. Warning không làm ảnh hưởng đến việc biên dịch nhưng compiler vẫn sẽ thông báo cho bạn với ý như muốn nói "Mr Stark, I don't feel so good".</p>
+        <p class="loi-khuyen">Lời khuyên: Nếu thấy warning, bạn nên tìm cách để sửa nó cho dù chương trình bạn chạy bình thường, hãy xem nó như là error.</p>
+        <p>Mặc định, compiler của bạn sẽ chỉ thông báo những warning thường gặp, có một số bị bỏ qua. Và trong Visual Studio, bạn có thể tăng giảm mức độ warning theo ý muốn. Mình khuyên bạn nên để mức cao đê nó báo những warning dù nhỏ nhất, nó rất tốt cho người mới học lập trình.</p>
+        <h3 class="muc">Cách tăng warning level</h3>
+        <p>Các bạn vào lại <i>Properties</i> của project như đã làm ở bài trước. Nhưng lần này bạn chọn mục <i>General</i> trong <i>C/C++</i>; ở mục <i>Warning level</i>, các bạn chọn <i>Level4 (/W4)</i>.</p>
+        <img src="../../../img/vs2019_7.png" class="center" style="width: 80%; height: auto;">
+        <p>Note: Tuyệt đối không chọn <i>EnableAllWarnings (/Wall)</i>, tin mình đi, bạn chắc chắn sẽ không muốn chọn nó đâu 🙂. Phần <i>Treate Warings as Errors</i> các bạn phải để <i>No (/WX-)</i> nhé.</p>
+        
+        <div>
+            <a href="#"><button class="btn">Bài tiếp theo</button></a>
+        </div>
+        <div>
+            <a href="../../index.html"><button class="btn">C++ Index</button></a>
+        </div>
+        <div>
+            <a href="../0-6-cau-hinh-lai-compiler-compiler-extension/index.html"><button class="btn">Bài trước</button></a>
+        </div>
+
+    </div>
+</body>
+
+</html>

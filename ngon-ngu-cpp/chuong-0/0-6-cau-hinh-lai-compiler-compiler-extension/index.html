@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../../../css/reset.css">
+    <title>0.6 Cấu hình lại compiler: Compiler extension</title>
+    <link rel="stylesheet" href="../../../css/substyle.css">
+    <link rel="shortcut icon" href="../../../img/circle-logo.ico">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="../../../js/showhide.js"></script>
+</head>
+
+<body>
+    <div class="title">
+        <h1>0.6 Cấu hình lại compiler: Compiler extension</h1>
+    </div>
+
+    <div class="content">
+
+        <p>C++ tiêu chuẩn xác định các quy tắc về cách các chương trình nên hoạt động trong những trường hợp cụ thể. Và trong hầu hết các trường hợp, compiler sẽ tuân theo quy tắc đó. Tuy nhiên, cũng có nhiều compiler có vài sự thay đổi riêng (không nằm trong C++ tiêu chuẩn) nhằm tăng khả năng tương thích với các phiên bản khác nhau của ngôn ngữ. Các hành vi dành riêng cho compiler như thế này được gọi là compiler extension.</p>
+        <p>Viết một chương trình có sử dụng compiler extension sẽ khiến chương trình của bạn không tương thích với C++ tiêu chuẩn. Điều này dẫn đến chương trình của bạn có thể không chạy được trên compiler khác, hoặc nếu chạy được thì cũng sẽ hoạt động sai mong muốn.</p>
+        <p>Không may là compiler extension sẽ được bật mặc định. Điều này sẽ rất có hại cho người mới học lập trình vì compiler extension vi phạm quy tắc của C++ tiêu chuẩn và họ sẽ nghĩ sai rằng vài hành vi thuộc về C++ tiêu chuẩn nhưng thực chất không phải. Chính vì điều này, mình khuyến khích các bạn tắt nó trước khi viết chương trình.</p>
+        <h3 class="muc">Cách tắt compiler extension</h3>
+        <p>Đối với Visual Studio, bạn click mục <i>Project</i> trên thanh công cụ phía trên, chọn phần <i>Properties</i> ở phía dưới cùng (trước Properties có tên project hiện tại của bạn)</p>
+        <img src="../../../img/vs2019_5.png" class="center" style="width: 80%; height: auto;">
+        <p>Nó sẽ xuất hiện một cái bảng. Các bạn chỉnh lại phần <i>Configuration</i> sang <i>All Configurations</i> (tức là bạn muốn áp dụng điều này cho tất cả configuration). Rồi sau đó click vào <i>C/C++</i> (lưu ý project của bạn phải có file .cpp thì nó mới hiện option này); chọn mục <i>Language</i>; ở phần đầu tiên <i>Disable Language Extensions</i>, các bạn click vào cái mũi tên bên phải và chọn <i>Yes (/Za)</i>.</p>
+        <img src="../../../img/vs2019_6.png" class="center" style="width: 80%; height: auto;">
+        <p>Cuối cùng, các bạn nhấn <i>Apply</i> rồi <i>OK</i> là xong.</p>
+        <p class="luu-y">Lưu ý: Setting trên không có tác dụng đối với toàn bộ project; do đó, mỗi khi bạn tạo project mới, bạn phải setting lại như trên.</p>
+        
+        <div>
+            <a href="../0-7-cau-hinh-lai-compiler-warning-va-error/index.html"><button class="btn">Bài tiếp theo</button></a>
+        </div>
+        <div>
+            <a href="../../index.html"><button class="btn">C++ Index</button></a>
+        </div>
+        <div>
+            <a href="../0-5-cau-hinh-lai-compiler-build-configuration/index.html"><button class="btn">Bài trước</button></a>
+        </div>
+
+    </div>
+</body>
+
+</html>
