@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../../../css/reset.css">
+    <title>3.2 Void</title>
+    <link rel="stylesheet" href="../../../css/substyle.css">
+    <link rel="shortcut icon" href="../../../img/circle-logo.ico">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="../../../js/showhide.js"></script>
+</head>
+
+<body>
+    <div class="title">
+        <h1>3.2 Void</h1>
+    </div>
+
+    <div class="content">
+
+        <p>Void là kiểu dữ liệu dễ hiểu nhất. Về cơ bản, void có nghĩa là "không có kiểu dữ liệu".</p>
+        <p>Do đó, bạn không thể tạo biến có kiểu void được.</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #2b91af">void</span> value; <span style="color: #008000">// không thể làm như thế này được</span>
+</pre></td></tr></table></div>
+
+        <p>Tạo biến kiểu void nó giống như bắt bạn xây một căn nhà mà không có nguyên vật liệu vậy. Nó hoàn toàn không có gì hết.</p>
+        <p>Vậy thì nó được dùng để làm những việc gì?</p>
+        <h3 class="muc">Hàm không trả về giá trị</h3>
+        <p>Phần lớn các trường hợp void được dùng để tạo một hàm không trả về như bạn đã được học.</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3
+4
+5</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #2b91af">void</span> writeValue(<span style="color: #2b91af">int</span> x)
+{
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;The value of x is: &quot;</span> &lt;&lt; x &lt;&lt; <span style="color: #a31515">&#39;\n&#39;</span>;
+    <span style="color: #008000">// không có giá trị trả về</span>
+}
+</pre></td></tr></table></div>
+
+        <h3 class="muc">Biểu thị hàm không cần tham số</h3>
+        <p>Trong ngôn ngữ C, void được đặt trong dấu ngoặc tròn () của hàm mang ý nghĩa hàm này không có tham số.</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3
+4
+5
+6</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #2b91af">int</span> getValue(<span style="color: #2b91af">void</span>) <span style="color: #008000">// void ở đây mang ý nghĩa hàm này không có tham số</span>
+{
+    <span style="color: #2b91af">int</span> x;
+    std::cin &gt;&gt; x;
+    <span style="color: #0000ff">return</span> x;
+}
+</pre></td></tr></table></div>
+
+        <p>Tuy nhiên trong C++, bạn không cần làm vậy cũng được.</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3
+4
+5
+6</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #2b91af">int</span> getValue() <span style="color: #008000">// viết như thế này là được</span>
+{
+    <span style="color: #2b91af">int</span> x;
+    std::cin &gt;&gt; x;
+    <span style="color: #0000ff">return</span> x;
+}
+</pre></td></tr></table></div>
+
+        <p>Ngoài ra, void còn có thêm một chức năng nữa nhưng nó liên quan đến con trỏ nên các bạn sẽ được học sau khi học con trỏ.</p>
+
+        <div>
+            <a href="#"><button class="btn">Bài tiếp theo</button></a>
+        </div>
+        <div>
+            <a href="../../index.html"><button class="btn">C++ Index</button></a>
+        </div>
+        <div>
+            <a href="../3-1-gioi-thieu-ve-cac-kieu-du-lieu-co-ban/index.html"><button class="btn">Bài trước</button></a>
+        </div>
+
+    </div>
+</body>
+
+</html>
