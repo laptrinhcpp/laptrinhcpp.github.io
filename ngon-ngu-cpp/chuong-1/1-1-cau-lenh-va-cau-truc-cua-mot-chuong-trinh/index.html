@@ -115,6 +115,10 @@
 		<p>
 			Nó báo cho bạn biết có lỗi cú pháp ở dòng thứ 6, thiếu dấu ‘;’ ở trước return. Có lẽ bạn sẽ tự hỏi vì sao thiếu dấu ‘;’ ở dòng 5 nhưng nó lại báo lỗi ở dòng 6. Đó là vì trình biên dịch kiểm tra theo từng kí tự chứ không phải theo từng dòng. Khi nó kiểm tra hết dòng 5 (xong kí tự “), trình biên dịch vẫn chưa biết bạn đã kết thúc một câu lệnh nên nó chưa báo lỗi. Khi xuống dòng kiểm tra tiếp, nó đến chữ return thì mới biết bạn đã kết thúc câu lệnh ở dòng 5. Lúc này, trình biên dịch phát hiện bạn đã kết thúc câu lệnh ở dòng 5 mà không có ‘;’. Do đó, mặc dù lỗi ở dòng 5, nhưng nó đang kiểm tra ở dòng 6 nên nó báo lỗi ở dòng 6. Đó là một mẹo khi kiểm tra lỗi cú pháp. Đôi khi bạn sẽ thấy dòng mà máy báo lỗi không có lỗi gì nhưng nó vẫn báo, lúc này bạn hãy kiểm tra dòng trên nó nhé!
 		</p>
+		
+		<div>
+            <a href="../../chuong-0/0-8-cau-hinh-lai-compiler-chon-language-standard/index.html"><button class="btn">Bài tiếp theo</button></a>
+        </div>
 		<div>
 			<a href="../1-2-comments/index.html"><button class="btn">Bài tiếp theo</button></a>
 		</div>
