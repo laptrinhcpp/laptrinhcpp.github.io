@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../../../css/reset.css">
+    <title>0.5 Cấu hình lại compiler: Build configuration</title>
+    <link rel="stylesheet" href="../../../css/substyle.css">
+    <link rel="shortcut icon" href="../../../img/circle-logo.ico">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="../../../js/showhide.js"></script>
+</head>
+
+<body>
+    <div class="title">
+        <h1>0.5 Cấu hình lại compiler: Build configuration</h1>
+    </div>
+
+    <div class="content">
+
+        <p>Build configuration (hay còn gọi là build target) là tập hợp các cài đặt project xác định cách IDE của bạn sẽ xây dựng project của bạn.</p>
+        <p>Khi bạn tạo một project, IDE sẽ mặc định tạo hai build configuration cho bạn: một release configuration và một debug configuration.</p>
+        <p>Debug configuration được thiết kế để giúp bạn debug chương trình, và bạn sẽ dùng nó để viết chương trình. Configuration này tắt chức năng tối ưu hóa code và thêm các chức năng debug, do vậy chương trình của bạn sẽ lớn hơn và chậm hơn, nhưng dễ debug hơn. Configuration này sẽ được chọn mặc định khi tạo một project.</p>
+        <p>Release configuration được sử dụng khi bạn muốn cho ra một chương trình hoàn chỉnh sẵn sàng đem ra sử dụng. Configuration này giúp tối ưu hóa kích thước và hiệu suất chương trình, loại bỏ chức năng debug trong chương trình. Do đó, configuration này thường dùng để test sự tối ưu hóa chương trình.</p>
+        <p>Khi mình dùng hai configuration trên cho chương trình Hello World, nó cho ra file .exe có kích thước 47KB đối với debug và 11KB đối với release. Rõ ràng có sự khác biệt đáng kể, chương trình bản release tối ưu hóa gấp 4 lần debug.</p>
+        <p>Bạn cũng có thể tự tạo một custom configuration cho riêng mình nhưng mình sẽ không hướng dẫn vì nó thật sự không cần thiết và mình cũng không biết cách làm 😂</p>
+        <p class="loi-khuyen">Lời khuyên: Sử dụng debug configuration khi viết chương trình, khi bạn muốn xuất bản bản chính chức của chương trình hoặc test sự tối ưu hóa thì mới dùng đến release configuration.</p>
+        <h3 class="muc">Chuyển đổi giữa các configuration</h3>
+        <p>Có nhiều cách chuyển đổi giữa các configuration, cách dễ nhất là chọn mục <i>Debug</i> ở thanh công cụ phía trên phần viết code.</p>
+        <img src="../../../img/vs2019_4.png" class="center" style="width: 80%; height: auto;">
+        <br>
+        
+        <div>
+            <a href="#"><button class="btn">Bài tiếp theo</button></a>
+        </div>
+        <div>
+            <a href="../../index.html"><button class="btn">C++ Index</button></a>
+        </div>
+        <div>
+            <a href="../0-4-bien-dich-chuong-trinh-dau-tien/index.html"><button class="btn">Bài trước</button></a>
+        </div>
+
+    </div>
+</body>
+
+</html>
