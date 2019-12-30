@@ -21,15 +21,77 @@
     <div class="content">
 
         <h3 class="muc">Bit, byte và memory addressing</h3>
-        <p>Trong bài học <a href="../../chuong-1/1-3-bien/index.html">1.3 Biến</a>, chúng ta đã biết biến là tên của vùng bộ nhớ dùng để lưu trữ thông tin. Trong mọi máy tính đều có một bộ nhớ gọi là RAM (random access memory) được dùng cho các chương trình chạy trên máy tính. Khi một biến được tạo ra, hệ thống sẽ lấy ra một vùng bộ nhớ đại diện cho biến đó.</p>
-        <p>Đơn vị nhỏ nhất của bộ nhớ là binary digit (viết tắt là bit), đơn vị chỉ có thể lưu trữ một giá trị là 0 hoặc 1. Bạn có thể tưởng tượng bit giống như là một cái công tắc đèn vậy, đèn tắt là 0, đèn bật là 1, chỉ có hai trạng thái đó mà thôi, không thể có cái đèn nửa bật nửa tắt được. Nếu bạn thấy được một đoạn thông tin trong bộ nhớ, nó sẽ trông như này: ...0100101101010...</p>
-        <p>Bộ nhớ được tổ chức thành các đơn vị tuần tự được gọi là địa chỉ bộ nhớ (memory address). Nó tương tự như địa chỉ nhà nhằm giúp người khác tìm thấy nhà họ muốn đến, địa chỉ bộ nhớ giúp chúng ta tìm đến vùng bộ nhớ mà tại đó có chứa thông tin chúng ta cần.</p>
-        <p>Trong kiến trúc máy tính hiện đại, một địa chỉ bộ nhớ không dùng để chỉ chứa một bit. Vì số lượng bit rất lớn mà địa chỉ lại có hạn, và rất hiếm khi người ta truy cập dữ liệu từng bit. Thay vào đó, mỗi địa chỉ bộ nhớ có thể chứa được một byte. Byte là một đơn vị bộ nhớ dùng để lưu trữ dữ liệu máy tính. Một byte có độ lớn bằng 8 bit.</p>
-        <p>Dưới đây là hình ảnh mô phỏng bộ nhớ gồm các địa chỉ bộ nhớ được sắp xếp tuần tự, mỗi địa chỉ chứa 8 số 0 hoặc 1 biểu thị cho 1 byte.</p>
+        <p>Trong bài học <a href="../../chuong-1/1-3-bien/index.html">1.3 Biến</a>, chúng ta đã biết biến là tên của
+            vùng bộ nhớ dùng để lưu trữ thông tin. Trong mọi máy tính đều có một bộ nhớ gọi là RAM (random access
+            memory) được dùng cho các chương trình chạy trên máy tính. Khi một biến được tạo ra, hệ thống sẽ lấy ra một
+            vùng bộ nhớ trong RAM để đại diện cho biến đó.</p>
+        <p>Đơn vị nhỏ nhất của bộ nhớ là binary digit (viết tắt là bit), đơn vị này chỉ có thể lưu trữ một giá trị là 0 hoặc
+            1. Bạn có thể tưởng tượng bit giống như là một cái công tắc đèn vậy, đèn tắt là 0, đèn bật là 1, chỉ có hai
+            trạng thái đó mà thôi, không thể có cái đèn nửa bật nửa tắt được. Nếu bạn thấy được một đoạn thông tin trong
+            bộ nhớ, nó sẽ trông như này: ...0100101101010...</p>
+        <p>Bộ nhớ được tổ chức thành các đơn vị tuần tự được gọi là địa chỉ bộ nhớ (memory address). Nó tương tự như địa
+            chỉ nhà nhằm giúp người khác tìm thấy nhà họ muốn đến, địa chỉ bộ nhớ giúp chúng ta tìm đến vùng bộ nhớ mà
+            tại đó có chứa thông tin chúng ta cần.</p>
+        <p>Trong kiến trúc máy tính hiện đại, một địa chỉ bộ nhớ không dùng để chỉ chứa một bit. Vì số lượng bit rất lớn
+            mà địa chỉ lại có hạn, và rất hiếm khi người ta truy cập dữ liệu từng bit. Thay vào đó, mỗi địa chỉ bộ nhớ
+            có thể chứa được một byte. Byte là một đơn vị bộ nhớ dùng để lưu trữ dữ liệu máy tính. Một byte có độ lớn
+            bằng 8 bit.</p>
+        <p>Dưới đây là hình ảnh mô phỏng bộ nhớ gồm các địa chỉ bộ nhớ được sắp xếp tuần tự, mỗi địa chỉ chứa 8 số 0
+            hoặc 1 biểu thị cho 1 byte.</p>
         <img src="../../../img/MemoryAddresses.png" class="center" style="width: 30%; height: auto;">
-        <h3 class="muc">Các kiểu dữ liệu</h3>
-        <p></p>
-        
+        <h3 class="muc">Kiểu dữ liệu</h3>
+        <p>Bởi vì tất cả các dữ liệu trên máy tính là một chuỗi bit nên chúng ta dùng kiểu dữ liệu (gọi tắt là kiểu) để biểu thị các chuỗi bit đó thành thứ mà chúng ta có thể hiểu. Bạn đã được học qua kiểu integer (int) là kiểu số nguyên. Khi bạn khai báo một biến int, hệ thống sẽ cấp cho bạn một vùng bộ nhớ chuyên dùng để chứa số nguyên.</p>
+        <p>Khi bạn gán một giá trị nào đó cho một biến, compiler và CPU sẽ chuyển giá trị đó thành một chuỗi bit rồi lưu nó vào vùng bộ nhớ của biến. Nguyên nhân là vì bộ nhớ chỉ có thể lưu thông tin dưới dạng bit. Ví dụ khi bạn gán giá trị 69 vào biến thì giá trị này sẽ được chuyển thành chuỗi bit 01000101 rồi lưu vào bộ nhớ. Ngược lại, khi bạn gọi giá trị của biến đó ra thì chuỗi bit 01000101 sẽ được chuyển ngược lại thành số 69.</p>
+        <p>Rất may là công việc trên sẽ do compiler và CPU làm hết nên bạn không cần quan tâm làm sao chuyển 69 thành 01000101 hay ngược lại. Công việc của bạn là chọn một kiểu dữ liệu phù hợp với mục đích sử dụng của bạn.</p>
+        <h3 class="muc">Các kiểu dữ liệu cơ bản</h3>
+        <p>C++ có hỗ trợ rất nhiều kiểu dữ liệu, dưới đây là bảng các kiểu dữ liệu cơ bản của C++.</p>
+        <table border="1" cellspacing=0 cellpadding=3>
+            <tr>
+                <th>Kiểu dữ liệu</th>
+                <th>Loại</th>
+                <th>Ý nghĩa</th>
+                <th>Ví dụ</th>
+            </tr>
+            <tr>
+                <td>float<br />double<br />long double</td>
+                <td>Floating Point</td>
+                <td>Biểu thị số thập phân</td>
+                <td>3.14159</td>
+            </tr>
+            <tr>
+                <td>bool</td>
+                <td>Integral (Boolean)</td>
+                <td>true hoặc false</td>
+                <td>true</td>
+            </tr>
+            <tr>
+                <td>char<br />wchar_t<br />char8_t (C++20)<br />char16_t (C++11)<br />char32_t (C++11)</td>
+                <td>Integral (Character)</td>
+                <td>Một kí tự dạng text</td>
+                <td>&#8216;c&#8217;</td>
+            </tr>
+            <tr>
+                <td>short<br />int<br />long<br />long long (C++11)</td>
+                <td>Integral (Integer)</td>
+                <td>Số nguyên bao gồm cả âm, dương và 0</td>
+                <td>69</td>
+            </tr>
+            <tr>
+                <td>std::nullptr_t (C++11)</td>
+                <td>Null Pointer</td>
+                <td>Con trỏ null</td>
+                <td>nullptr</td>
+            </tr>
+            <tr>
+                <td>void</td>
+                <td>Void</td>
+                <td>không có kiểu dữ liệu</td>
+                <td>n/a</td>
+            </tr>
+        </table>
+        <p>Chương này sẽ làm rõ chi tiết các kiểu dữ liệu trên (ngoại trừ std::nullptr_t, chúng ta sẽ tìm hiểu về nó khi học về con trỏ).</p>
+        <p>Note: Trong bảng trên, có thể bạn sẽ thấy từ "integral" và "integer" nhìn nó hơi giống nhau. Vậy nó giống và khác nhau như thế nào? Như mình đã viết trên bảng, integer là kiểu dữ liệu dành cho số nguyên âm, dương và số 0. Còn integral có nghĩa là "giống integer", nó bao gồm cả boolean, character và integer. Tất cả integral đều có bản chất là số nguyên. Ví dụ trong mắt bạn 'c' là một chữ cái, nhưng trong mắt compiler và CPU, nó được xem như là một con số, cụ thể là 63; nhưng 63 này là kiểu char, nó khác 63 kiểu int nhé. Đó là lý do sinh ra khái niệm integral. Cụ thể hơn sẽ được học ở các bài sau.</p>
+
         <div>
             <a href="#"><button class="btn">Bài tiếp theo</button></a>
         </div>
