@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../../../css/reset.css">
+    <title>3.3 Object size và sizeof operator</title>
+    <link rel="stylesheet" href="../../../css/substyle.css">
+    <link rel="shortcut icon" href="../../../img/circle-logo.ico">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="../../../js/showhide.js"></script>
+</head>
+
+<body>
+    <div class="title">
+        <h1>3.3 Object size và sizeof operator</h1>
+    </div>
+
+    <div class="content">
+
+        <h3 class="muc">Object size</h3>
+        <p>Như bạn đã được học ở bài <a href="../3-1-gioi-thieu-ve-cac-kieu-du-lieu-co-ban/index.html">3.1 Giới thiệu về
+                các kiểu dữ liệu cơ bản</a>, bộ nhớ trên máy tính hiện đại được cấu tạo bởi các đơn vị bộ nhớ byte, mỗi
+            byte có một địa chỉ bộ nhớ riêng.</p>
+        <p>Tuy nhiên, hầu hết các đối tượng đều cần hơn 1 byte bộ nhớ để lưu trữ thông tin. Một đối tượng có thể cần đến
+            2, 4, 8 byte, hoặc nhiều hơn nữa để lưu trữ thông tin. Lượng bộ nhớ
+            mà một đối tượng cần được dựa trên kiểu dữ liệu của đối tượng đó.</p>
+        <p>Bởi vì chúng ta thường truy xuất thông tin của một đối tượng qua tên của đối tượng (chứ không thông qua địa
+            chỉ bộ nhớ) nên compiler có thể "giấu" các chi tiết về kích thước bộ nhớ cần dùng cho đối tượng đó. Khi biến
+            x được gọi thì compiler sẽ biết biến x gồm bao nhiêu byte bộ nhớ (thông qua kiểu dữ liệu của biến x) và sẽ
+            chỉ xuất bấy nhiêu byte đó mà thôi.</p>
+        <p>Mặc dù compiler sẽ làm các việc đó nhưng việc biết các đối tượng của chúng ta có kích thước bộ nhớ bao nhiêu
+            cũng sẽ có ích trong vài trường hợp.</p>
+        <p>Đầu tiên, chúng ta cần biết đối tượng càng có nhiều bộ nhớ thì càng chứa được nhiều thông tin.</p>
+        <p>Một bit chỉ có thể biểu thị được hai giá trị: 0 hoặc 1. Hai bit có thể biểu thị được 4 giá trị: 00, 01, 10,
+            11. Ba bit có thể biểu thị được 8 giá trị: 000, 001, 010, 100, 101, 110, 011, 111. Các bạn lưu ý ràng các giá trị vừa lấy ví dụ đang ở hệ nhị phân không phải hệ thập phân nhé, do đó 10 ở đây khác số 10 trong hệ số thập phân mà bạn hay gặp.</p>
+        <p>Ta có thể rút ra được rằng một đối tượng có n bit bộ nhớ thì có thể biểu thị được 2<sup>n</sup> giá trị khác
+            nhau. Do đó, 8 bit hay 1 byte sẽ có thể biểu thị 2<sup>8</sup> (256) giá trị khác nhau.</p>
+        <p>Như vậy kích thước của đối tượng sẽ quyết định đối tượng đó có thể lưu trữ được bao nhiêu giá trị khác nhau.
+            Chúng ta sẽ đi sâu hơn khi học về integer.</p>
+        <h3 class="muc">Kích thước của các kiểu dữ liệu</h3>
+        <p>Câu hỏi được đặt ra là "Thế kích thước cụ thể của các kiểu dữ liệu là bao nhiêu?" Ngạc nhiên thay, câu trả lời là
+            tùy vào compiler, compiler khác nhau thì có thể kích thước kiểu dữ liệu của chúng khác nhau.</p>
+        <p>C++ chỉ giới hạn kích thước tối thiểu của các kiểu dữ liệu mà thôi.</p>
+        <table border=1 cellspacing=0 cellpadding=3>
+            <tr>
+                <th>Loại</th>
+                <th>Kiểu</th>
+                <th>Kích thước tối thiểu</th>
+                <th>Ghi chú</th>
+            </tr>
+            <tr>
+                <td>boolean</td>
+                <td>bool</td>
+                <td>1 byte</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>character</td>
+                <td>char</td>
+                <td>1 byte</td>
+                <td>Luôn đúng 1 byte với mọi compiler</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>wchar_t</td>
+                <td>1 byte</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>char16_t</td>
+                <td>2 bytes</td>
+                <td>C++11</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>char32_t</td>
+                <td>4 bytes</td>
+                <td>C++11</td>
+            </tr>
+            <tr>
+                <td>integer</td>
+                <td>short</td>
+                <td>2 bytes</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>int</td>
+                <td>2 bytes</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>long</td>
+                <td>4 bytes</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>long long</td>
+                <td>8 bytes</td>
+                <td>C99/C++11</td>
+            </tr>
+            <tr>
+                <td>floating point</td>
+                <td>float</td>
+                <td>4 bytes</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>double</td>
+                <td>8 bytes</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>long double</td>
+                <td>8 bytes</td>
+                <td></td>
+            </tr>
+        </table>
+        <p>Kích thước thật của các kiểu dữ liệu trên có thể khác trên máy của bạn.</p>
+        <h3 class="muc">Toán tử sizeof</h3>
+        <p>Để biết được kích thước chính xác của các kiểu dữ liệu trên máy, C++ cung cấp một loại toán tử là sizeof operator. Toán tử sizeof là loại toán tử đơn phân, nó nhận một kiểu dữ liệu hoặc một biến và trả về kích thước của kiểu dữ liệu hoặc biến đó dưới dạng byte. Bạn có thể chạy phần code dưới đây để kiểm tra xem các kiểu dữ liệu của bạn có kích thước thật sự là bao nhiêu.</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+ 
+<span style="color: #2b91af">int</span> main()
+{
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;bool:\t\t&quot;</span> &lt;&lt; <span style="color: #0000ff">sizeof</span>(<span style="color: #2b91af">bool</span>) &lt;&lt; <span style="color: #a31515">&quot; bytes\n&quot;</span>;
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;char:\t\t&quot;</span> &lt;&lt; <span style="color: #0000ff">sizeof</span>(<span style="color: #2b91af">char</span>) &lt;&lt; <span style="color: #a31515">&quot; bytes\n&quot;</span>;
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;wchar_t:\t&quot;</span> &lt;&lt; <span style="color: #0000ff">sizeof</span>(<span style="color: #2b91af">wchar_t</span>) &lt;&lt; <span style="color: #a31515">&quot; bytes\n&quot;</span>;
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;char16_t:\t&quot;</span> &lt;&lt; <span style="color: #0000ff">sizeof</span>(<span style="color: #2b91af">char16_t</span>) &lt;&lt; <span style="color: #a31515">&quot; bytes\n&quot;</span>; <span style="color: #008000">// C++11 trở lên</span>
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;char32_t:\t&quot;</span> &lt;&lt; <span style="color: #0000ff">sizeof</span>(<span style="color: #2b91af">char32_t</span>) &lt;&lt; <span style="color: #a31515">&quot; bytes\n&quot;</span>; <span style="color: #008000">// C++11 trở lên</span>
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;short:\t\t&quot;</span> &lt;&lt; <span style="color: #0000ff">sizeof</span>(<span style="color: #2b91af">short</span>) &lt;&lt; <span style="color: #a31515">&quot; bytes\n&quot;</span>;
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;int:\t\t&quot;</span> &lt;&lt; <span style="color: #0000ff">sizeof</span>(<span style="color: #2b91af">int</span>) &lt;&lt; <span style="color: #a31515">&quot; bytes\n&quot;</span>;
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;long:\t\t&quot;</span> &lt;&lt; <span style="color: #0000ff">sizeof</span>(<span style="color: #2b91af">long</span>) &lt;&lt; <span style="color: #a31515">&quot; bytes\n&quot;</span>;
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;long long:\t&quot;</span> &lt;&lt; <span style="color: #0000ff">sizeof</span>(<span style="color: #2b91af">long</span> <span style="color: #2b91af">long</span>) &lt;&lt; <span style="color: #a31515">&quot; bytes\n&quot;</span>; <span style="color: #008000">// C++11 trở lên</span>
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;float:\t\t&quot;</span> &lt;&lt; <span style="color: #0000ff">sizeof</span>(<span style="color: #2b91af">float</span>) &lt;&lt; <span style="color: #a31515">&quot; bytes\n&quot;</span>;
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;double:\t\t&quot;</span> &lt;&lt; <span style="color: #0000ff">sizeof</span>(<span style="color: #2b91af">double</span>) &lt;&lt; <span style="color: #a31515">&quot; bytes\n&quot;</span>;
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;long double:\t&quot;</span> &lt;&lt; <span style="color: #0000ff">sizeof</span>(<span style="color: #2b91af">long</span> <span style="color: #2b91af">double</span>) &lt;&lt; <span style="color: #a31515">&quot; bytes\n&quot;</span>;
+ 
+    <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+        <p>Máy của mình khi dùng Visual Studio cho ouput như sau:</p>
+        <div class="codeblock"><pre><code>bool:           1 bytes
+char:           1 bytes
+wchar_t:        2 bytes
+char16_t:       2 bytes
+char32_t:       4 bytes
+short:          2 bytes
+int:            4 bytes
+long:           4 bytes
+long long:      8 bytes
+float:          4 bytes
+double:         8 bytes
+long double:    8 bytes</code></pre></div>
+        
+        <p>Output trên có thể khác tùy vào máy và compiler bạn đang dùng. Lưu ý là bạn không thể dùng toán tử sizeof cho kiểu void vì nó không có kích thước, nếu làm vậy sẽ có lỗi.</p>
+        <p>Có thể bạn sẽ thắc mắc kí hiệu '\t' trong phần code trên có nghĩa là gì. Đó là một kí hiệu đặc biệt giống kí hiệu '\n' mà bạn đã từng học.'\t' mang ý nghĩa tương đương với một tab, trong ví dụ trên mình dùng '\t' để khiến các kích thước được in ra thành một cột cho dễ đọc. Chúng ta sẽ nói chi tiết hơn về các kí hiệu đặc biệt ở bài khác cũng trong chương này.</p>
+        <p>Bạn cũng có thể sử dụng toán tử sizeof cho một biến đã được định nghĩa.</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3
+4
+5
+6
+7
+8
+9</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+ 
+<span style="color: #2b91af">int</span> main()
+{
+    <span style="color: #2b91af">int</span> x{};
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;x is &quot;</span> &lt;&lt; <span style="color: #0000ff">sizeof</span>(x) &lt;&lt; <span style="color: #a31515">&quot; bytes\n&quot;</span>;
+ 
+    <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+        <div class="codeblock"><pre><code>x is 4 bytes</code></pre></div>
+        
+
+        <div>
+            <a href="#"><button class="btn">Bài tiếp theo</button></a>
+        </div>
+        <div>
+            <a href="../../index.html"><button class="btn">C++ Index</button></a>
+        </div>
+        <div>
+            <a href="../3-2-void/index.html"><button class="btn">Bài trước</button></a>
+        </div>
+
+    </div>
+</body>
+
+</html>
