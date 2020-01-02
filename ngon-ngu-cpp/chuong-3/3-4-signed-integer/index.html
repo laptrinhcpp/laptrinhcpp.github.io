@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../../../css/reset.css">
+    <title>3.4 Signed integer</title>
+    <link rel="stylesheet" href="../../../css/substyle.css">
+    <link rel="shortcut icon" href="../../../img/circle-logo.ico">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="../../../js/showhide.js"></script>
+</head>
+
+<body>
+    <div class="title">
+        <h1>3.4 Signed integer</h1>
+    </div>
+
+    <div class="content">
+        
+        <p>Integer là một loại integral dùng để biểu thị số nguyên dương, âm kể cả số 0 (ví dụ 0, 1, -1, 99,...). C++ phân nó ra làm 4 loại:</p>
+        <table border=1 cellspacing=0 cellpadding=3>
+            <tr>
+                <th>Kiểu</th>
+                <th>Kích thước tối thiểu</th>
+                <th>Ghi chú</th>
+            </tr>
+            <tr>
+                <td>short</td>
+                <td>2 bytes</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>int</td>
+                <td>2 bytes</td>
+                <td>Thường sẽ có 4 byte đối với máy hiện đại</td>
+            </tr>
+            <tr>
+                <td>long</td>
+                <td>4 bytes</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>long long</td>
+                <td>8 bytes</td>
+                <td>C99/C++11</td>
+            </tr>
+        </table>
+        <p>Sự khác nhau duy nhất giữa các kiểu trên là chúng có kích thước khác nhau. Kiểu có kích thước lớn hơn sẽ có thể biểu thị được nhiều số hơn.</p>
+        <p>Lưu ý rằng bảng trên chỉ cho biết kích thước tối thiểu, còn kích thước thật sự là bao nhiêu thì bạn phải dùng toán tử sizeof ở bài học trước mới biết chính xác được.</p>
+        <h3 class="muc">Signed integer</h3>
+        <p>Khi viết một số nguyên âm, ta sẽ đặt dấu trừ trước số nguyên, ví dụ "âm 3" là "-3". Tương tự, số nguyên dương cũng có thể đặt dấu cộng trước số nguyên, ví dụ "dương 3" là "+3" (tuy nhiên thông thường có thể bỏ qua dấu cộng nếu là số dương). Những dấu đặt trước số đó được gọi là sign.</p>
+        <p>Mặc định, integer được xem là "signed", có nghĩa là nó bao gồm cả dấu (- hoặc +, số đi riêng không có dấu mặc định là +). Do đó, signed integer có thể biểu diễn cả số nguyên âm, dương và 0.</p>
+        <p>Trong bài học này, ta sẽ học về signed integer, chúng ta sẽ học về unsigned integer (tức là số chỉ có thể biểu diễn số dương) ở bài học tiếp theo.</p>
+        <h3 class="muc">Định nghĩa biến signed integer</h3>
+        <p>Dưới đây là cách định nghĩa các kiểu đã nêu trong bảng trên.</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3
+4</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #2b91af">short</span> s;
+<span style="color: #2b91af">int</span> i;
+<span style="color: #2b91af">long</span> l;
+<span style="color: #2b91af">long</span> <span style="color: #2b91af">long</span> ll;
+</pre></td></tr></table></div>
+
+        <p>Bạn có thể sẽ thấy thêm cách viết sau, tuy nhiên mình khuyên không nên dùng.</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #2b91af">short</span> <span style="color: #2b91af">int</span> si;
+<span style="color: #2b91af">long</span> <span style="color: #2b91af">int</span> li;
+<span style="color: #2b91af">long</span> <span style="color: #2b91af">long</span> <span style="color: #2b91af">int</span> lli;
+</pre></td></tr></table></div>
+
+        <p>Bạn cũng có thể thêm từ khóa signed ở trước tên kiểu dữ liệu như sau.</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3
+4</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #2b91af">signed</span> <span style="color: #2b91af">short</span> ss;
+<span style="color: #2b91af">signed</span> <span style="color: #2b91af">int</span> si;
+<span style="color: #2b91af">signed</span> <span style="color: #2b91af">long</span> sl;
+<span style="color: #2b91af">signed</span> <span style="color: #2b91af">long</span> <span style="color: #2b91af">long</span> sll;
+</pre></td></tr></table></div>
+
+        <p>Tuy nhiên mình cũng không khuyến khích cách viết này vì các kiểu trên mặc định là signed cho dù không có từ khóa signed đứng trước.</p>
+        <h3 class="muc">Phạm vi của signed integer</h3>
+        <p>Như bạn đã học ở bài học trước, một biến có n bit bộ nhớ có thể biểu thị 2<sup>n</sup> giá trị khác nhau. Các giá trị đó được gọi là phạm vi của biến. Phạm vi của biến được quyết định bởi hai yếu tố: kích thước của kiểu dữ liệu biến đó và biến đó thuộc loại signed hay unsigned.</p>
+        <p>Theo định nghĩa, 1 byte signed integer có phạm vi từ -128 đến 127, có nghĩa là nó có thể chứa bất kì số nào nằm trong đoạn từ -128 đến 127 (lưu ý mình nói là "đoạn" nên tính cả -128 và 127).</p>
+        <p>Math time: Một byte integer bao gồm 8 bit. 2<sup>8</sup> bằng 256, vì vậy 1 byte có thể biểu thị được 256 giá trị khác nhau. Và đoạn từ -128 đến 127 có đúng 256 giá trị (tính cả -128 và 127). Cách tính mẹo là lấy 127 trừ đi -128 rồi cộng cho 1.</p>
+        <p>Dưới đây là bảng phạm vi của các loại integer.</p>
+        <table border=1 cellspacing=0 cellpadding=5>
+            <tr>
+                <th>Kích thước</th>
+                <th>Phạm vi</th>
+            </tr>
+            <tr>
+                <td>1 byte signed</td>
+                <td>-128 đến 127</td>
+            </tr>
+            <tr>
+                <td>2 byte signed</td>
+                <td>-32,768 đến 32,767</td>
+            </tr>
+            <tr>
+                <td>4 byte signed</td>
+                <td>-2,147,483,648 đến 2,147,483,647</td>
+            </tr>
+            <tr>
+                <td>8 byte signed</td>
+                <td>-9,223,372,036,854,775,808 đến 9,223,372,036,854,775,807</td>
+            </tr>
+        </table>
+        <p>Tổng quát: một biến signed integer có kích thước n bit sẽ có thể biểu thị các số từ -(2<sup>n-1</sup>) đến 2<sup>n-1</sup>-1.</p>
+        <h3 class="muc">Integer overflow</h3>
+        <p>Bạn có nhớ trước đây ở bài <a href="../../chuong-1/1-5-gioi-thieu-ve-iostream-cout-cin-va-endl/index.html">1.5 Giới thiệu về iostream: cout, cin và endl</a>, mình có đưa bạn một chương trình nhận một số rồi in ra số đó không? Ở cuối bài mình có nói bạn hãy thử nhập một số rất lớn (ví dụ 10 tỷ) xem nó in ra gì, và chắc chắn bạn sẽ không hiểu vì sao nó in ra như vậy. Mình sẽ giải thích nguyên nhân trong bài học này.</p>
+        <p>Chuyện gì sẽ xảy ra nếu ta gán 280 vào một 1 byte biến signed integer? Con số này lớn hơn 127 và nằm ngoài phạm vi của biến. Để lưu 280, ta cần một biến có 2 byte, cụ thể là cần 9 bit (cộng thêm 1 bit cho sign). Trong khi 1 byte chỉ có 7 bit để lưu giá trị integer. Nguyên nhân mình nói 1 byte chỉ có 7 bit để lưu giá trị integer là vì trong 8 bit, bit đầu tiên sẽ quyết định biến đó là signed hay unsigned, 7 bit còn lại mới quyết định giá trị của biến.</p>
+        <p>Integer overflow (hay thường gọi tắt là overflow) là một hiện tượng xảy ra khi ta gán một giá trị nằm ngoài phạm vi của biến cho biến đó. Vì giá trị cần lưu nằm ngoài phạm vi biến nên xảy ra thất thoát dữ liệu, bộ nhớ của biến không đủ lớn để lưu giá trị đó. Kết quả của việc làm này sẽ gây ra undefined behavior.</p>
+        <p class="loi-khuyen">Lời khuyên: Nếu bạn thấy có khả năng một biến nào đó phải chứa một giá trị nằm ngoài phạm vi của kiểu dữ liệu biến đó thì hãy dùng kiểu dữ liệu có kích thước lớn hơn.</p>
+        <h3 class="muc">Phép chia integer</h3>
+        <p>Khi ta thực hiện phép chia integer không có dư thì mọi thứ hoạt động bình thường.</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3
+4
+5
+6
+7</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+ 
+<span style="color: #2b91af">int</span> main()
+{
+    std::cout &lt;&lt; 20 / 4;
+    <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+        <p>Chương trình trên cho kết quả sau:</p>
+        <div class="codeblock"><pre><code>5</code></pre></div>
+        <p>Nhưng hãy xem chuyện gì sẽ xảy ra đối với phép chia có dư:</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3
+4
+5
+6
+7</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+ 
+<span style="color: #2b91af">int</span> main()
+{
+    std::cout &lt;&lt; 8 / 5;
+    <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+        <p>Chương trình trên in ra kết quả sau:</p>
+        <div class="codeblock"><pre><code>1</code></pre></div>
+        <p>Khi bạn thực hiện phép chia hai số integer có dư, C++ luôn cho ra kết quả ở dạng integer. Và vì integer không thể chứa phần thập phân (sau dấu phẩy) nên nó chỉ cho ra phần nguyên (trước dấu phẩy). Chính vì vậy nên chương trình trên chỉ có thể in ra 1. Các bạn lưu ý là nó không bao giờ làm tròn lên nhé. Cho dù kết quả là 1.99 thì nó vẫn ra 1 vì phần nguyên là 1.</p>
+        <p class="luu-y">Lưu ý: Hãy cẩn thận khi dùng phép chia integer vì kết quả có thể là số thập phân và sẽ gây ra sai số.</p>
+
+        <div>
+            <a href="#"><button class="btn">Bài tiếp theo</button></a>
+        </div>
+        <div>
+            <a href="../../index.html"><button class="btn">C++ Index</button></a>
+        </div>
+        <div>
+            <a href="../3-3-object-size-va-sizeof-operator/index.html"><button class="btn">Bài trước</button></a>
+        </div>
+
+    </div>
+</body>
+
+</html>

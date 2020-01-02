@@ -34,7 +34,7 @@
         <p>Mặc dù compiler sẽ làm các việc đó nhưng việc biết các đối tượng của chúng ta có kích thước bộ nhớ bao nhiêu
             cũng sẽ có ích trong vài trường hợp.</p>
         <p>Đầu tiên, chúng ta cần biết đối tượng càng có nhiều bộ nhớ thì càng chứa được nhiều thông tin.</p>
-        <p>Một bit chỉ có thể biểu thị được hai giá trị: 0 hoặc 1. Hai bit có thể biểu thị được 4 giá trị: 00, 01, 10,
+        <p>Một bit chỉ có thể biểu thị được hai giá trị: 0 hoặc 1 (lưu ý mình nói "biểu thị" chứ không phải là "chứa", vì một biến chỉ có thể chứa một giá trị cho dù kích thước lớn cỡ nào đi nữa). Hai bit có thể biểu thị được 4 giá trị: 00, 01, 10,
             11. Ba bit có thể biểu thị được 8 giá trị: 000, 001, 010, 100, 101, 110, 011, 111. Các bạn lưu ý ràng các giá trị vừa lấy ví dụ đang ở hệ nhị phân không phải hệ thập phân nhé, do đó 10 ở đây khác số 10 trong hệ số thập phân mà bạn hay gặp.</p>
         <p>Ta có thể rút ra được rằng một đối tượng có n bit bộ nhớ thì có thể biểu thị được 2<sup>n</sup> giá trị khác
             nhau. Do đó, 8 bit hay 1 byte sẽ có thể biểu thị 2<sup>8</sup> (256) giá trị khác nhau.</p>
@@ -124,7 +124,7 @@
                 <td></td>
             </tr>
         </table>
-        <p>Kích thước thật của các kiểu dữ liệu trên có thể khác trên máy của bạn.</p>
+        <p>Kích thước thật của các kiểu dữ liệu trên có thể khác trên máy của bạn (đặc biệt là kiểu int có 4 byte)</p>
         <h3 class="muc">Toán tử sizeof</h3>
         <p>Để biết được kích thước chính xác của các kiểu dữ liệu trên máy, C++ cung cấp một loại toán tử là sizeof operator. Toán tử sizeof là loại toán tử đơn phân, nó nhận một kiểu dữ liệu hoặc một biến và trả về kích thước của kiểu dữ liệu hoặc biến đó dưới dạng byte. Bạn có thể chạy phần code dưới đây để kiểm tra xem các kiểu dữ liệu của bạn có kích thước thật sự là bao nhiêu.</p>
         <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
@@ -206,7 +206,7 @@ long double:    8 bytes</code></pre></div>
         
 
         <div>
-            <a href="#"><button class="btn">Bài tiếp theo</button></a>
+            <a href="../3-4-signed-integer/index.html"><button class="btn">Bài tiếp theo</button></a>
         </div>
         <div>
             <a href="../../index.html"><button class="btn">C++ Index</button></a>
