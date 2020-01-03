@@ -143,7 +143,7 @@ x is now: 65534</code></pre></div>
 
         <p>Có một điều thú vị có thể bạn đã từng trải qua hoặc từng thấy ở các video game cũ ngày trước là nếu bạn "phá đảo" hay đạt cấp độ cao nhất thì bạn sẽ trở về cấp độ đầu. Hoặc thậm chí có bug nếu số tài nguyên quá cao sẽ bị reset về 0. Đó có thể là do hiện tượng trên gây nên.</p>
         <h3 class="muc">Cuộc tranh cãi về việc dùng unsigned</h3>
-        <p>Rất nhiều lập trình biên (và một số nhà phát triển lớn, bao gồm cả Google) tin rằng lập trình viên nên tránh dùng unsigned integer.</p>
+        <p>Rất nhiều lập trình viên (và một số nhà phát triển lớn, bao gồm cả Google) tin rằng lập trình viên nên tránh dùng unsigned integer.</p>
         <p>Có hai nguyên nhân chính cho vấn đề trên.</p>
         <p>Đầu tiên, ta xét một phép trừ giữ hai unsigned integer là 3 và 5. Kết quả hiển nhiên là -2. Tuy nhiên, vì kết quả của các phép tính giữa unsigned integer phải là unsigned integer, mà nó lại không thể lưu số âm. Do đó, sẽ xảy ra hiện tượng đã nêu ở phần trên.</p>
         <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
@@ -171,7 +171,7 @@ x is now: 65534</code></pre></div>
         <div class="codeblock"><pre><code>4294967294</code></pre></div>
         <p>Thứ hai, nếu bạn dùng phép tính giữa signed và unsigned integer thì kết quả sẽ mặc định là unsigned integer. Do đó, cho dù một trong hai biến x hoặc y là signed integer thì kết quả vẫn vậy.</p>
         <p class="loi-khuyen">Lời khuyên: Hãy tránh sử dụng unsigned integer nếu có thể. Nếu bạn quyết định dùng nó hãy chắc chắn rằng sẽ không có trường hợp xấu xảy ra chẳng hạn các phép tính có kết quả âm, trộn lẫn signed và unsigned. Chính Bjarne Stroustrup - người tạo ra C++ từng nói rằng: "Using an unsigned instead of an int to gain one more bit to represent positive integers is almost never a good idea", đại khái là dùng unsigned thay thế cho signed chỉ để tăng thêm vài bit để biểu diễn thêm số dương gần như chưa bao giờ là một ý kiến hay.</p>
-        <p>Các trường hợp nên dùng unsigned integer mình sẽ dần đề cập đến ở các bài học sau và các trường hợp đó ít gặp nên hiện tại bạn không cần chú tâm vào nó lắm. Hãy dùng signed thay vì unsigned.</p>
+        <p>Các trường hợp nên dùng unsigned integer mình sẽ dần đề cập đến ở các bài học sau và các trường hợp đó khá là ít gặp nên hiện tại bạn không cần chú tâm vào nó lắm. Hãy dùng signed thay vì unsigned.</p>
 
         <div>
             <a href="#"><button class="btn">Bài tiếp theo</button></a>
