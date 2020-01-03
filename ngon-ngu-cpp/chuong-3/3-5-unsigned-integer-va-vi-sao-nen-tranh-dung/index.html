@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../../../css/reset.css">
+    <title>3.5 Unsigned integer và vì sao nên tránh dùng</title>
+    <link rel="stylesheet" href="../../../css/substyle.css">
+    <link rel="shortcut icon" href="../../../img/circle-logo.ico">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="../../../js/showhide.js"></script>
+</head>
+
+<body>
+    <div class="title">
+        <h1>3.5 Unsigned integer và vì sao nên tránh dùng</h1>
+    </div>
+
+    <div class="content">
+        
+        <h3 class="muc">Unsigned integer</h3>
+        <p>Trong bài học trước (<a href="../3-4-signed-integer/index.html">3.4 Signed integer</a>), chúng ta đã học về signed integer tức là biến integer có thể biểu diễn được số nguyên âm, dương kể cả số 0.</p>
+        <p>Ở bài này, ta sẽ học về unsigned integer. Unsigned integer là integer chỉ có thể biểu thị số nguyên dương kể cả số 0.</p>
+        <h3 class="muc">Định nghĩa biến unsigned integer</h3>
+        <p>Để định nghĩa biến unsigned integer, ta đặt từ khóa <i>unsigned</i> trước tên kiểu dữ liệu.</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3
+4</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #2b91af">unsigned</span> <span style="color: #2b91af">short</span> us;
+<span style="color: #2b91af">unsigned</span> <span style="color: #2b91af">int</span> ui;
+<span style="color: #2b91af">unsigned</span> <span style="color: #2b91af">long</span> ul;
+<span style="color: #2b91af">unsigned</span> <span style="color: #2b91af">long</span> <span style="color: #2b91af">long</span> ull;
+</pre></td></tr></table></div>
+
+        <h3 class="muc">Phạm vi unsigned integer</h3>
+        <p>Một byte unsigned integer có thể biểu thị được các số nguyên từ 0 đến 255. So sánh với phạm vi của một byte signed integer thì cả hai đều có thể biểu thị được 256 số. Nhưng signed integer chia đều phạm vi cho số âm và số dương, trong khi unsigned integer chỉ chứa số dương.</p>
+        <p>Dưới đây là bảng phạm vi các kiểu unsigned integer.</p>
+        <table border=1 cellspacing=0 cellpadding=5>
+            <tr>
+                <th>Kích thước</th>
+                <th>Phạm vi</th>
+            </tr>
+            <tr>
+                <td>1 byte unsigned</td>
+                <td>0 đến 255</td>
+            </tr>
+            <tr>
+                <td>2 byte unsigned</td>
+                <td>0 đến 65,535</td>
+            </tr>
+            <tr>
+                <td>4 byte unsigned</td>
+                <td>0 đến 4,294,967,295</td>
+            </tr>
+            <tr>
+                <td>8 byte unsigned</td>
+                <td>0 đến 18,446,744,073,709,551,615</td>
+            </tr>
+        </table>
+        <p>Tổng quát: Một biến unsigned integer có kích thước n bit sẽ có thể biểu thị được các số từ 0 đến (2<sup>n</sup>)-1.</p>
+        <p>Khi chương trình của bạn không cần đến số âm thì unsigned integer là lựa chọn tốt vì nó có thể biểu thị nhiều số dương hơn signed integer mặc dù cùng kích thước bộ nhớ.</p>
+        <p>Nhiều bạn có thể hay nhầm lẫn signed và unsigned thì đây là cách phân biệt chúng: sign thật ra có nghĩa là "dấu", như vậy signed có thể hiểu là có dấu, unsigned là không dấu. Khi ta muốn biểu diễn một số có thể âm, có thể dương thì có nghĩa là ta cần có dấu để phân biệt số âm, thế nên ta dùng signed. Còn khi ta chỉ muốn biểu diễn số dương, mà số dương thì không có dấu nên dùng unsigned.</p>
+        <h3 class="muc">Unsigned integer overflow</h3>
+        <p>Đặt lại câu hỏi giống như bài trước là chuyện gì sẽ xảy ra nếu gán giá trị 280 vào biến unsigned integer có kích thước 1 byte? Có thể bạn sẽ nghĩ rằng vì 280 nằm ngoài phạm vi 1 byte unsigned integer nên nó sẽ bị "overflow", nhưng không phải thế.</p>
+        <p>Unsigned integer không thể bị overflow. Nếu giá trị được gán nằm ngoài phạm vi của biến thì giá trị đó sẽ bị chia cho phạm vi của biến và giữ lại số dư.</p>
+        <p>Số 280 lớn hơn số lớn nhất của 1 byte unsigned integer là 255 nên không thể lưu 280. Thay vào đó, nó sẽ lấy 280 chia cho phạm vi của biến là 256. Sau khi chia ta được số dư là 24, nên kết quả là biến đó sẽ mang giá trị 24.</p>
+        <p>Hoặc bạn cũng có thể hiểu như sau. Nếu ta gán 255 vào 1 byte unsigned integer thì kết quả bình thường vì 255 vẫn nằm trong phạm vi biến. Tuy nhiên, nếu gán 256 thì nó quay trở lại giá trị đầu tiên của phạm vi biến tức là giá trị 0. Nếu gán 257 thì nó tiến thêm một giá trị, kết quả là mang giá trị 1. Cứ tiếp tục như thế đến 280 thì biến mang giá trị 24.</p>
+        <p>Xét ví dụ sau:</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+ 
+<span style="color: #2b91af">int</span> main()
+{
+    <span style="color: #2b91af">unsigned</span> <span style="color: #2b91af">short</span> x{ 65535 }; <span style="color: #008000">// 2 byte có thể biểu thị từ 0 đến 65535</span>
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;x was: &quot;</span> &lt;&lt; x &lt;&lt; <span style="color: #a31515">&#39;\n&#39;</span>;
+ 
+    x = 65536; <span style="color: #008000">// 65536 ngoài phạm vi</span>
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;x is now: &quot;</span> &lt;&lt; x &lt;&lt; <span style="color: #a31515">&#39;\n&#39;</span>;
+ 
+    x = 65537; <span style="color: #008000">// 65537 ngoài phạm vi</span>
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;x is now: &quot;</span> &lt;&lt; x &lt;&lt; <span style="color: #a31515">&#39;\n&#39;</span>;
+ 
+    <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+        <p>Chương trình trên cho output:</p>
+        <div class="codeblock"><pre><code>x was: 65535
+x is now: 0
+x is now: 1</code></pre></div>
+
+        <p>Tuy nhiên, đó là trường hợp giá trị định gán lớn hơn giá trị lớn nhất trong phạm vi. Thế còn trường hợp gán giá trị nhỏ hơn giá trị nhỏ nhất trong phạm vi thì sao? Nó sẽ ngược lại trường hợp trên, nếu giá trị gán nhỏ hơn giá trị nhỏ nhất của phạm vi thì nó sẽ nhảy đến giá trị cuối cùng của phạm vi rồi đi ngược về trước.</p>
+        <p>Xét ví dụ sau:</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+ 
+<span style="color: #2b91af">int</span> main()
+{
+    <span style="color: #2b91af">unsigned</span> <span style="color: #2b91af">short</span> x{ 0 }; <span style="color: #008000">// 0 nằm trong phạm vi</span>
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;x was: &quot;</span> &lt;&lt; x &lt;&lt; <span style="color: #a31515">&#39;\n&#39;</span>;
+ 
+    x = -1; <span style="color: #008000">// -1 ngoài phạm vi</span>
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;x is now: &quot;</span> &lt;&lt; x &lt;&lt; <span style="color: #a31515">&#39;\n&#39;</span>;
+ 
+    x = -2; <span style="color: #008000">// -2 ngoài phạm vi</span>
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;x is now: &quot;</span> &lt;&lt; x &lt;&lt; <span style="color: #a31515">&#39;\n&#39;</span>;
+ 
+    <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+        <div class="codeblock"><pre><code>x was: 0
+x is now: 65535
+x is now: 65534</code></pre></div>
+
+        <p>Có một điều thú vị có thể bạn đã từng trải qua hoặc từng thấy ở các video game cũ ngày trước là nếu bạn "phá đảo" hay đạt cấp độ cao nhất thì bạn sẽ trở về cấp độ đầu. Hoặc thậm chí có bug nếu số tài nguyên quá cao sẽ bị reset về 0. Đó có thể là do hiện tượng trên gây nên.</p>
+        <h3 class="muc">Cuộc tranh cãi về việc dùng unsigned</h3>
+        <p>Rất nhiều lập trình biên (và một số nhà phát triển lớn, bao gồm cả Google) tin rằng lập trình viên nên tránh dùng unsigned integer.</p>
+        <p>Có hai nguyên nhân chính cho vấn đề trên.</p>
+        <p>Đầu tiên, ta xét một phép trừ giữ hai unsigned integer là 3 và 5. Kết quả hiển nhiên là -2. Tuy nhiên, vì kết quả của các phép tính giữa unsigned integer phải là unsigned integer, mà nó lại không thể lưu số âm. Do đó, sẽ xảy ra hiện tượng đã nêu ở phần trên.</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+ 
+<span style="color: #2b91af">int</span> main()
+{
+	<span style="color: #2b91af">unsigned</span> <span style="color: #2b91af">int</span> x{ 3 };
+	<span style="color: #2b91af">unsigned</span> <span style="color: #2b91af">int</span> y{ 5 };
+ 
+	std::cout &lt;&lt; x - y &lt;&lt; <span style="color: #a31515">&#39;\n&#39;</span>;
+	<span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+        <p>Trên máy của mình nó in ra kết quả sau:</p>
+        <div class="codeblock"><pre><code>4294967294</code></pre></div>
+        <p>Thứ hai, nếu bạn dùng phép tính giữa signed và unsigned integer thì kết quả sẽ mặc định là unsigned integer. Do đó, cho dù một trong hai biến x hoặc y là signed integer thì kết quả vẫn vậy.</p>
+        <p class="loi-khuyen">Lời khuyên: Hãy tránh sử dụng unsigned integer nếu có thể. Nếu bạn quyết định dùng nó hãy chắc chắn rằng sẽ không có trường hợp xấu xảy ra chẳng hạn các phép tính có kết quả âm, trộn lẫn signed và unsigned. Chính Bjarne Stroustrup - người tạo ra C++ từng nói rằng: "Using an unsigned instead of an int to gain one more bit to represent positive integers is almost never a good idea", đại khái là dùng unsigned thay thế cho signed chỉ để tăng thêm vài bit để biểu diễn thêm số dương gần như chưa bao giờ là một ý kiến hay.</p>
+        <p>Các trường hợp nên dùng unsigned integer mình sẽ dần đề cập đến ở các bài học sau và các trường hợp đó ít gặp nên hiện tại bạn không cần chú tâm vào nó lắm. Hãy dùng signed thay vì unsigned.</p>
+
+        <div>
+            <a href="#"><button class="btn">Bài tiếp theo</button></a>
+        </div>
+        <div>
+            <a href="../../index.html"><button class="btn">C++ Index</button></a>
+        </div>
+        <div>
+            <a href="../3-4-signed-integer/index.html"><button class="btn">Bài trước</button></a>
+        </div>
+
+    </div>
+</body>
+
+</html>
