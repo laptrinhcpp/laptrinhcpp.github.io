@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../../../css/reset.css">
+    <title>3.7 Giới thiệu về scientific notation</title>
+    <link rel="stylesheet" href="../../../css/substyle.css">
+    <link rel="shortcut icon" href="../../../img/circle-logo.ico">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="../../../js/showhide.js"></script>
+</head>
+
+<body> 
+    <div class="title">
+        <h1>3.7 Giới thiệu về scientific notation</h1>
+    </div>
+
+    <div class="content">
+        
+        <p>Trước khi chúng ta tiếp tục học các chủ đề khác của C++, chúng ta sẽ học hoặc ôn lại một ít kiến thức toán nhé. Cụ thể là về ký hiệu khoa học (scientific notation).</p>
+        <p><b>Scientific notation</b> là cách viết một số có độ dài lớn trở nên nhỏ gọn hơn nhưng không làm thay đổi giá trị.</p>
+        <p>Các số sử dụng scientific notation có dạng: <i>a</i> x 10<sup><i>n</i></sup>. Ví dụ số 12000 khi ở dạng scientific notation là 1.2x10<sup>4</sup>. Đến đây chắc hẳn bạn đã hiểu scientific notation là gì rồi.</p>
+        <p>Quy ước rằng phần trước dấu phẩy chỉ có một số, còn lại sẽ đặt sau dấu phẩy. Ví dụ các số hợp lệ là 1.92x10<sup>4</sup> hoặc 9.153x10<sup>5</sup> chứ không được viết là 19.2x10<sup>3</sup> hoặc 91.53x10<sup>4</sup>.</p>
+        <p>Ta giả sử xét khối lượng của trái đất là 5973600000000000000000000 kg. Đó là một số rất lớn (thậm chí quá lớn để có thể lưu trong một integer có kích thước 8 byte). Nó cũng rất khó đọc (mình cho bạn 5 giây, đố bạn biết nó có bao nhiêu số 0 😄). Ngay cả khi viết như thế này nó vẫn khó đọc: 5,973,600,000,000,000,000,000,000.</p>
+        <p>Ở dạng scientific notation, số trên được viết như sau: 5.9736 x 10<sup>24</sup> kg. Như thế này dễ đọc hơn nhiều đúng không? Scientific notation không chỉ giúp ta làm gọn các số lớn mà còn có thể giúp ta làm gọn các số nhỏ. Ví dụ 0.00000123 có thể viết lại thành 1.23<sup>-6</sup>.</p>
+        <p>Trong C++, "nhân 10 mũ" sẽ được biểu diễn bằng chữ cái 'e' (đôi khi là 'E'). Ví dụ 1.2x10<sup>3</sup> sẽ được biểu thị bằng 1.2e3, 5.9736x10<sup>24</sup> là 5.9736e24, khối lượng electron là 9.1093822e-31 kg.</p>
+        <h3 class="muc">Một số lưu ý khi dùng scientific notation</h3>
+        <ul>
+        	<li>Nếu chữ số đầu tiên của số ở dạng scientific notation là số 0 thì bỏ số 0 đi. Ví dụ 0.00789 không thể viết 0007.89e-3 mà là 7.89e-3.</li>
+        	<li>Nếu chữ số cuối cùng của số ở dạng scientific notation là số 0 thì bỏ số 0 đi nhưng chỉ làm vậy trong trường hợp số ban đầu không có phần thập phân (tức là phần sau dấu phẩy). Ví dụ: 42030 viết là 4.203e4 (bỏ số 0 ở cuối vì số ban đầu không có phần thập phân), 600.410 viết là 6.00410e2 (không bỏ số 0 cuối cùng vì số ban đầu có phần thập phân), 0.0078900 viết là 7.8900e-3 (bỏ số 0 ở trước nhưng không bỏ số 0 ở sau vì số ban đầu có phần thập phân).</li>
+        </ul>
+        <h3 class="muc">Bài tập</h3>
+        <p>Chuyển các số sau sang dạng scientific notation.</p>
+        <p>a) 34.50</p>
+        <div id="answer1" style="display: none">3.450e1</div>
+        <button class="showhidebtn" onclick="showHide('#answer1')">Show/Hide</button>
+        <p>b) 0.004000</p>
+        <div id="answer2" style="display: none">4.000e-3 (số 0 ở cuối không bị bỏ đi vì số ban đầu có phần thập phân)</div>
+        <button class="showhidebtn" onclick="showHide('#answer2')">Show/Hide</button>
+        <p>c) 123.005</p>
+        <div id="answer3" style="display: none">1.23005e2</div>
+        <button class="showhidebtn" onclick="showHide('#answer3')">Show/Hide</button>
+        <p>d) 146000</p>
+        <div id="answer4" style="display: none">1.46e5 (số 0 ở cuối bị bỏ đi vì số ban đầu không có phần thập phân)</div>
+        <button class="showhidebtn" onclick="showHide('#answer4')">Show/Hide</button>
+        <p>e) 146000.001</p>
+        <div id="answer5" style="display: none">1.46000001e5</div>
+        <button class="showhidebtn" onclick="showHide('#answer5')">Show/Hide</button>
+        <p>f) 0.0000000008</p>
+        <div id="answer6" style="display: none">8e-10. Lưu ý không được viết 8.0e-10, nếu số đã cho là 0.00000000080 thì mới được viết 8.0e-10.</div>
+        <button class="showhidebtn" onclick="showHide('#answer6')">Show/Hide</button>
+        <p>g) 34500.0</p>
+        <div id="answer7" style="display: none">3.45000e4. Mặc dù phần thập phân ở số trên là 0 và 34500.0 không khác 34500 về mặt giá trị; tuy nhiên, xét cho cùng thì nó vẫn có phần thập phân nên không được lượt bỏ số 0 ở cuối. Nếu số đã cho là 34500 thì có thể viết là 3.45e4.</div>
+        <button class="showhidebtn" onclick="showHide('#answer7')">Show/Hide</button>
+
+        <div>
+            <a href="#"><button class="btn">Bài tiếp theo</button></a>
+        </div>
+        <div>
+            <a href="../../index.html"><button class="btn">C++ Index</button></a>
+        </div>
+        <div>
+            <a href="../3-6-fixed-width-integer-va-size-t/index.html"><button class="btn">Bài trước</button></a>
+        </div>
+
+    </div>
+</body>
+
+</html>
