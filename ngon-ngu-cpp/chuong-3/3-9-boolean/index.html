@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../../../css/reset.css">
+    <title>3.9 Boolean</title>
+    <link rel="stylesheet" href="../../../css/substyle.css">
+    <link rel="shortcut icon" href="../../../img/circle-logo.ico">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="../../../js/showhide.js"></script>
+</head>
+
+<body> 
+    <div class="title">
+        <h1>3.9 Boolean</h1>
+    </div>
+
+    <div class="content">
+        
+        <p>Trong đời sống hằng ngày, chắc hẳn bạn sẽ gặp những câu nghi vấn dạng "đúng hay sai", "có hay không". "C++ có khó không?" - "Có", "Chị hiểu hông?" - "Không"</p>
+        <p>Bây giờ ta xét các câu khẳng định mà có thể đúng (true) hoặc sai (false), ví dụ "Hiệp đẹp trai", câu khẳng định trên là true, "Hiệp là con gái", câu khẳng định trên hoàn toàn là false.</p>
+        <p>Những câu ví dụ trên chỉ có hai khả năng trả lời là "yes/true" hoặc "no/false". Và hai cách trả lời true hoặc false đó được gọi là boolean.</p>
+        <h3 class="muc">Biến boolean</h3>
+        <p>Biến boolean là loại biến chỉ có khả năng chứa hai giá trị là <i>true</i> hoặc <i>false</i>.</p>
+        <p>Để định nghĩa một biến boolean, ta dùng từ khoá <i>bool</i>.</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #2b91af">bool</span> b;
+</pre></td></tr></table></div>
+
+        <p>Để khởi tạo hoặc gán giá trị true, false cho biến boolean, ta dùng từ khoá <b>true</b> và <b>false</b>.</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3
+4</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #2b91af">bool</span> b1 { true };
+<span style="color: #2b91af">bool</span> b2 { false };
+b1 = false;
+<span style="color: #2b91af">bool</span> b3{}; <span style="color: #008000">// mặc định là false</span>
+</pre></td></tr></table></div>
+
+        <p>Giống như toán tử trừ đơn phân (-) có thể chuyển đổi một số dương thành số âm và ngược lại, toán tử not logical (!) có thể chuyển đổi giá trị true thành false và false thành true.</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #008000">//</span>
+<span style="color: #2b91af">bool</span> b1 { !true };  <span style="color: #008000">// b1 sẽ được gán giá trị false</span>
+<span style="color: #2b91af">bool</span> b2 { !false }; <span style="color: #008000">// b2 sẽ được gán giá trị true</span>
+</pre></td></tr></table></div>
+
+        <p>Như bạn đã biết, dữ liệu trong bộ nhớ chỉ có thể lưu dưới dạng nhị phân tức là chỉ gồm các số 0 và 1. Do đó, thứ được lưu trong biến boolean không thể là chữ "true" hay "false" được. Thay vào đó, nó sẽ được lưu dưới dạng integer: true sẽ được lưu thành 1 và false sẽ được lưu thành 0. Đó cũng là lý do boolean thuộc loại integral, bản chất boolean cũng chỉ là integer (gồm giá trị 1 (true) và false (0)).</p>
+        <h3 class="muc">In ra boolean</h3>
+        <p>Khi ta in giá trị của boolean thông qua <i>std::cout</i>, nó sẽ in ra 1 nếu là true và 0 nếu là false.</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+ 
+<span style="color: #2b91af">int</span> main()
+{
+    std::cout &lt;&lt; true &lt;&lt; std::endl;  <span style="color: #008000">// true là 1</span>
+    std::cout &lt;&lt; !true &lt;&lt; std::endl; <span style="color: #008000">// !true là 0</span>
+ 
+    <span style="color: #2b91af">bool</span> b{false};
+    std::cout &lt;&lt; b &lt;&lt; std::endl;     <span style="color: #008000">// b là false nên in ra 0</span>
+    std::cout &lt;&lt; !b &lt;&lt; std::endl;    <span style="color: #008000">// !b là true nên in ra 1</span>
+    <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+        <p>Output:</p>
+        <div class="codeblock"><pre><code>1
+0
+0
+1</code></pre></div>
+        <p>Nếu bạn muốn in hẳn chữ "true" và "false" thì bạn có thể dùng <i>std::boolalpha</i>.</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+ 
+<span style="color: #2b91af">int</span> main()
+{
+    std::cout &lt;&lt; true &lt;&lt; std::endl;
+    std::cout &lt;&lt; false &lt;&lt; std::endl;
+ 
+    std::cout &lt;&lt; std::boolalpha; <span style="color: #008000">// in giá trị boolean dưới dạng chữ</span>
+ 
+    std::cout &lt;&lt; true &lt;&lt; std::endl;
+    std::cout &lt;&lt; false &lt;&lt; std::endl;
+    <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+        <p>Output:</p>
+        <div class="codeblock"><pre><code>1
+0
+true
+false</code></pre></div>
+
+        <p>Nếu bạn muốn trở lại như ban đầu thì dùng <i>std::noboolalpha</i></p>
+        <h3 class="muc">Lưu integer vào biến boolean</h3>
+        <p>Bạn không thể khởi tạo đồng nhất một biến boolean và gán cho nó một giá trị integer. Điều này là hiển nhiên vì khởi tạo đồng nhất không cho phép gán giá trị có kiểu dữ liệu khác với kiểu dữ liệu của biến.</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3
+4
+5
+6
+7
+8
+9</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+ 
+<span style="color: #2b91af">int</span> main()
+{
+    <span style="color: #2b91af">bool</span> b{ 4 }; <span style="color: #008000">// error</span>
+    std::cout &lt;&lt; b;
+    
+    <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+        <p>Tuy nhiên, ngoài trường hợp trên, bạn hoàn toàn có thể gán một giá trị integer cho một biến boolean. Nếu giá trị gán là 0 thì biến boolean sẽ mang giá trị false. Nếu giá trị gán là một số khác 0 (cả dương và âm) thì biến boolean sẽ mang giá trị true.</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+ 
+<span style="color: #2b91af">int</span> main()
+{
+    std::cout &lt;&lt; std::boolalpha;
+ 
+    <span style="color: #2b91af">bool</span> b1 = 4 ; <span style="color: #008000">// khởi tạo gán biến b1 với giá trị integer là 4</span>
+    std::cout &lt;&lt; b1 &lt;&lt; <span style="color: #a31515">&#39;\n&#39;</span>;
+ 
+    <span style="color: #2b91af">bool</span> b2 = 0 ; <span style="color: #008000">// khởi tạo gán biến b2 với giá trị integer là 0</span>
+    std::cout &lt;&lt; b2 &lt;&lt; <span style="color: #a31515">&#39;\n&#39;</span>;
+    
+    <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+        <p>Output:</p>
+        <div class="codeblock"><pre><code>true
+false</code></pre></div>
+
+        <h3 class="muc">Nhập giá trị boolean</h3>
+        <p>Nhập giá trị boolean thông qua <i>std::cin</i> đôi khi hơi hack não đối với người mới học C++.</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+
+<span style="color: #2b91af">int</span> main()
+{
+    <span style="color: #2b91af">bool</span> b{}; <span style="color: #008000">// mặc định là false (0)</span>
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;Enter a boolean value: &quot;</span>;
+    std::cin &gt;&gt; b;
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;You entered: &quot;</span> &lt;&lt; b;
+ 
+    <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+        <div class="codeblock"><pre><code>Enter a Boolean value: true
+You entered: 0</code></pre></div>
+        <p>Nà ní?</p>
+        <p>Hoá ra <i>std::cin</i> chỉ nhận giá trị cho biến boolean dưới dạng integer là 0 (false) và 1 (true) chứ không thể nhận chữ "true" hay "false". Ở chương trình trên, khi bạn nhập "true" thì <i>std::cin</i> chạy thất bại, dẫn đến biến b vẫn giữ giá trị ban đầu là 0 (false), vì vậy nó cho output là 0.</p>
+        <h3 class="muc">Hàm có trả về boolean</h3>
+        <p>Tương tự như integer, boolean cũng có hàm trả về tương ứng. Nó trả về giá trị 0 (false) hoặc 1 (true). Ta dùng loại hàm này khi kiểm tra điều gì đó có đúng hay không.</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+ 
+<span style="color: #008000">// trả về true nếu x bằng y và trả về false nếu chúng khác nhau</span>
+<span style="color: #2b91af">bool</span> isEqual(<span style="color: #2b91af">int</span> x, <span style="color: #2b91af">int</span> y)
+{
+    <span style="color: #0000ff">return</span> (x == y); <span style="color: #008000">// toán tử == so sánh hai giá trị, nếu bằng nhau thì trả về true, nếu khác nhau thì trả về false</span>
+}
+ 
+<span style="color: #2b91af">int</span> main()
+{
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;Enter an integer: &quot;</span>;
+    <span style="color: #2b91af">int</span> x{};
+    std::cin &gt;&gt; x;
+ 
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;Enter another integer: &quot;</span>;
+    <span style="color: #2b91af">int</span> y{};
+    std::cin &gt;&gt; y;
+ 
+    std::cout &lt;&lt; std::boolalpha; 
+    
+    std::cout &lt;&lt; x &lt;&lt; <span style="color: #a31515">&quot; and &quot;</span> &lt;&lt; y &lt;&lt; <span style="color: #a31515">&quot; are equal? &quot;</span>;
+    std::cout &lt;&lt; isEqual(x, y);
+ 
+    <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+        <p>Dưới đây là output cho hai trường hợp:</p>
+        <div class="codeblock"><pre><code>Enter an integer: 5
+Enter another integer: 5
+5 and 5 are equal? true</code></pre></div>
+
+        <div class="codeblock"><pre><code>Enter an integer: 6
+Enter another integer: 4
+6 and 4 are equal? false</code></pre></div>
+
+        <p>Nó hoạt động như thế nào? Đầu tiên, nó nhận hai giá trị x, y từ người dùng. Khi gặp gọi hàm isEqual(x, y), compiler biên dịch hàm isEqual. Trong hàm này, nó so sánh x và y. Ở trường hợp thứ nhất x=5, y=5 nên x=y, biểu thức x==y đúng nên nó trả giá trị true về hàm main. Kết quả là in ra "true". Ở trường hợp thứ hai, x=6, y=4 nên x không bằng y, biểu thức x==y sai nên nó trả giá trị false về hàm main. Kết quả là in ra "false".</p>
+        <p>Kí kiệu == được gọi là toán tử so sánh, nó mang ý nghĩa là "giá trị bên vế trái bằng giá trị bên vế phải" và sẽ trả về true nếu khẳng định đó đúng, false nếu khẳng định đó sai.</p>
+
+        <div>
+            <a href="#"><button class="btn">Bài tiếp theo</button></a>
+        </div>
+        <div>
+            <a href="../../index.html"><button class="btn">C++ Index</button></a>
+        </div>
+        <div>
+            <a href="../3-8-floating-point-number/index.html"><button class="btn">Bài trước</button></a>
+        </div>
+
+    </div>
+</body>
+
+</html>
