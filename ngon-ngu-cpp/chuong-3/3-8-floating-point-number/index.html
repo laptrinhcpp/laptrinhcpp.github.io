@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../../../css/reset.css">
+    <title>3.8 Floating point number</title>
+    <link rel="stylesheet" href="../../../css/substyle.css">
+    <link rel="shortcut icon" href="../../../img/circle-logo.ico">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="../../../js/showhide.js"></script>
+</head>
+
+<body> 
+    <div class="title">
+        <h1>3.8 Floating point number</h1>
+    </div>
+
+    <div class="content">
+        
+        <p>Integer là lựa chọn tốt cho việc lưu trữ số nguyên, nhưng đôi khi chúng ta cần chứa một số rất lớn hoặc số có thành phần phân số, lúc đó ta sử dụng đến biến <i>floating point</i>. <b>Floating point</b> là loại biến có thể lưu trữ số thực ví dụ 4320.0, -3.33, hoặc 0.01226.</p>
+        <p>Floating point có ba kiểu dữ liệu chính là <b>float</b>, <b>double</b> và <b>long double</b>. Cũng giống như integer, floating point không có kích thước cố định, nó phụ thuộc vào máy và compiler, C++ chỉ quyết định kích thước tối thiểu mà thôi. Ở các thiết bị hiện đại, thông thường float có kích thước tối thiểu 4 byte, double là 8 byte, long double tối thiểu là 8 byte nhưng có thể có 12 byte hoặc 16 byte. Floating point chỉ có kiểu signed, không có unsigned, điều này có nghĩa là nó có thể chứa cả số dương và số âm.</p>
+        <p>Dưới đây là định nghĩa các biến floating point.</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #2b91af">float</span> fValue;
+<span style="color: #2b91af">double</span> dValue;
+<span style="color: #2b91af">long</span> <span style="color: #2b91af">double</span> ldValue;
+</pre></td></tr></table></div>
+
+        <p>Khi bạn gán giá trị cho biến floating point, giá trị đó luôn luôn phải có phần thập phân ngay cả khi phần thập phân đó là số 0. Điều này giúp compiler biết rằng ta đang gán floating point chứ không phải integer.</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3
+4</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #2b91af">int</span> x{5};       <span style="color: #008000">// 5 là integer</span>
+<span style="color: #2b91af">double</span> y{5.0};  <span style="color: #008000">// 5.0 là floating point literal, không có đuôi mặc định là kiểu double</span>
+<span style="color: #2b91af">float</span> z{5.0f};  <span style="color: #008000">// 5.0 là floating point literal, đuôi &#39;f&#39; có nghĩa là kiểu float</span>
+<span style="color: #2b91af">float</span> t{5};      <span style="color: #008000">// không được viết như này</span>
+</pre></td></tr></table></div>
+
+        <p>Mặc định, các floating point literal không có đuôi theo sau (ví dụ 0.2, 4.5, 6.9,...) thuộc kiểu double, nếu muốn gán chúng cho float thì phải thêm đuôi 'f' đằng sau (ví dụ 0.2f, 4.5f, 6.9f,...). Nếu bạn quên thêm 'f', chương trình vẫn sẽ biên dịch bình thường, tuy nhiên đôi lúc sẽ có sai số không mong muốn vì giá trị và biến khác kiểu dữ liệu với nhau.</p>
+        <h3 class="muc">In ra floating point number</h3>
+        <p>Xét chương trình sau:</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+ 
+<span style="color: #2b91af">int</span> main()
+{
+    std::cout &lt;&lt; 5.0 &lt;&lt; <span style="color: #a31515">&#39;\n&#39;</span>;
+    std::cout &lt;&lt; 6.7f &lt;&lt; <span style="color: #a31515">&#39;\n&#39;</span>;
+    std::cout &lt;&lt; 9876543.21 &lt;&lt; <span style="color: #a31515">&#39;\n&#39;</span>;
+}
+</pre></td></tr></table></div>
+
+        <p>Kết quả output có lẽ sẽ làm bạn ngạc nhiên:</p>
+        <div class="codeblock"><pre><code>5
+6.7
+9.87654e+06</code></pre></div>
+        <p>Trường hợp đầu tiên, nó cho output là 5 mặc dù trong chương trình là 5.0. Đó là vì mặc định C++ sẽ không in ra phần thập phân nếu phần thập phân đó bằng 0.</p>
+        <p>Trường hợp thứ hai, kết quả như mong đợi.</p>
+        <p>Trường hợp thứ ba, nó in ra một số dưới dạng scientific notation (nếu bạn chưa biết về scientific notation, bạn có thể xem bài <a href="../3-7-gioi-thieu-ve-scientific-notation/index.html" target="_blank">3.7 Giới thiệu về scientific notation</a>).</p>
+        <h3 class="muc">Phạm vi floating point</h3>
+        <p>Trước khi đi tiếp, ta cần biết qua một định nghĩa mới là chữ số có nghĩa (significant digit). Chữ số có nghĩa là các chữ số đứng trước chữ cái 'e' trong dạng scientific notation. Ví dụ 1.2405e5 có 5 chữ số có nghĩa là 1, 2, 4, 0, 5; 2.0020e-9 có 5 chữ số có nghĩa (mặc dù chỉ có 0 và 2). Số lượng số có nghĩa quyết định độ chính xác của số đó, số lượng càng nhiều thì độ chính xác càng cao.</p>
+        <p>Ta có bảng sau:</p>
+        <table border=1 cellspacing=0 cellpadding=3>
+        <tr>
+        <th>Kích thước</th>
+        <th>Phạm vi</th>
+        <th>Độ chính xác</th>
+        </tr>
+        <tr>
+        <td>4 bytes</td>
+        <td>±1.18 x 10<sup>-38</sup> đến ±3.4 x 10<sup>38</sup></td>
+        <td>6-9 chữ số có nghĩa, thông thường là 7</td>
+        </tr>
+        <tr>
+        <td>8 bytes</td>
+        <td>±2.23 x 10<sup>-308</sup> đến ±1.80 x 10<sup>308</sup></td>
+        <td>15-18 chữ số có nghĩa, thông thường là 16</td>
+        </tr>
+        <tr>
+        <td>80-bits (thông thương là 12 hoặc 16 bytes)</td>
+        <td>±3.36 x 10<sup>-4932</sup> đến ±1.18 x 10<sup>4932</sup></td>
+        <td>18-21 chữ số có nghĩa</td>
+        </tr>
+        <tr>
+        <td>16 bytes</td>
+        <td>±3.36 x 10<sup>-4932</sup> đến ±1.18 x 10<sup>4932</sup></td>
+        <td>33-36 chữ số có nghĩa</td>
+        </tr>
+        </table>
+        <p>Trường hợp 80 bit ở bảng trên là do ngày xưa người ta dùng 80 bit để biểu diễn kiểu floating point đó. Tuy nhiên, ở hầu hết thiết bị hiện đại ngày nay, kiểu dữ liệu đó được thay thế bằng 12 byte hoặc 16 byte.</p>
+        <h3 class="muc">Độ chính xác của floating point</h3>
+        <p>Xét phân số 1/3, khi viết dưới dạng số thập phân thì nó có dạng 0.3333333333333333... với vô hạn con số 3.</p>
+        <p>Trên máy tính, để lưu trữ một số có độ dài vô hạn như thế sẽ cần đến một bộ nhớ vô hạn. Điều này chắc chắn là không thể. Chính vì lý do này mà đôi khi chúng ta chỉ có thể lưu một vài số và phải bỏ các số còn lại. Giá trị số được lưu trữ sẽ gần bằng giá trị ban đầu chứ không thể bằng. Ví dụ 1/3 chỉ có thể lưu 0.33333 phần còn lại sẽ bị lượt bỏ.</p>
+        <p>Độ chính xác của một floating point number xác định có bao nhiêu số có thể biểu thị, ví dụ 4.5 có độ chính xác là 2, 3.542 có độ chính xác là 4,...</p>
+        <p>Khi output một floating point, std::cout mặc định sẽ có độ chính xác là 6 - có nghĩa là nó chỉ có thể in ra 6 số của floating point.</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+
+<span style="color: #2b91af">int</span> main()
+{
+    std::cout &lt;&lt; 9.87654321 &lt;&lt; <span style="color: #a31515">&#39;\n&#39;</span>;
+    std::cout &lt;&lt; 987.654321 &lt;&lt; <span style="color: #a31515">&#39;\n&#39;</span>;
+    std::cout &lt;&lt; 987654.321f &lt;&lt; <span style="color: #a31515">&#39;\n&#39;</span>;
+    std::cout &lt;&lt; 9876543.21f &lt;&lt; <span style="color: #a31515">&#39;\n&#39;</span>;
+    std::cout &lt;&lt; 0.0000987654321f &lt;&lt; <span style="color: #a31515">&#39;\n&#39;</span>;
+ 
+    <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+
+        <p>Chương trình trên in ra:</p>
+        <div class="codeblock"><pre><code>9.87654
+987.654
+987654
+9.87654e+06
+9.87654e-05</code></pre></div>
+        <p>Bạn có thể thấy rằng các trường hợp trên chỉ cho ra 6 chữ số kể cả số đó có nhiều hơn 6 số, các số còn lại sẽ bị lượt bỏ. Chú ý rằng 9.87654e+06 không khác gì 9.87654e6 nhé. Số lượng các chữ số sau chữ cái 'e' phụ thuộc vào compiler, đôi khi có hai số như trên, đôi khi có ba số ví dụ như 9.87654e+006.</p>
+        <p>Số lượng các chữ số chính xác của biến floating point phụ thuộc vào kiểu dữ liệu (kiểu float có độ chính xác thấp hơn kiểu double) và giá trị được lưu (một số giá trị có độ chính xác cao hơn các giá trị khác). Kiểu float có 6 đến 9 chữ số chính xác (tức là các chữ số không bị sai số), thông thường là 7. Kiểu double có 15 đến 18 chữ số chính xác, thông thường là 16. Kiểu long double có 15, 18 hoặc 33 chữ số chính xác.</p>
+        <p>Mặc định độ chính xác khi bạn dùng std::cout để in ra là 6. Tuy nhiên, bạn có thể tăng nó lên nhờ vào hàm std::setprecision() được định nghĩa trong header <i>iomanip</i>.</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+<span style="color: #0000ff">#include &lt;iomanip&gt; </span><span style="color: #008000">// std::setprecision()</span>
+
+<span style="color: #2b91af">int</span> main()
+{
+    std::cout &lt;&lt; std::setprecision(16);   <span style="color: #008000">// tăng độ chính xác lên 16</span>
+    std::cout &lt;&lt; 3.33333333333333333333333333333333333333f &lt;&lt;<span style="color: #a31515">&#39;\n&#39;</span>; <span style="color: #008000">// đuôi f là kiểu float</span>
+    std::cout &lt;&lt; 3.33333333333333333333333333333333333333 &lt;&lt; <span style="color: #a31515">&#39;\n&#39;</span>; <span style="color: #008000">// không có đuôi là kiểu double</span>
+    <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+        <p>Chương trình trên cho output:</p>
+
+        <div class="codeblock"><pre><code>3.333333253860474
+3.333333333333333</code></pre></div>
+
+        <p>Bởi vì chúng ta tăng độ chính xác lên 16 nên nó in ra 16 chữ số. Nhưng vì kiểu float có độ chính xác thấp hơn double nên nó chỉ in ra được tầm 7 chữ số thật sự chính xác như giá trị ban đầu, các số sau sẽ bị sai số. Kiểu double thì in đúng được 16 số. Nếu bạn tăng thêm độ chính xác lên hơn 16 chữ số thì kiểu double cũng sẽ bắt đầu bị sai số.</p>
+        <p>Hiện tượng sai số trên không chỉ xảy ra đối với phần thập phân của floating point mà còn xảy ra đối với phần nguyên nếu độ dài của giá trị lớn. Ví dụ:</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+<span style="color: #0000ff">#include &lt;iomanip&gt; </span><span style="color: #008000">// std::setprecision()</span>
+ 
+<span style="color: #2b91af">int</span> main()
+{
+    <span style="color: #2b91af">float</span> f { 123456789.0f };           <span style="color: #008000">// f có 10 chữ số có nghĩa</span>
+    std::cout &lt;&lt; std::setprecision(9);  <span style="color: #008000">// tăng số lượng chữ số output lên 9 chữ số</span>
+    std::cout &lt;&lt; f &lt;&lt; <span style="color: #a31515">&#39;\n&#39;</span>;
+    <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+        <p>Chương trình trên cho ra output:</p>
+        <div class="codeblock"><pre><code>123456792</code></pre></div>
+        <p>Vì kiểu float thông thường chỉ hiện 7 chữ số chính xác như số ban đầu nên các số từ 1 đến 7 đều đúng, riêng hai số cuối xảy ra sai số. Hiện tượng này là lỗi làm tròn (rounding error).</p>
+        <p class="loi-khuyen">Lời khuyên: Hãy thận trọng khi dùng đến floating point vì nó có hiện tượng sai số làm tròn. Nêu ưu tiên dùng double thay vì float vì double có độ chính xác cao hơn float.</p>
+        <h3 class="muc">Rounding error</h3>
+        <p>Xét phân số 1/10, đưa về dạng số thập phân thì nó bằng 0.1. Tuy nhiên, khi lưu nó vào biến floating point, nó có thể xảy ra lỗi làm tròn. Ví dụ:</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+<span style="color: #0000ff">#include &lt;iomanip&gt; </span><span style="color: #008000">// std::setprecision()</span>
+ 
+<span style="color: #2b91af">int</span> main()
+{
+    <span style="color: #2b91af">double</span> d{0.1};
+    std::cout &lt;&lt; d &lt;&lt; <span style="color: #a31515">&#39;\n&#39;</span>;             <span style="color: #008000">// độ chính xác mặc định là 6</span>
+    std::cout &lt;&lt; std::setprecision(17); <span style="color: #008000">// tăng độ chính xác lên 17</span>
+    std::cout &lt;&lt; d &lt;&lt; <span style="color: #a31515">&#39;\n&#39;</span>;
+    <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+        <p>Output:</p>
+        <div class="codeblock"><pre><code>0.1
+0.10000000000000001</code></pre></div>
+        <p>Dưới đây là một trường hợp khác của rounding error:</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+<span style="color: #0000ff">#include &lt;iomanip&gt; </span><span style="color: #008000">// std::setprecision()</span>
+ 
+<span style="color: #2b91af">int</span> main()
+{
+    std::cout &lt;&lt; std::setprecision(17);
+ 
+    <span style="color: #2b91af">double</span> d1(1.0);
+    std::cout &lt;&lt; d1 &lt;&lt; std::endl;
+    
+    <span style="color: #2b91af">double</span> d2(0.1 + 0.1 + 0.1 + 0.1 + 0.1 + 0.1 + 0.1 + 0.1 + 0.1 + 0.1); <span style="color: #008000">// bằng 1.0</span>
+    std::cout &lt;&lt; d2 &lt;&lt; std::endl;
+}
+</pre></td></tr></table></div>
+
+        <p>Output:</p>
+        <div class="codeblock"><pre><code>1
+0.99999999999999989</code></pre></div>
+        <p>Một lỗi khá ngớ ngẩn, đúng không? Mặc dù thực tế d1 và d2 bằng nhau và cùng bằng 1.0 nhưng trong chương trình trên d1 lại khác d2. Cũng chính vì vậy, bạn nên cẩn thận khi thực hiện phép so sánh giữa hai hay nhiều số floating point, kết quả rất có thể sẽ bị sai. Một chú ý nữa là các phép tính giữa các số floating point ví dụ như cộng, nhân sẽ làm tăng rounding error.</p>
+        <p>Rounding error là lỗi luôn luôn xảy ra, bạn không thể bỏ qua nó. Do đó, bạn đừng bao giờ nghĩ rằng floating point number của bạn là chính xác.</p>
+        <p>Hệ quả của hiện tượng này ngoài đời sống: Tuyệt đối không bao giờ dùng floating point trong việc quản lý dữ liệu tài chính, tiền tệ hoặc tính toán đòi hỏi độ chính xác cao.</p>
+        <h3 class="muc">NaN và Inf</h3>
+        <p>Có hai thể loại floating point đặc biệt là NaN và Inf. Inf (viết tắt infinity) biểu diễn khái niệm vô cực, nó có thể âm hoặc dương. NaN (viết tắt Not a Number) biểu diễn một thứ không phải là số, không tồn tại, có nhiều loại NaN, nhưng mình sẽ không đề cập đến ở đây.</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+ 
+<span style="color: #2b91af">int</span> main()
+{
+    <span style="color: #2b91af">double</span> zero {0.0};
+    <span style="color: #2b91af">double</span> posinf { 5.0 / zero }; <span style="color: #008000">// dương vô cực</span>
+    std::cout &lt;&lt; posinf &lt;&lt; std::endl;
+ 
+    <span style="color: #2b91af">double</span> neginf { -5.0 / zero }; <span style="color: #008000">// âm vô cực</span>
+    std::cout &lt;&lt; neginf &lt;&lt; std::endl;
+ 
+    <span style="color: #2b91af">double</span> nan { zero / zero }; <span style="color: #008000">// không tồn tại, đây là dạng vô định 0/0</span>
+    std::cout &lt;&lt; nan &lt;&lt; std::endl;
+ 
+    <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+        <p>Trên Visual Studio 2019, nó cho ra:</p>
+        <div class="codeblock"><pre><code>inf
+-inf
+-nan(ind)</code></pre></div>
+        <p><i>inf</i> có nghĩa là dương vô cùng, <i>-inf</i> là âm vô cùng. Trường hợp cuỗi cùng là vô định, không tồn tại số đó, <i>ind</i> là viết tắt của <i>indeterminate</i> nghĩa là không xác định. Chú ý rằng output trên có thể khác tuỳ vào máy của bạn hoặc compiler nhé, nhưng chung quy lại cũng sẽ tương tự như trên thôi.</p>
+
+        <div>
+            <a href="#"><button class="btn">Bài tiếp theo</button></a>
+        </div>
+        <div>
+            <a href="../../index.html"><button class="btn">C++ Index</button></a>
+        </div>
+        <div>
+            <a href="../3-7-gioi-thieu-ve-scientific-notation/index.html"><button class="btn">Bài trước</button></a>
+        </div>
+
+    </div>
+</body>
+
+</html>
