@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../../../css/reset.css">
+    <title>3.10 Giới thiệu câu lệnh if</title>
+    <link rel="stylesheet" href="../../../css/substyle.css">
+    <link rel="shortcut icon" href="../../../img/circle-logo.ico">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="../../../js/showhide.js"></script>
+</head>
+
+<body> 
+    <div class="title">
+        <h1>3.10 Giới thiệu câu lệnh if</h1>
+    </div>
+
+    <div class="content">
+        
+        <p>Giả sử trong trường hợp bạn đi chợ và nghĩ rằng "nếu giá thịt lợn giảm thì mình sẽ mua". Đây là một câu điều kiện, có nghĩa là bạn sẽ làm một số hành động (mua) nếu các điều kiện cho trước đúng (giá thịt lợn giảm).</p>
+        <p>Trong lập trình cũng có các câu điều kiện như vậy. Câu điều kiện đơn giản nhất trong C++ là câu lệnh if (if statement). Câu lệnh if cho phép chúng ta thực hiện một hoặc một số dòng code nếu một số điều kiện cho trước đúng. Câu lệnh if đơn giản nhất có dạng sau:</p>
+        <p><i>if (dieu_kien) cau_lenh;</i></p>
+        <p>Để cho dễ đọc, người ta thường viết thành:</p>
+        <p><i>if (dieu_kien)<br>&emsp;cau_lenh;</i></p>
+        <p>dieu_kien (condition) là một biểu thức cho ra giá trị boolean.</p>
+        <p>Nếu giá trị của <i>dieu_kien</i> là true thì <i>cau_lenh</i> sẽ được thực thi. Nếu giá trị của <i>dieu_kien</i> là false thì <i>cau_lenh</i> sẽ được bỏ qua.</p>
+        <h3 class="muc">Chương trình ví dụ về câu lệnh if</h3>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+ 
+<span style="color: #2b91af">int</span> main()
+{
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;Enter an integer: &quot;</span>;
+    <span style="color: #2b91af">int</span> x {};
+    std::cin &gt;&gt; x;
+ 
+    <span style="color: #0000ff">if</span> (x == 0)
+        std::cout &lt;&lt; <span style="color: #a31515">&quot;The value is zero\n&quot;</span>;
+ 
+    <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+        <p>Chạy thử chương trình trên:</p>
+        <div class="codeblock"><pre><code>Enter an integer: 0
+The value is zero</code></pre></div>
+        <p>Đầu tiên, người dùng nhập giá trị 0 vào. Giá trị 0 được lưu vào biến x. Tiếp theo chương trình xét điều kiện x == 0. Toàn tử == trả về true nếu x bằng 0 và trả về false nếu x khác 0. Vì x = 0 nên nó trả về true, do đó câu lệnh <i>std::cout << The value is zero\n;</i> được thực thi và in ra <i>The value is zero</i>.</p>
+        <p>Còn đây là output khi ta nhập 5:</p>
+        <div class="codeblock"><pre><code>Enter an integer: 5</code></pre></div>
+        <p>Ở trường hợp này, điều kiện x == 0 sai nên nó trả về giá trị false. Kết quả là câu lệnh sau if bị bỏ qua và chương trình không in gì thêm.</p>
+        <p class="luu-y">Lưu ý: Cách viết câu lệnh if trên chỉ áp dụng để thực thi một câu lệnh sau if. Còn cách để tạo câu lệnh if để thực thi nhiều câu lệnh thì các bạn sẽ được học ở bài sau.</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+
+<span style="color: #2b91af">int</span> main() 
+{
+    <span style="color: #0000ff">if</span> (false)
+        std::cout &lt;&lt; <span style="color: #a31515">&quot;Statement 1\n&quot;</span>;  <span style="color: #008000">// câu lệnh này được bỏ qua</span>
+        std::cout &lt;&lt; <span style="color: #a31515">&quot;Statement 2\n&quot;</span>;  <span style="color: #008000">// câu lệnh này được thực thi</span>
+        
+    <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+        <p>Output:</p>
+        <div class="codeblock"><pre><code>Statement 2</code></pre></div>
+
+        <p>Trong chương trình trên, chỉ có câu lệnh <i>std::cout << "Statement 1\n";</i> thuộc về câu lệnh if, còn câu lệnh <i>std::cout << "Statement 2\n";</i> không thuộc về câu lệnh if nên cho dù điều kiện trong if là false thì nó vẫn thực thi. Tóm lại, cách viết trên chỉ áp dụng cho một câu lệnh sau if mà thôi.</p>
+        <h3 class="muc" id="ifelse">If-else</h3>
+        <p>Mở rộng ví dụ ở phần vừa học, nếu người dùng nhập một số khác 0 thì ta in ra thông tin giá trị vừa nhập khác 0. Ta có thể thêm vài dòng code như sau:</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+ 
+<span style="color: #2b91af">int</span> main()
+{
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;Enter an integer: &quot;</span>;
+    <span style="color: #2b91af">int</span> x{};
+    std::cin &gt;&gt; x;
+ 
+    <span style="color: #0000ff">if</span> (x == 0)
+        std::cout &lt;&lt; <span style="color: #a31515">&quot;The value is zero\n&quot;</span>;
+    <span style="color: #0000ff">if</span> (x != 0)
+        std::cout &lt;&lt; <span style="color: #a31515">&quot;The value is non-zero\n&quot;</span>;
+ 
+    <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+        <p>Hoặc như thế này:</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+ 
+<span style="color: #2b91af">int</span> main()
+{
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;Enter an integer: &quot;</span>;
+    <span style="color: #2b91af">int</span> x{};
+    std::cin &gt;&gt; x;
+ 
+    <span style="color: #2b91af">bool</span> zero { (x == 0) };
+    <span style="color: #0000ff">if</span> (zero)
+        std::cout &lt;&lt; <span style="color: #a31515">&quot;The value is zero\n&quot;</span>;
+    <span style="color: #0000ff">if</span> (!zero)
+        std::cout &lt;&lt; <span style="color: #a31515">&quot;The value is non-zero\n&quot;</span>;
+ 
+    <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+        <p>Cả hai chương trình trên đều hoạt động tốt. Tuy nhiên, nó khá là phức tạp so với những gì chúng ta cần. Thay vào đó, chúng ta có thể dùng một dạng mở rộng của câu lệnh if là if-else. If-else có dạng như sau:</p>
+        <div><pre><i>if (dieu_kien)
+    cau_lenh_true;
+else
+    cau_lenh_false;</i></pre></div>
+        <p>Nếu giá trị của <i>dieu_kien</i> là true thì <i>cau_lenh_true</i> sẽ được thực thi và <i>cau_lenh_false</i> sẽ được bỏ qua, nếu <i>dieu_kien</i> là false thì ngược lại.</p>
+        <p>Chương trình trên được viết lại:</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+ 
+<span style="color: #2b91af">int</span> main()
+{
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;Enter an integer: &quot;</span>;
+    <span style="color: #2b91af">int</span> x{};
+    std::cin &gt;&gt; x;
+ 
+    <span style="color: #0000ff">if</span> (x == 0)
+        std::cout &lt;&lt; <span style="color: #a31515">&quot;The value is zero\n&quot;</span>;
+    <span style="color: #0000ff">else</span>
+        std::cout &lt;&lt; <span style="color: #a31515">&quot;The value is non-zero\n&quot;</span>;
+ 
+    <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+        <p>Output:</p>
+        <div class="codeblock"><pre><code>Enter an integer: 0
+The value is zero</code></pre></div>
+        <div class="codeblock"><pre><code>Enter an integer: 5
+The value is non-zero</code></pre></div>
+        <h3 class="muc">Câu lệnh if nối tiếp nhau</h3>
+        <p>Đôi khi chúng ta sẽ cần kiểm tra nhiều hơn 1 điều kiện. Ví dụ: nếu số đã cho lớn hơn 0 thì nó là số dương, nhỏ hơn 0 là số âm, còn không thì nó bằng 0. Lúc này, ta sẽ nối các câu lệnh if lại thành một chuỗi có mối liên kết với nhau.</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+ 
+<span style="color: #2b91af">int</span> main()
+{
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;Enter an integer: &quot;</span>;
+    <span style="color: #2b91af">int</span> x{};
+    std::cin &gt;&gt; x;
+ 
+    <span style="color: #0000ff">if</span> (x &gt; 0)
+        std::cout &lt;&lt; <span style="color: #a31515">&quot;The value is positive\n&quot;</span>;
+    <span style="color: #0000ff">else</span> <span style="color: #0000ff">if</span> (x &lt; 0)
+        std::cout &lt;&lt; <span style="color: #a31515">&quot;The value is negative\n&quot;</span>;
+    <span style="color: #0000ff">else</span> 
+        std::cout &lt;&lt; <span style="color: #a31515">&quot;The value is zero\n&quot;</span>;
+ 
+    <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+        <p>Ở chương trình trên, bạn cần chú ý đến các điều sau. Toàn tử bé hơn (<) được dùng để kiểm tra xem giá trị ở vế trái có nhỏ hơn giá trị ở vế phải không; nếu nhỏ hơn, nó sẽ trả về giá trị true, còn không thì trả về false. Tương tự đối với toán tử lớn hơn (>) nhưng nó hoạt động ngược lại so với toán tử bé hơn. Khi muốn nối các câu lệnh if lại với nhau, câu lệnh đầu tiên ta dùng từ khoá <i>if</i>, các câu lệnh điều kiện tiếp theo dùng <i>else if</i>, bạn có thể viết bao nhiêu <i>else if</i> tuỳ thích. Ở điều kiện cuối cùng, nếu nó là <b>phủ định duy nhất</b> của tất cả điều kiện ở trên (tức là ngoài các trường hợp trên) thì ta dùng <i>else</i>. Chẳng hạn như ví dụ ở trên, một số thì có ba khả năng: lớn hơn 0, nhỏ hơn 0 và bằng 0. Nếu không lớn hơn 0 thì có thể nó nhỏ hơn 0, nếu nó không nhỏ hơn 0 thì chắc chắn nó bằng 0, ngoài ra không còn khả năng khác. Đó là lý do ta dùng <i>else</i> ở câu lệnh cuối cùng.</p>
+        <p>Dưới đây là một vài ví dụ chạy chương trình trên:</p>
+        <div class="codeblock"><pre><code>Enter an integer: 4
+The value is positive</code></pre></div>
+        <div class="codeblock"><pre><code>Enter an integer: -3
+The value is negative</code></pre></div>
+        <div class="codeblock"><pre><code>Enter an integer: 0
+The value is zero</code></pre></div>
+        <p class="luu-y">Lưu ý: Khi bạn dùng chuỗi các câu lệnh if như trên, các câu lệnh if sẽ có mối quan hệ với nhau như mình đã nói. Mối quan hệ đó như thế nào? Thứ nhất, đó là chỉ có một câu lệnh trong chuỗi đó được phép thực thi, còn lại sẽ bị bỏ qua hoặc không có câu lệnh nào được thực thi nếu các điều kiện đều fasle. Thứ hai, compiler sẽ xét các điều kiện từ trên xuống dưới. Nếu đến một điều kiện nào đó thoả mãn thì câu lệnh của điều kiện đó được thực thi và compiler sẽ không kiểm tra tiếp các điều kiện bên dưới nữa, nó sẽ thoát câu lệnh if. Ví dụ chương trình trên ta nhập 4 thì điều kiện đầu tiên x > 0 true nên nó thực thi câu lệnh tương ứng và bỏ qua hết các điều kiện dưới. Đây là lợi ích của chuỗi "if-else if-else" so với chuỗi "if-if", nếu ta dùng chuỗi "if-if" như chương trình đầu tiên của mục <a href="#ifelse">If-else</a> thì chương trình sẽ mất thêm thời gian hơn so với "if-else" vì nó sẽ kiểm tra hết cả hai điều kiện cho dù điều kiện đầu tiên đúng. Lưu ý thứ ba, cách viết "if-else if-else" như trên chỉ dùng có trường hợp với mỗi điều kiện chỉ có duy nhất một câu lệnh cần thực thi, đối với trường hợp nhiều câu lệnh trong một điều kiện ta sẽ học ở bài sau.</p>
+        <h3 class="muc">Hàm trả về boolean và câu lệnh if</h3>
+        <p>Ở bài trước, chúng ta có một chương trình kiểm tra hai số có bằng nhau hay không.</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+ 
+<span style="color: #2b91af">bool</span> isEqual(<span style="color: #2b91af">int</span> x, <span style="color: #2b91af">int</span> y)
+{
+    <span style="color: #0000ff">return</span> (x == y);
+}
+ 
+<span style="color: #2b91af">int</span> main()
+{
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;Enter an integer: &quot;</span>;
+    <span style="color: #2b91af">int</span> x {};
+    std::cin &gt;&gt; x;
+ 
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;Enter another integer: &quot;</span>;
+    <span style="color: #2b91af">int</span> y {};
+    std::cin &gt;&gt; y;
+ 
+    std::cout &lt;&lt; std::boolalpha;
+    
+    std::cout &lt;&lt; x &lt;&lt; <span style="color: #a31515">&quot; and &quot;</span> &lt;&lt; y &lt;&lt; <span style="color: #a31515">&quot; are equal? &quot;</span>;
+    std::cout &lt;&lt; isEqual(x, y);
+ 
+    <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+        <p>Ta có thể áp dụng câu lệnh if vào chương trình trên như sau:</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+ 
+<span style="color: #2b91af">bool</span> isEqual(<span style="color: #2b91af">int</span> x, <span style="color: #2b91af">int</span> y)
+{
+    <span style="color: #0000ff">return</span> (x == y);
+}
+ 
+<span style="color: #2b91af">int</span> main()
+{
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;Enter an integer: &quot;</span>;
+    <span style="color: #2b91af">int</span> x {};
+    std::cin &gt;&gt; x;
+ 
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;Enter another integer: &quot;</span>;
+    <span style="color: #2b91af">int</span> y {};
+    std::cin &gt;&gt; y;
+ 
+    std::cout &lt;&lt; std::boolalpha;
+    
+    <span style="color: #0000ff">if</span> (isEqual(x, y))
+        std::cout &lt;&lt; x &lt;&lt; <span style="color: #a31515">&quot; and &quot;</span> &lt;&lt; y &lt;&lt; <span style="color: #a31515">&quot; are equal\n&quot;</span>;
+    <span style="color: #0000ff">else</span>
+        std::cout &lt;&lt; x &lt;&lt; <span style="color: #a31515">&quot; and &quot;</span> &lt;&lt; y &lt;&lt; <span style="color: #a31515">&quot; are not equal\n&quot;</span>;
+ 
+    <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+        <p>Output:</p>
+        <div class="codeblock"><pre><code>Enter an integer: 5
+Enter another integer: 5
+5 and 5 are equal</code></pre></div>
+        <div class="codeblock"><pre><code>Enter an integer: 6
+Enter another integer: 4
+6 and 4 are not equal</code></pre></div>
+        <p>Ở chương trình trên, ta đã dùng hàm isEqual làm biểu thức điều kiện để truyền giá trị boolean vào câu lệnh if.</p>
+        <h3 class="muc">Non-boolean</h3>
+        <p>Ở bài trước, ta đã biết rằng integer khác 0 tương đương với true và giá trị 0 tương đương với false.</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+ 
+<span style="color: #2b91af">int</span> main()
+{
+    <span style="color: #0000ff">if</span> (4)
+        std::cout &lt;&lt; <span style="color: #a31515">&quot;hi&quot;</span>;
+    <span style="color: #0000ff">else</span>
+        std::cout &lt;&lt; <span style="color: #a31515">&quot;bye&quot;</span>;
+ 
+    <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+        <p>Chương trình trên in ra "hi" bởi vì 4 khác 0 nên tương đương với true.</p>
+        <p class="loi-khuyen">Lời khuyên: Mặc dù có thể dùng non-boolean để biểu thị boolean như trên, nhưng bạn không nên làm như vậy. Hãy nên làm đúng theo quy tắc, dùng <i>true</i> hoặc <i>false</i> khi cần dùng đến boolean, đừng làm mọi thứ trở nên rối ren.</p>
+        <h3 class="muc">Bài tập</h3>
+        <p>Số nguyên tố (prime number) là những số chỉ có thể chia hết cho 1 và chính nó. Hãy viết một chương trình yêu cầu người dùng nhập một số nguyên chỉ có một chữ số (nhỏ hơn 10) có sử dụng hàm boolean và chuỗi câu lệnh if để chia trường hợp. Nếu người dùng nhập các số như 2, 3, 5, 7 thì in ra <i>"The digit is prime"</i>, nếu không thì in ra <i>"The digit is not prime"</i>.</p>
+        <p>Mẫu output:</p>
+        <div class="codeblock"><pre><code>Enter a single digit integer: 2
+The digit is prime</code></pre></div>
+        <div id="answer1" style="display: none">
+            <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+ 
+<span style="color: #2b91af">bool</span> isPrime(<span style="color: #2b91af">int</span> x)
+{
+    <span style="color: #0000ff">if</span> (x == 2)      <span style="color: #008000">// nếu người dùng nhập 2 thì số đó là số nguyên tố </span>
+        <span style="color: #0000ff">return</span> true;
+    <span style="color: #0000ff">else</span> <span style="color: #0000ff">if</span> (x == 3) <span style="color: #008000">// nếu người dùng nhập 3 thì số đó là số nguyên tố </span>
+        <span style="color: #0000ff">return</span> true;
+    <span style="color: #0000ff">else</span> <span style="color: #0000ff">if</span> (x == 5) <span style="color: #008000">// nếu người dùng nhập 5 thì số đó là số nguyên tố </span>
+        <span style="color: #0000ff">return</span> true;
+    <span style="color: #0000ff">else</span> <span style="color: #0000ff">if</span> (x == 7) <span style="color: #008000">// nếu người dùng nhập 7 thì số đó là số nguyên tố </span>
+        <span style="color: #0000ff">return</span> true;
+ 
+    <span style="color: #0000ff">return</span> false;    <span style="color: #008000">// nếu không vào các trường hợp trên thì nó không là số nguyên tố</span>
+}
+ 
+<span style="color: #2b91af">int</span> main()
+{
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;Enter a single digit integer: &quot;</span>;
+    <span style="color: #2b91af">int</span> x {};
+    std::cin &gt;&gt; x;
+ 
+    <span style="color: #0000ff">if</span> ( isPrime(x) )
+        std::cout &lt;&lt; <span style="color: #a31515">&quot;The digit is prime\n&quot;</span>;
+    <span style="color: #0000ff">else</span>
+        std::cout &lt;&lt; <span style="color: #a31515">&quot;The digit is not prime\n&quot;</span>;
+ 
+    <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+        <p>Mình đoán là nhiều bạn sẽ viết thêm <i>else return false;</i> ở cuối chuỗi câu lệnh if. Các bạn làm vậy cũng đúng nhé, hai cách viết đều như nhau cả.</p>
+        </div>
+        <button class="showhidebtn" onclick="showHide('#answer1')">Show/Hide</button>
+
+        <div>
+            <a href="#"><button class="btn">Bài tiếp theo</button></a>
+        </div>
+        <div>
+            <a href="../../index.html"><button class="btn">C++ Index</button></a>
+        </div>
+        <div>
+            <a href="../3-9-boolean/index.html"><button class="btn">Bài trước</button></a>
+        </div>
+
+    </div>
+</body>
+
+</html>
