@@ -34,11 +34,17 @@ a:hover {
 }
 
 .luu-y {
-    color: red;
+    background-color: #FFE6E6;
+    border: solid black;
+    border-width: 1px;
+    border-radius: 7px;
 }
 
 .loi-khuyen {
-    color: green;
+    background-color: #E6FFE6;
+    border: solid black;
+    border-width: 1px;
+    border-radius: 7px;
 }
 
 .codeblock {
