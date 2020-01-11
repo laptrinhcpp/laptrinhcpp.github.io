@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../../../css/reset.css">
+    <title>3.11 Char</title>
+    <link rel="stylesheet" href="../../../css/substyle.css">
+    <link rel="shortcut icon" href="../../../img/circle-logo.ico">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="../../../js/showhide.js"></script>
+</head>
+
+<body> 
+    <div class="title">
+        <h1>3.11 Char</h1>
+    </div>
+
+    <div class="content">
+        
+        <p>Đến thời điểm này, các bạn đã học qua các kiểu dữ liệu lưu trữ số (integer, floating point) hoặc giá trị true/false (boolean). Thế còn nếu muốn lưu chữ cái thì sao? <b>Char</b> (viết tắt của character) chính là kiểu dữ liệu được tạo ra để làm việc này.</p>
+        <p>Kiểu dữ liệu char thuộc kiểu integral, có nghĩa là bản chất nó được lưu trữ trong bộ nhớ dưới dạng integer, kiểu dữ liệu này có kích thước 1 byte. Nó khá giống với kiểu boolean, giá trị được lưu mặc dù là integer nhưng integer đó được chuyển sang dạng khác, boolean thì nó chuyển sang true/false, còn char thì nó chuyển sang kí tự ASCII.</p>
+        <p><b>ASCII</b> là viết tắt của American Standard Code for Information Interchange (các bạn không cần biết nghĩa nó đâu), nó định nghĩa các chữ cái Tiếng Anh (cùng với một số kí tự đặc biệt) dưới dạng các số từ 0 đến 127 (số này gọi là ASCII code). Ví dụ ASCII code 97 tương ứng với chữ 'a'. Chú ý rằng khi viết một char literal ví dụ a, b, 5, +,... trong C++ thì phải cho nó vào dấu nháy đơn ví dụ 'a', 'b', '5', '+',...</p>
+        <p>Dưới đây là bảng mã ASCII từ 0 đến 127, cột Dec là ASCII code, cột Char là kí tự tương ứng:</p>
+        <img src="../../../img/ascii_table.png" style="width: 80%; height: auto" class="center">
+        <p>Các mã từ 0 đến 31 là những char không in được, phần lớn chúng đã lỗi thời nên bạn không cần quan tâm đến chúng. Các mã từ 32 đến 127 là những char in được, chúng được dùng để biểu diễn chữ cái, số, kí tự đặc biệt.</p>
+        <p>Mã ASCII thường được dùng khi cần in ấn các văn bản Tiếng Anh đơn giản. Đối với các văn bản phức tạp hơn hoặc văn bản của các thứ tiếng khác ví dụ Tiếng Việt thì họ sẽ dùng đến một bảng mã khác là bảng mã UNICODE. Tuy nhiên, mình sẽ không đi sâu về UNICODE lúc này; hiện tại, chúng ta sẽ dùng đến mã ASCII.</p>
+        <h3 class="muc">Khởi tạo char</h3>
+        <p>Bạn có thể khởi tạo biến char bằng từ khoá <i>char</i> và kí tự phải để trong dấu nháy đơn.</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #2b91af">char</span> ch1{ <span style="color: #a31515">&#39;a&#39;</span> }; <span style="color: #008000">// khởi tạo với giá trị &#39;a&#39; được lưu dưới dạng integer 97</span>
+</pre></td></tr></table></div>
+        <p>Bạn cũng có thể khởi tạo với giá trị là một integer:</p>
+
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #2b91af">char</span> ch2{ 97 }; <span style="color: #008000">// khởi tạo với giá trị integer 97 và nó tương đương với &#39;a&#39;</span>
+</pre></td></tr></table></div>
+
+        <p>Hai biến ch1 và ch2 ở trên đều biểu diễn giá trị 'a'. Tuy nhiên, bạn nên tránh dùng cách thứ hai vì nó khá phiền phức, không phải ai cũng thuộc bảng ASCII để hiểu được con số integer kia là kí tự gì.</p>
+        <div class="luu-y">
+        <p>Lưu ý: Bạn nên tránh nhầm lẫn giữa giá trị integer và giá trị char biểu thị một số. Hai trường hợp dưới đây hoàn toàn khác nhau:</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #008000">//</span>
+<span style="color: #2b91af">char</span> ch{5};   <span style="color: #008000">// biến ch không biểu diễn số 5</span>
+<span style="color: #2b91af">char</span> ch{<span style="color: #a31515">&#39;5&#39;</span>}; <span style="color: #008000">// biến ch biểu diễn số 5</span>
+</pre></td></tr></table></div>
+        <p>5 ở trường hợp đầu là integer literal tức là số; '5' ở trường hợp hai là char literal tức là kí tự.</p>
+        </div>
+        <h3 class="muc">In ra char</h3>
+        <p>Ta vẫn có thể dùng <i>std::cout</i> để in char ra màn hình, nó sẽ in char ra dưới dạng kí tự ASCII.</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+ 
+<span style="color: #2b91af">int</span> main()
+{
+    <span style="color: #2b91af">char</span> ch1{ <span style="color: #a31515">&#39;a&#39;</span> }; 
+    std::cout &lt;&lt; ch1; <span style="color: #008000">// in ra &#39;a&#39;</span>
+ 
+    <span style="color: #2b91af">char</span> ch2{ 98 };   <span style="color: #008000">// 98 tương đương với &#39;b&#39;</span>
+    std::cout &lt;&lt; ch2; <span style="color: #008000">// in ra &#39;b&#39;</span>
+ 
+    <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+        <p>Kết quả output:</p>
+        <div class="codeblock"><pre><code>ab</code></pre></div>
+        <p>Bạn cũng có thể in trực tiếp char literal mà không cần thông qua biến.</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1</pre></td><td><pre style="margin: 0; line-height: 125%">cout &lt;&lt; <span style="color: #a31515">&#39;c&#39;</span>;
+</pre></td></tr></table></div>
+
+        <p>Output:</p>
+        <div class="codeblock"><pre><code>c</code></pre></div>
+        <h3 class="muc">In ra ASCII code của char bất kì</h3>
+        <p>Nếu ta muốn in ASCII code thay vì in ra kí tự của một char thì có vài cách như sau.</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3
+4
+5
+6
+7
+8
+9</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+ 
+<span style="color: #2b91af">int</span> main()
+{
+    <span style="color: #2b91af">char</span> ch{<span style="color: #a31515">&#39;a&#39;</span>};
+    <span style="color: #2b91af">int</span> i(ch);      <span style="color: #008000">// biến i sẽ chứa mã ASCII của &#39;a&#39;</span>
+    std::cout &lt;&lt; i; <span style="color: #008000">// in giá trị của i</span>
+    <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+        <p>Tuy nhiên, cách này không hay lắm. Có một cách nữa là dùng <i>type cast</i>. <b>Type cast</b> có thể chuyển giá trị từ kiểu dữ liệu này sang giá trị thuộc kiểu dữ liệu khác, ví dụ từ char sang int. Cú pháp sử dụng như sau:</p>
+        <p><i>static_cast&lt;kieu_moi&gt;(bieu_thuc)</i></p>
+        <p><i>static_cast</i> nhận giá trị từ <i>bieu_thuc</i>, sau đó chuyển giá trị đó sang một giá trị mới thuộc kiểu dữ liệu <i>kieu_moi</i>.</p>
+        <p>Note: Sau này nếu bạn thấy cú pháp nào có sử dụng dấu < và > cùng lúc như trên thì thứ ở giữa chúng thông thường là kiểu dữ liệu.</p>
+        <p>Ví dụ minh hoạ:</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+ 
+<span style="color: #2b91af">int</span> main()
+{
+    <span style="color: #2b91af">char</span> ch{ <span style="color: #a31515">&#39;a&#39;</span> };
+    std::cout &lt;&lt; ch &lt;&lt; <span style="color: #a31515">&#39;\n&#39;</span>;
+    std::cout &lt;&lt; <span style="color: #0000ff">static_cast</span>&lt;<span style="color: #2b91af">int</span>&gt;(ch) &lt;&lt; <span style="color: #a31515">&#39;\n&#39;</span>;
+    std::cout &lt;&lt; ch &lt;&lt; <span style="color: #a31515">&#39;\n&#39;</span>;
+    <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+        <p>Output:</p>
+        <div class="codeblock"><pre><code>a
+97
+a</code></pre></div>
+        <p>Các bạn chú ý rằng <i>static_cast</i> không làm biến đổi giá trị của biến được đưa vào, nó chỉ lấy giá trị của biến được đưa vào và cho ra giá trị đầu ra mới mà thôi. Ở ví dụ trên, giá trị biến ch vẫn là 'a'.</p>
+        <p class="luu-y">Lưu ý: Nếu bạn gán một integer lớn vào biến char hoặc dùng <i>static_cast</i> để chuyển một integer lớn sang char thì sẽ xảy ra hiện tượng overflow.</p>
+        <h3 class="muc">Nhập char</h3>
+        <p>Chương trình dưới đây yêu cầu người dùng nhập một kí tự và in ra kí tự cùng với ASCII code của kí tự đó.</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+ 
+<span style="color: #2b91af">int</span> main()
+{
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;Input a keyboard character: &quot;</span>;
+ 
+    <span style="color: #2b91af">char</span> ch{};
+    std::cin &gt;&gt; ch;
+    std::cout &lt;&lt; ch &lt;&lt; <span style="color: #a31515">&quot; has ASCII code &quot;</span> &lt;&lt; <span style="color: #0000ff">static_cast</span>&lt;<span style="color: #2b91af">int</span>&gt;(ch) &lt;&lt; <span style="color: #a31515">&#39;\n&#39;</span>;
+ 
+    <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+        <p>Output:</p>
+        <div class="codeblock"><pre><code>Input a keyboard character: q
+q has ASCII code 113</code></pre></div>
+        <p>Chú ý rằng <i>std::cin</i> cho phép bạn nhập nhiều kí tự một lúc. Tuy nhiên, biến ch chỉ có thể lưu trữ một kí tự mà thôi. Kí tự đầu tiên sẽ được lưu vào biến ch, các kí tự còn lại sẽ được lưu vào bộ nhớ tạm (buffer) của <i>std::cin</i> và sẽ được lấy ra ở lần sử dụng <i>std::cin</i> tiếp theo.</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+ 
+<span style="color: #2b91af">int</span> main()
+{
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;Input a keyboard character: &quot;</span>;   <span style="color: #008000">// giả sử ta nhập &quot;abcd&quot;</span>
+ 
+    <span style="color: #2b91af">char</span> ch{};
+    std::cin &gt;&gt; ch; <span style="color: #008000">// ch = &#39;a&#39;, &quot;bcd&quot; được lưu trữ trong bộ nhớ đệm input của std::cin</span>
+    std::cout &lt;&lt; ch &lt;&lt; <span style="color: #a31515">&quot; has ASCII code &quot;</span> &lt;&lt; <span style="color: #0000ff">static_cast</span>&lt;<span style="color: #2b91af">int</span>&gt;(ch) &lt;&lt; <span style="color: #a31515">&#39;\n&#39;</span>;
+ 
+    <span style="color: #008000">// Chú ý: std::cin dưới đây không yêu cầu người dùng nhập mà truyền vào biến ch giá trị &#39;b&#39;</span>
+    std::cin &gt;&gt; ch; <span style="color: #008000">// ch = &#39;b&#39;, &quot;cd&quot; được lưu trữ trong bộ nhớ đệm input của std::cin</span>
+    std::cout &lt;&lt; ch &lt;&lt; <span style="color: #a31515">&quot; has ASCII code &quot;</span> &lt;&lt; <span style="color: #0000ff">static_cast</span>&lt;<span style="color: #2b91af">int</span>&gt;(ch) &lt;&lt; <span style="color: #a31515">&#39;\n&#39;</span>;
+    
+    <span style="color: #008000">// Chú ý: std::cin dưới đây không yêu cầu người dùng nhập mà truyền vào biến ch giá trị &#39;c&#39;</span>
+    std::cin &gt;&gt; ch; <span style="color: #008000">// ch = &#39;c&#39;, &#39;d&#39; được lưu trữ trong bộ nhớ đệm input của std::cin</span>
+    std::cout &lt;&lt; ch &lt;&lt; <span style="color: #a31515">&quot; has ASCII code &quot;</span> &lt;&lt; <span style="color: #0000ff">static_cast</span>&lt;<span style="color: #2b91af">int</span>&gt;(ch) &lt;&lt; <span style="color: #a31515">&#39;\n&#39;</span>;
+    
+    <span style="color: #008000">// Chú ý: std::cin dưới đây không yêu cầu người dùng nhập mà truyền vào biến ch giá trị &#39;d&#39;</span>
+    std::cin &gt;&gt; ch; <span style="color: #008000">// ch = &#39;d&#39;, bộ nhớ đệm input của std::cin trống và có thể hoạt động lại bình thường</span>
+    std::cout &lt;&lt; ch &lt;&lt; <span style="color: #a31515">&quot; has ASCII code &quot;</span> &lt;&lt; <span style="color: #0000ff">static_cast</span>&lt;<span style="color: #2b91af">int</span>&gt;(ch) &lt;&lt; <span style="color: #a31515">&#39;\n&#39;</span>;
+    
+    <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+        <p>Output:</p>
+        <div class="codeblock"><pre><code>Input a keyboard character: abcd
+a has ASCII code 97
+b has ASCII code 98
+c has ASCII code 99
+d has ASCII code 100</code></pre></div>
+
+        <p>Chương trình trên là ví dụ minh hoạ cho việc nhập nhiều kí tự vào biến char thông qua <i>std::cin</i>. Việc làm này khiến <i>std::cin</i> hoạt động không bình thường, do đó bạn nên tránh nhập nhiều kí tự vào một biến char. Sẽ có một bài viết về cách xử lý nếu người dùng nhập những thứ không mong muốn nhé.</p>
+        <h3 class="muc">Escape sequence</h3>
+        <p>Trong C++, có một số kí tự mang ý nghĩa đặc biệt, những kí tự này được gọi là dãy thoát (escape sequence). Một escape sequence bắt đầu bằng dấu '\' và đi sau là một chữ cái, kí tự hoặc số.</p>
+        <p>Có một escape sequence mà bạn đã thường xuyên sử dụng là '\n', mang ý nghĩa xuống dòng mới khi in ra màn hình. Mình đã nói về sự khác nhau giữa '\n' và std::endl ở bài <a href="../../chuong-1/1-5-gioi-thieu-ve-iostream-cout-cin-va-endl/index.html" target="_blank">1.5 Giới thiệu về iostream: cout, cin và endl</a>.</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3
+4
+5
+6
+7</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+ 
+<span style="color: #2b91af">int</span> main()
+{
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;First line\nSecond line\n&quot;</span>;
+    <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+        <p>Output:</p>
+        <div class="codeblock"><pre><code>First line
+Second line</code></pre></div>
+        <p>Một escape sequence nữa mà có thể hay gặp là '\t', mang ý nghĩa tương đương với một tab khoảng cách cùng dòng.</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3
+4
+5
+6
+7</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+ 
+<span style="color: #2b91af">int</span> main()
+{
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;First part\tSecond part&quot;</span>;
+    <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+
+        <p>Output:</p>
+        <div class="codeblock"><pre><code>First part    Second part</code></pre></div>
+        <p>Ngoài ra, C++ còn có rất nhiều escape sequence, dưới đây là một số escape sequence và ý nghĩa của chúng:</p>
+        <ul>
+            <li><b>\n</b> – đưa con trỏ xuống dòng mới.</li>
+            <li><b>\t</b> – in ra một tab khoảng cách cùng dòng.</li>
+            <li><b>\v</b> – in ra một tab khoảng cách xuống dòng.</li>
+            <li><b>\r</b> – đưa con trỏ về đầu dòng.</li>
+            <li><b>\a</b> – phát ra một tiếng thông báo, nghe như tiếng beep.</li>
+            <li><b>\'</b> – in ra dấu nháy đơn ', tuy nhiên hiện nay đã có thể dùng ' mà không cần đến \'.</li>
+            <li><b>\"</b> – in ra dấu nháy kép ".</li>
+            <li><b>\\</b> – in ra dấu gạch chéo ngược \.</li>
+            <li><b>\?</b> – in ra dấu chấm hỏi ?, tuy nhiên hiện nay đã có thể dùng ? mà không cần đến \?.</li>
+            <li><b>\x(#)</b> – (#) là chuỗi kí tự thuộc hệ thập lục, escape sequence này chuyển hệ thập lục thành kí tự text.</li>
+        </ul>
+        <p>Một số ví dụ:</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3
+4
+5
+6
+7
+8
+9</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+ 
+<span style="color: #2b91af">int</span> main()
+{
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;\&quot;This is quoted text\&quot;\n&quot;</span>;
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;This string contains a single backslash \\\n&quot;</span>;
+    std::cout &lt;&lt; <span style="color: #a31515">&quot;6F in hex is char &#39;\x6F&#39;\n&quot;</span>;
+    <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+        <p>Output:</p>
+        <div class="codeblock"><pre><code>"This is quoted text"
+This string contains a single backslash \
+6F in hex is char 'o'</code></pre></div>
+        <h3 class="muc">Sự khác nhau giữa dấu nháy đơn và dấu nháy kép trong C++</h3>
+        <p>Bạn chỉ được phép đặt một kí tự giữa hai dấu nháy đơn, tức là một char literal. Việc làm sau đây là không được phép:</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #2b91af">char</span> ch(<span style="color: #a31515">&#39;56&#39;</span>); <span style="color: #008000">// một char chỉ có thể lưu một kí tự và nó phải được đặt giữa dấu nháy đơn</span>
+</pre></td></tr></table></div>
+
+        <p>Text được đặt giữa dấu nháy kép (ví dụ "Hello world!") được gọi là một chuỗi hay xâu (string). Một chuỗi là một tập hợp nhiều hơn 1 kí tự.</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1</pre></td><td><pre style="margin: 0; line-height: 125%">std::cout &lt;&lt; <span style="color: #a31515">&quot;Hello, world!&quot;</span>; <span style="color: #008000">// &quot;Hello, world!&quot; là một string literal</span>
+</pre></td></tr></table></div>
+
+        <p class="loi-khuyen">Lời khuyên: Mặc dù bạn có thể đặt một kí tự vào dấu ngoặc kép ví dụ "t" hay "\n", nhưng bạn vẫn nên dùng dấu nháy đơn đối với một kí tự ('t' hay '\n') và chỉ dùng dấu nháy kép đối với chuỗi ("abc" hay "\n\t"). Điều này sẽ giúp chương trình được tối ưu hoá hơn. Các bạn lưu ý là một escape sequence tương đương một kí tự nhé.</p>
+        <h3 class="muc">wchar_t, char8_t, char16_t và char32_t</h3>
+        <p>wchar_t nên tránh dùng, trừ khi bạn làm việc với Window API.</p>
+        <p>char16_t và char32_t được thêm vào từ C++ 11 nhằm biểu diễn các kí tự Unicode 16 bit và 32 bit. char8_t được thêm vào từ C++ 20.</p>
+        <p>Bạn sẽ không cần dùng đến char8_t, char16_t, và char32_t trừ khi bạn muốn tạo một chương trình có sử dụng các kí tự Unicode. Tuy nhiên, trong chuỗi hướng dẫn C++ này, mình sẽ không hướng dẫn về nó, hoặc có thể mình sẽ viết một bài riêng về nó trong tương lai. Hên xui 😄</p>
+
+        <div>
+            <a href="#"><button class="btn">Bài tiếp theo</button></a>
+        </div>
+        <div>
+            <a href="../../index.html"><button class="btn">C++ Index</button></a>
+        </div>
+        <div>
+            <a href="../3-10-gioi-thieu-cau-lenh-if/index.html"><button class="btn">Bài trước</button></a>
+        </div>
+
+    </div>
+</body>
+
+</html>
