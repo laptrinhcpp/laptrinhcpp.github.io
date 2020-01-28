@@ -108,7 +108,7 @@ div table {
 
 table tbody tr td:first-child {
     border-style: inset;
-    background-color: lightblue;
+    /*background-color: lightblue;*/
     height: 100%;
     text-align: left;
     border-collapse: collapse;
