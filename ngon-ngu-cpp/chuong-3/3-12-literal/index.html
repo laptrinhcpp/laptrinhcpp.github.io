@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../../../css/reset.css">
+    <title>3.12 Literal</title>
+    <link rel="stylesheet" href="../../../css/substyle.css">
+    <link rel="shortcut icon" href="../../../img/circle-logo.ico">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="../../../js/showhide.js"></script>
+</head>
+
+<body> 
+    <div class="title">
+        <h1>3.12 Literal</h1>
+    </div>
+
+    <div class="content">
+        
+        <p>Trong lập trình, một hằng số (constant) là một giá trị cố định không thể thay đổi. C++ có hai loại constant: literal constant và symbolic constant.</p>
+        <p><b>Literal constant</b> (gọi tắt là literal) là những giá trị được đưa trực tiếp vào code. Ví dụ:</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3
+4</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">return</span> 5;                    <span style="color: #008000">// 5 là integer literal</span>
+<span style="color: #2b91af">bool</span> myNameIsHiep { true };  <span style="color: #008000">// true là boolean literal</span>
+std::cout &lt;&lt; 3.4;            <span style="color: #008000">// 3.4 là double literal (không phải float literal)</span>
+<span style="color: #2b91af">char</span> ch{<span style="color: #a31515">&#39;a&#39;</span>}                 <span style="color: #008000">// &#39;a&#39; là char literal</span>
+</pre></td></tr></table></div>
+
+        <p>Những giá trị trên đều là constant vì không thể thay đổi giá trị của chúng. Giống như biến, literal cũng có kiểu dữ liệu.</p>
+        <h3 class="muc">Hậu tố của literal</h3>
+        <p>Trong một số trường hợp, bạn có thể thay đổi kiểu dữ liệu của literal bằng cách thêm hậu tố ở sau.</p>
+        <table border=1 cellspacing=0 cellpadding=5>
+            <tr>
+            <th>Kiểu dữ liệu</th>
+            <th>Hậu tố</th>
+            <th>Ý nghĩa</th>
+            </tr>
+            <tr>
+            <td>int</td>
+            <td>u hoặc U</td>
+            <td>unsigned int</td>
+            </tr>
+            <tr>
+            <td>int</td>
+            <td>l hoặc L</td>
+            <td>long</td>
+            </tr>
+            <tr>
+            <td>int</td>
+            <td>ul, uL, Ul, UL, lu, lU, Lu, hoặc LU</td>
+            <td>unsigned long</td>
+            </tr>
+            <tr>
+            <td>int</td>
+            <td>ll hoặc LL</td>
+            <td>long long</td>
+            </tr>
+            <tr>
+            <td>int</td>
+            <td>ull, uLL, Ull, ULL, llu, llU, LLu, hoặc LLU</td>
+            <td>unsigned long long</td>
+            </tr>
+            <tr>
+            <td>double</td>
+            <td>f or F</td>
+            <td>float</td>
+            </tr>
+            <tr>
+            <td>double</td>
+            <td>l or L</td>
+            <td>long double</td>
+            </tr>
+        </table>
+        <p>Thông thường, bạn không cần phải thêm hậu tố sau integer literal, nhưng nếu thêm thì nó trông như thế này:</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #008000">//</span>
+<span style="color: #2b91af">unsigned</span> <span style="color: #2b91af">int</span> value1 { 5u }; <span style="color: #008000">// 5 có kiểu dữ liệu unsigned int</span>
+<span style="color: #2b91af">long</span> value2 { 6L }; <span style="color: #008000">// 6 có kiểu long</span>
+</pre></td></tr></table></div>
+
+        <p>Còn đối với floating point, mặc định giá trị sẽ có kiểu double nên nếu muốn chuyển nó sang kiểu float, bạn phải thêm hậu tố f hoặc F theo sau:</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #2b91af">float</span> f { 5.0f }; <span style="color: #008000">// 5.0 có kiểu float</span>
+</pre></td></tr></table></div>
+
+        <h3 class="muc">String literal</h3>
+        <p>Trong bài <a href="../3-11-char/index.html" target="_blank">3.11 Char</a>, ta đã biết rằng một chuỗi hay xâu (string) là một tập hợp nhiều hơn một kí tự. Và trong C++ cũng có string literal.</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #008000">//</span>
+std::cout &lt;&lt; <span style="color: #a31515">&quot;Hello, world!&quot;</span>;    <span style="color: #008000">// &quot;Hello, world!&quot; là một C-style string literal</span>
+std::cout &lt;&lt; <span style="color: #a31515">&quot;Hello,&quot;</span> <span style="color: #a31515">&quot; world!&quot;</span>; <span style="color: #008000">// C++ có khả năng nối các chuỗi lại với nhau như thế này</span>
+</pre></td></tr></table></div>
+
+        <p>Octal và hexadecimal literal</p>
+        <p>Trong đời sống hằng ngày, chúng ta thường sử dụng các số dưới dạng hệ thập phân (decimal), tức là các số được cấu tạo từ 10 số 0, 1, 2, 3, 4, 5, 6, 7, 8, 9. Trong hệ thập phân, chúng ta đếm như sau: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11,... Mặc định C++ cũng sử dụng hệ thập phân khi làm việc với số.</p>
+        <p>Hệ nhị phân (binary) là hệ số đơn giản nhất, mọi số trong hệ nhị phân đều được biểu diễn bằng hai số 0 và 1. Trong hệ nhị phân, chúng ta đếm như sau: 0, 1, 10, 11, 100, 101, 110, 111,...</p>
+        <p>Hai hệ số trên là phổ biến nhất, nhưng ngoài ra vẫn còn thêm hai hệ số nữa là hệ bác phân (octal) và hệ thập lục (hexadecimal).</p>
+        <p>Hệ bác phân (octal) bao gồm các số được biểu diễn bằng 8 số 0, 1, 2, 3, 4, 5, 6, 7. Trong hệ bác phân, chúng ta đếm như sau: 0, 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13,... Các bạn lưu ý là nhìn thì nó có vẻ giống hệ thập phân nhưng nó không có số 8 và 9. Số 10 trong hệ bác phân bằng với số 8 trong hệ thập phân.</p>
+        <style type="text/css">
+        .tg  {border-collapse:collapse;border-spacing:0;}
+        .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+        .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+        .tg .tg-baqh{text-align:center;vertical-align:top}
+        </style>
+        <table class="tg">
+          <tr>
+            <th class="tg-baqh">Decimal</th>
+            <th class="tg-baqh">0</th>
+            <th class="tg-baqh">1</th>
+            <th class="tg-baqh">2</th>
+            <th class="tg-baqh">3</th>
+            <th class="tg-baqh">4</th>
+            <th class="tg-baqh">5</th>
+            <th class="tg-baqh">6</th>
+            <th class="tg-baqh">7</th>
+            <th class="tg-baqh">8</th>
+            <th class="tg-baqh">9</th>
+            <th class="tg-baqh">10</th>
+            <th class="tg-baqh">11</th>
+          </tr>
+          <tr>
+            <td class="tg-baqh">Octal</td>
+            <td class="tg-baqh">0</td>
+            <td class="tg-baqh">1</td>
+            <td class="tg-baqh">2</td>
+            <td class="tg-baqh">3</td>
+            <td class="tg-baqh">4</td>
+            <td class="tg-baqh">5</td>
+            <td class="tg-baqh">6</td>
+            <td class="tg-baqh">7</td>
+            <td class="tg-baqh">10</td>
+            <td class="tg-baqh">11</td>
+            <td class="tg-baqh">12</td>
+            <td class="tg-baqh">13</td>
+          </tr>
+        </table>
+        <p>Để sử dụng hệ bát phân, ta thêm tiền tố 0 trước literal:</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+ 
+<span style="color: #2b91af">int</span> main()
+{
+    <span style="color: #2b91af">int</span> x{ 012 }; <span style="color: #008000">// tiền tố 0 trước literal có nghĩa là giá trị này thuộc hệ bát phân</span>
+    std::cout &lt;&lt; x;
+    <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+        <p>Output:</p>
+        <div class="codeblock"><pre><code>10</code></pre></div>
+        <p>12 mà lại in ra 10, nhìn có vẻ vô lý nhưng 12 trong hệ bát phân là bằng 10 trong hệ thập phân, C++ mặc định dùng hệ thập phân nên nó chuyển 12 thành 10 rồi in ra.</p>
+        <p>Hệ thập lục (hexadecimal) bao gồm các số được biểu diễn bởi 16 số và chữ số: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E, F. Trong hệ thập lục, chúng ta đếm như sau: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E, F, 10, 11, 12,...</p>
+        <style type="text/css">
+        .tg  {border-collapse:collapse;border-spacing:0;}
+        .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+        .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+        .tg .tg-baqh{text-align:center;vertical-align:top}
+        .tg .tg-0lax{text-align:left;vertical-align:top}
+        </style>
+        <table class="tg">
+          <tr>
+            <th class="tg-baqh">Decimal</th>
+            <th class="tg-baqh">0</th>
+            <th class="tg-baqh">1</th>
+            <th class="tg-baqh">2</th>
+            <th class="tg-baqh">3</th>
+            <th class="tg-baqh">4</th>
+            <th class="tg-baqh">5</th>
+            <th class="tg-baqh">6</th>
+            <th class="tg-baqh">7</th>
+            <th class="tg-baqh">8</th>
+            <th class="tg-baqh">9</th>
+            <th class="tg-baqh">10</th>
+            <th class="tg-baqh">11</th>
+            <th class="tg-0lax">12</th>
+            <th class="tg-0lax">13</th>
+            <th class="tg-0lax">14</th>
+            <th class="tg-0lax">15</th>
+            <th class="tg-0lax">16</th>
+            <th class="tg-0lax">17</th>
+          </tr>
+          <tr>
+            <td class="tg-baqh">Hexadecimal</td>
+            <td class="tg-baqh">0</td>
+            <td class="tg-baqh">1</td>
+            <td class="tg-baqh">2</td>
+            <td class="tg-baqh">3</td>
+            <td class="tg-baqh">4</td>
+            <td class="tg-baqh">5</td>
+            <td class="tg-baqh">6</td>
+            <td class="tg-baqh">7</td>
+            <td class="tg-baqh">8</td>
+            <td class="tg-baqh">9</td>
+            <td class="tg-baqh">A</td>
+            <td class="tg-baqh">B</td>
+            <td class="tg-0lax">C</td>
+            <td class="tg-0lax">D</td>
+            <td class="tg-0lax">E</td>
+            <td class="tg-0lax">F</td>
+            <td class="tg-0lax">10</td>
+            <td class="tg-0lax">11</td>
+          </tr>
+        </table>
+        <p>Để sử dụng hệ thập lục, ta thêm tiền tố 0x trước literal:</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+ 
+<span style="color: #2b91af">int</span> main()
+{
+    <span style="color: #2b91af">int</span> x{ 0xF }; <span style="color: #008000">// tiền tố 0x trước literal có ý nghĩa giá trị này thuộc hệ thập lục</span>
+    std::cout &lt;&lt; x;
+    <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+        <p>Output:</p>
+        <div class="codeblock"><pre><code>15</code></pre></div>
+        <p>Một đơn vị hệ thập lục có thể biểu diễn tận 16 số (từ 0 đến F) nên có thể suy ra rằng một đơn vị hệ thập lục bao gồm 4 bit (16 = 2<sup>4</sup>). Do đó, hai đơn vị hệ thập lục ta sẽ được một byte (8 bit = 1 byte). Điều này cho phép ta rút ngắn độ dài của dãy số xuống tối thiểu.</p>
+        <p>Giả sử ta có một số dưới dạng nhị phân là 00111010011111111001100000100110, số này ở dạng hệ thập phân là 981440550. Các bạn có thể thấy ở dạng nhị phân rất dài và khó đọc. Tuy nhiên, số này ở dạng hệ thập lục là 3A7F9826, nó gắn gọn và tiện lợi hơn rất nhiều. Chính vì điều này mà hệ thập lục thường được dùng để biểu thị địa chỉ bộ nhớ hoặc giá trị thô trong bộ nhớ. Các bạn sẽ được thấy rõ ứng dụng này khi học về địa chỉ bộ nhớ, con trỏ.</p>
+        <h3 class="muc">C++ 14 binary literal và phân cách chữ số</h3>
+        <p>Trước đây, bình thường bạn không thể tạo hoặc gán giá trị một số thuộc hệ nhị phân vào một biến integer được. Tuy nhiên, C++ 14 trở lên đã cho phép bạn làm điều đó bằng cách thêm tiền tố 0b trước literal:</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+
+<span style="color: #2b91af">int</span> main() {
+    <span style="color: #2b91af">int</span> x{0b1000101};  <span style="color: #008000">// tiền tố 0b trước literal có nghĩa đây là giá trị thuộc hệ nhị phân</span>
+    std::cout &lt;&lt; x;
+    
+    <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+
+        <p>Output:</p>
+        <div class="codeblock"><pre><code>69</code></pre></div>
+        <p>Bởi vì literal có độ dài lớn sẽ gây có đọc cho nên C++ 14 cung cấp một tính năng là dùng dấu nháy đơn ' để làm phân cách cho các chữ số.</p>
+        <!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border-radius:10px;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #0000ff">#include &lt;iostream&gt;</span>
+ 
+<span style="color: #2b91af">int</span> main()
+{
+    <span style="color: #2b91af">int</span> bin{ 0b1011<span>&#39;</span>0010 };      <span style="color: #008000">// gán giá trị hệ nhị phân 1011 0010 cho biến</span>
+    std::cout &lt;&lt; bin &lt;&lt; <span style="color: #a31515">&#39;\n&#39;</span>;
+    <span style="color: #2b91af">long</span> value{ 2<span>&#39;</span>132<span>&#39;</span>673<span>&#39;</span>462 }; <span style="color: #008000">// dễ đọc hơn 2132673462</span>
+    std::cout &lt;&lt; value &lt;&lt; <span style="color: #a31515">&#39;\n&#39;</span>;
+ 
+    <span style="color: #0000ff">return</span> 0;
+}
+</pre></td></tr></table></div>
+        <p>Những dấu nháy kép đó sẽ được compiler bỏ qua, nó chỉ có tác dụng giúp dễ đọc số hơn thôi, lưu ý rằng tính năng này chỉ có trên C++ 14 trở lên nhé.</p>
+
+        <div>
+            <a href="#"><button class="btn">Bài tiếp theo</button></a>
+        </div>
+        <div>
+            <a href="../../index.html"><button class="btn">C++ Index</button></a>
+        </div>
+        <div>
+            <a href="../3-11-char/index.html"><button class="btn">Bài trước</button></a>
+        </div>
+
+    </div>
+</body>
+
+</html>
